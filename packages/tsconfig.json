@@ -1,0 +1,11 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./ts-lib-scripts-utils"
+    },
+    {
+      "path": "./ts-lib-scripts"
+    }
+  ]
+}

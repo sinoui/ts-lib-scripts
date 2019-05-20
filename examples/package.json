@@ -1,0 +1,46 @@
+{
+  "name": "ts-lib-scripts-example",
+  "version": "0.0.13",
+  "private": true,
+  "dependencies": {
+    "ts-lib-scripts": "^0.0.13"
+  },
+  "scripts": {
+    "start": "ts-lib-scripts watch",
+    "test": "ts-lib-scripts test",
+    "build": "ts-lib-scripts build",
+    "format": "ts-lib-scripts format",
+    "lint": "ts-lib-scripts lint"
+  },
+  "devDependencies": {
+    "husky": "^2.3.0",
+    "lint-staged": "^8.1.7",
+    "rimraf": "^2.6.3",
+    "typescript": "^3.4.5"
+  },
+  "prettier": {
+    "printWidth": 80,
+    "useTabs": false,
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "bracketSpacing": true,
+    "jsxBracketSameLine": false,
+    "arrowParens": "always"
+  },
+  "eslintConfig": {
+    "extends": "ts-lib"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "git add"
+    ]
+  }
+}

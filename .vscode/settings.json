@@ -1,0 +1,14 @@
+{
+  "editor.formatOnSave": true,
+  "javascript.format.enable": false,
+  "typescript.format.enable": false,
+  "eslint.enable": true,
+  "prettier.eslintIntegration": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    { "language": "typescript", "autoFix": true },
+    { "language": "typescriptreact", "autoFix": true }
+  ],
+  "jest.pathToJest": "npm test --"
+}

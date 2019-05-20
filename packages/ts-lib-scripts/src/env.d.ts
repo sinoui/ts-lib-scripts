@@ -1,0 +1,43 @@
+declare module 'rollup-plugin-babel';
+declare module 'rollup-plugin-size-snapshot';
+declare module 'rollup-plugin-terser';
+declare module 'babel-preset-ts-lib';
+declare module 'babel-preset-ts-lib/dev';
+declare module 'babel-preset-ts-lib/production';
+declare module 'babel-preset-ts-lib/umd';
+
+interface BuildOptions {
+  /**
+   * 目标环境
+   */
+  target: 'web' | 'node';
+  /**
+   * 目标模块格式化，如['es', 'cjs']
+   */
+  format: FormatMode[];
+  /**
+   * 入口模块，如`src/example.tsx`
+   */
+  entry: string;
+  /**
+   * UMD中使用的模块名称
+   */
+  name: string;
+
+  /**
+   * 输出目录
+   */
+  outDir: string;
+}
+
+type Env = 'production' | 'development';
+type FormatMode = 'es' | 'cjs' | 'umd';
+
+interface CreateOptions {
+  version: string;
+  projectName: string;
+  packageName: string;
+  packageVersion: string;
+  packageDescription?: string;
+  auth?: string;
+}
