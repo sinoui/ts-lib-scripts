@@ -63,3 +63,17 @@ export function clearConsole() {
     process.platform === 'win32' ? '\x1B[2J\x1B[0f' : '\x1B[2J\x1B[3J\x1B[H',
   );
 }
+
+/**
+ *
+ * @param items 数组
+ * @param mapper 映射函数
+ */
+export function flatMap<T, U>(items: T[], mapper: (item: T) => U[]): U[] {
+  const result: U[] = [];
+  items.forEach((item) => {
+    result.push(...mapper(item));
+  });
+
+  return result;
+}

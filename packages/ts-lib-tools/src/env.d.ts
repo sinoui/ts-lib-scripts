@@ -32,12 +32,3 @@ interface BuildOptions {
 
 type Env = 'production' | 'development';
 type FormatMode = 'es' | 'cjs' | 'umd';
-
-interface CreateOptions {
-  version: string;
-  projectName: string;
-  packageName: string;
-  packageVersion: string;
-  packageDescription?: string;
-  auth?: string;
-}

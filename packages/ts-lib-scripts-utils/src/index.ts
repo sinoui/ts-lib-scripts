@@ -1,8 +1,9 @@
 import { execSync } from 'child_process';
+import logError from './logError';
 
 export const SCOPE_NAME_REGEXP = /^@(.+)\//;
 export const BLANK_CHARACTER_REGEXP = /((^[^a-zA-Z]+)|[^\w.-])|([^a-zA-Z0-9]+$)/g;
-
+export { logError };
 /**
  * 获取安全的包名称，用于文件路径中
  *

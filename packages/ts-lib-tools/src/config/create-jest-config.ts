@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-console */
+/* eslint-disable import/prefer-default-export */
+
 import chalk from 'chalk';
 import { resolve } from 'path';
 import { getAppPackageInfo } from './paths';
-
-/* eslint-disable import/prefer-default-export */
 
 /**
  * 创建Jest配置

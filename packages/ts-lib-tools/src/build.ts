@@ -1,14 +1,14 @@
 import util from 'util';
 import { writeFile, readFile } from 'fs';
-import mkdirp from 'mkdirp';
+import { mkdirp } from 'fs-extra';
 import execa from 'execa';
 import { resolve } from 'path';
-import { flatMap } from 'lodash';
 import { rollup } from 'rollup';
 import { safePackageName } from 'ts-lib-scripts-utils';
 import { createRollupOptions } from './config/create-rollup-options';
 import logError from './logError';
 import { rootPath, getAppPackageInfo } from './config/paths';
+import { flatMap } from './utils';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const createLogger = require('progress-estimator');
 
@@ -29,7 +29,7 @@ export async function createCjsIndexFile(outDir: string) {
     'utf-8',
   );
 
-  await util.promisify(mkdirp)(outDir);
+  await mkdirp(outDir);
   await util.promisify(writeFile)(
     resolve(outDir, 'index.js'),
     content.replace(

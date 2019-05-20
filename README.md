@@ -29,11 +29,11 @@ npx ts-lib-scripts create my-ts-lib
 - [下一步](#%E4%B8%8B%E4%B8%80%E6%AD%A5)
 - [API](#api)
   - [`ts-lib-scripts create`](#ts-lib-scripts-create)
-  - [`yarn start` (`ts-lib-scripts start`)](#yarn-start-ts-lib-scripts-start)
-  - [`yarn build` (`ts-lib-scripts build`)](#yarn-build-ts-lib-scripts-build)
-  - [`yarn lint` (`ts-lib-scripts lint`)](#yarn-lint-ts-lib-scripts-lint)
-  - [`yarn format` (`ts-lib-scripts format`)](#yarn-format-ts-lib-scripts-format)
-  - [`yarn test` (`ts-lib-scripts test`)](#yarn-test-ts-lib-scripts-test)
+  - [`yarn start` (`ts-lib-tools start`)](#yarn-start-ts-lib-scripts-start)
+  - [`yarn build` (`ts-lib-tools build`)](#yarn-build-ts-lib-scripts-build)
+  - [`yarn lint` (`ts-lib-tools lint`)](#yarn-lint-ts-lib-scripts-lint)
+  - [`yarn format` (`ts-lib-tools format`)](#yarn-format-ts-lib-scripts-format)
+  - [`yarn test` (`ts-lib-tools test`)](#yarn-test-ts-lib-scripts-test)
 
 ## 特性
 
@@ -406,26 +406,26 @@ ts-lib-scripts 会围绕着 TypeScript 库的开发、构建、部署体验继�
 
 ## API
 
-### `ts-lib-scripts-create`
+### `ts-lib-scripts create`
 
 TODO
 
-### `yarn start` (`ts-lib-scripts start`)
+### `yarn start` (`ts-lib-tools start`)
 
 TODO
 
-### `yarn build` (`ts-lib-scripts build`)
+### `yarn build` (`ts-lib-tools build`)
 
 TODO
 
-### `yarn lint` (`ts-lib-scripts lint`)
+### `yarn lint` (`ts-lib-tools lint`)
 
 TODO
 
-### `yarn format` (`ts-lib-scripts format`)
+### `yarn format` (`ts-lib-tools format`)
 
 TODO
 
-### `yarn test` (`ts-lib-scripts test`)
+### `yarn test` (`ts-lib-tools test`)
 
 TODO

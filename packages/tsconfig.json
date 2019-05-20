@@ -6,6 +6,9 @@
     },
     {
       "path": "./ts-lib-scripts"
+    },
+    {
+      "path": "./ts-lib-tools"
     }
   ]
 }

@@ -4,6 +4,7 @@ import chalk from 'chalk';
 import ora from 'ora';
 import { Command } from 'commander';
 import { prompt } from 'enquirer';
+import { logError } from 'ts-lib-scripts-utils';
 import { validatePackageName } from './validatePackageName';
 import { getOptions } from './getOptions';
 import { genProject } from './genProject';
@@ -15,7 +16,6 @@ import {
 } from './messages';
 import { dependencies, devDependencies } from './constants';
 import { resolveRoot } from '../config/paths';
-import logError from '../logError';
 import initGitRepository from './initGitRepository';
 import getInstallDepsCmd from './getInstallDepsCmd';
 import isCmdInstalled from './isCmdInstalled';

@@ -51,15 +51,14 @@
     "arrowParens": "always"
   },
   "scripts": {
-    "lint": "eslint --ext .ts --ext .tsx src/",
-    "format": "eslint --fix --ext .ts --ext .tsx src/",
-    "test": "ts-lib-scripts test",
-    "test:coverage": "ts-lib-scripts test --coverage",
+    "lint": "eslint --ignore-pattern **/*.d.ts --ext .ts --ext .tsx packages/",
+    "format": "eslint --ignore-pattern **/*.d.ts --fix --ext .ts --ext .tsx packages/",
+    "test": "ts-lib-tools test",
+    "test:coverage": "ts-lib-tools test --coverage",
     "build": "tsc --build packages/tsconfig.json",
     "clean": "rimraf packages/**/dist packages/**/tsconfig.tsbuildinfo",
     "postinstall": "yarn build",
-    "prepublishOnly": "yarn clean && yarn build --force",
-    "create": "yarn ts-lib-scripts create xxx"
+    "prepublishOnly": "yarn clean && yarn build --force"
   },
   "jest": {
     "testRegex": "/packages/.*\\.(spec|test)\\.tsx?$"
@@ -71,7 +70,7 @@
   },
   "lint-staged": {
     "packages/**/*.{ts,tsx}": [
-      "cross-env CI=true ts-lib-scripts test",
+      "cross-env CI=true ts-lib-tools test",
       "eslint --fix --color",
       "git add"
     ]

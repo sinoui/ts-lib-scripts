@@ -1,12 +1,11 @@
 /* eslint-disable no-console */
 /* eslint-disable import/prefer-default-export */
 import { watch } from 'rollup';
-import { flatMap } from 'lodash';
 import ora from 'ora';
 import chalk from 'chalk';
 import { createCjsIndexFile } from './build';
 import { createRollupOptions } from './config/create-rollup-options';
-import { clearConsole } from './utils';
+import { clearConsole, flatMap } from './utils';
 import logError from './logError';
 
 /**

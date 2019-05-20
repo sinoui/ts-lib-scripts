@@ -7,13 +7,13 @@ import {
   readFile,
   writeFile,
   existsSync,
+  outputJSON,
 } from 'fs-extra';
 import chalk from 'chalk';
 import { resolve, join } from 'path';
-import { template } from 'lodash';
 import { safePackageName } from 'ts-lib-scripts-utils';
-import { format } from 'prettier';
 import { resolveRoot, TEMPLATE_PATH, ASSETS_PATH } from '../config/paths';
+import parseTemplateStr from './parseTemplateStr';
 
 /**
  * 生成package.json文件
@@ -38,15 +38,9 @@ export async function genPackageFile(
     options.packageName,
   )}.es.production.js`;
 
-  await writeFile(
-    packagePath,
-    format(JSON.stringify(packageInfo), {
-      parser: 'json',
-      tabWidth: 2,
-      useTabs: false,
-    }),
-    'utf-8',
-  );
+  await outputJSON(packagePath, packageInfo, {
+    spaces: 2,
+  });
 }
 
 /**
@@ -64,7 +58,7 @@ export async function genREADMEFile(
 
   await writeFile(
     readmePath,
-    template(content)({
+    parseTemplateStr(content, {
       ...options,
       packageDescription:
         options.packageDescription ||
@@ -88,7 +82,7 @@ export async function genLicenseFile(
 
   await writeFile(
     licensePath,
-    template(content)({
+    parseTemplateStr(content, {
       time: new Date().getFullYear(),
       author: options.auth,
     }),

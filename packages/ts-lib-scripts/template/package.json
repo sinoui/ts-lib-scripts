@@ -8,12 +8,12 @@
   "module": "dist/sinoui-use-rest-api.es.production.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "start": "ts-lib-scripts watch",
-    "test": "ts-lib-scripts test",
-    "build": "ts-lib-scripts build",
-    "format": "ts-lib-scripts format",
-    "lint": "ts-lib-scripts lint",
-    "prepublishOnly": "yarn build"
+    "start": "ts-lib-tools watch",
+    "test": "ts-lib-tools test",
+    "build": "ts-lib-tools build",
+    "format": "ts-lib-tools format",
+    "lint": "ts-lib-tools lint",
+    "prepublishOnly": "ts-lib-tools build"
   },
   "prettier": {
     "printWidth": 80,
@@ -36,7 +36,7 @@
   },
   "lint-staged": {
     "src/*.{ts,tsx}": [
-      "cross-env CI=true ts-lib-scripts test",
+      "cross-env CI=true ts-lib-tools test",
       "eslint --fix --color",
       "git add"
     ]

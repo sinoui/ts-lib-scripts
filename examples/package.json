@@ -1,16 +1,16 @@
 {
   "name": "ts-lib-scripts-example",
-  "version": "0.0.13",
+  "version": "0.0.15",
   "private": true,
   "dependencies": {
-    "ts-lib-scripts": "^0.0.13"
+    "ts-lib-tools": "^0.0.15"
   },
   "scripts": {
-    "start": "ts-lib-scripts watch",
-    "test": "ts-lib-scripts test",
-    "build": "ts-lib-scripts build",
-    "format": "ts-lib-scripts format",
-    "lint": "ts-lib-scripts lint"
+    "start": "ts-lib-tools watch",
+    "test": "ts-lib-tools test",
+    "build": "ts-lib-tools build",
+    "format": "ts-lib-tools format",
+    "lint": "ts-lib-tools lint"
   },
   "devDependencies": {
     "husky": "^2.3.0",
