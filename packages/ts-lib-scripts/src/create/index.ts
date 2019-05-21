@@ -16,9 +16,10 @@ import {
 } from './messages';
 import { dependencies, devDependencies } from './constants';
 import { resolveRoot } from '../config/paths';
-import initGitRepository from './initGitRepository';
 import getInstallDepsCmd from './getInstallDepsCmd';
 import isCmdInstalled from './isCmdInstalled';
+import createGitRepository from './createGitRepository';
+import gitCommit from './gitCommit';
 
 import execa = require('execa');
 
@@ -48,6 +49,9 @@ export default async function create(projectName: string, program: Command) {
     process.exit(1);
   }
 
+  const projectPath = resolveRoot(options.projectName);
+  const gitCreated = createGitRepository(projectPath);
+
   spinner.start(dependenciesMessage(dependencies, devDependencies));
   try {
     await execa(getInstallDepsCmd(dependencies), {
@@ -67,24 +71,16 @@ export default async function create(projectName: string, program: Command) {
     process.exit(1);
   }
 
-  spinner.start('初始化git');
-  try {
-    if (initGitRepository(resolveRoot(options.projectName))) {
-      spinner.succeed('初始化git成功');
-    } else {
-      spinner.stop();
-      console.log(
-        '提示：您没有安装git或者项目已经在git仓库中，无法为您的项目初始化git。',
-      );
+  if (gitCreated) {
+    try {
+      gitCommit(projectPath);
+    } catch (error) {
+      // 忽略git提交失败
     }
-  } catch (error) {
-    spinner.fail('初始化git失败');
-
-    logError(error);
-    process.exit(1);
   }
 
   if (isCmdInstalled('code')) {
+    console.log();
     const { openWithCode } = await prompt({
       type: 'confirm',
       name: 'openWithCode',
