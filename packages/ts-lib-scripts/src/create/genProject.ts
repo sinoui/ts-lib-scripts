@@ -6,13 +6,13 @@ import {
   readJSON,
   readFile,
   writeFile,
-  existsSync,
   outputJSON,
+  move,
 } from 'fs-extra';
 import chalk from 'chalk';
-import { resolve, join } from 'path';
+import { resolve } from 'path';
 import { safePackageName } from 'ts-lib-scripts-utils';
-import { resolveRoot, TEMPLATE_PATH, ASSETS_PATH } from '../config/paths';
+import { resolveRoot, TEMPLATE_PATH } from '../config/paths';
 import parseTemplateStr from './parseTemplateStr';
 
 /**
@@ -109,15 +109,10 @@ export async function genProject(options: CreateOptions) {
   }
 
   await copy(TEMPLATE_PATH, projectPath);
-
-  // 修复在npx ts-lib-scripts create hello-world时，没有生成.gitignore的错误
-  const gitignoreExists = existsSync(join(projectPath, '.gitignore'));
-  if (!gitignoreExists) {
-    await copy(
-      join(ASSETS_PATH, 'gitignore.tpl'),
-      join(projectPath, '.gitignore'),
-    );
-  }
+  await move(
+    resolve(projectPath, 'package.json.tpl'),
+    resolve(projectPath, 'package.json'),
+  );
 
   await genPackageFile(projectPath, options);
   await genREADMEFile(projectPath, options);
