@@ -110,8 +110,8 @@ export async function genProject(options: CreateOptions) {
 
   await copy(TEMPLATE_PATH, projectPath);
   await move(
-    resolve(projectPath, 'package.json.tpl'),
-    resolve(projectPath, 'package.json'),
+    resolve(projectPath, '.gitignore.tpl'),
+    resolve(projectPath, '.gitignore'),
   );
 
   await genPackageFile(projectPath, options);
