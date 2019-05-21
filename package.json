@@ -56,9 +56,9 @@
     "test": "ts-lib-tools test",
     "test:coverage": "ts-lib-tools test --coverage",
     "build": "tsc --build packages/tsconfig.json",
-    "clean": "rimraf packages/**/dist packages/**/tsconfig.tsbuildinfo",
+    "clean": "yarn build --clean",
     "postinstall": "yarn build",
-    "prepublishOnly": "yarn clean && yarn build --force"
+    "prepublishOnly": "yarn clean && yarn build"
   },
   "jest": {
     "testRegex": "/packages/.*\\.(spec|test)\\.tsx?$"

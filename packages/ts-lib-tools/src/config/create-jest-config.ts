@@ -22,6 +22,7 @@ export function createJestConfig() {
     transformIgnorePatterns: [
       '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$',
       '^.+\\.module\\.(css|sass|scss)$',
+      '^.+[/\\\\]dist[/\\\\]',
     ],
     collectCoverageFrom: [
       'src/**/*.{ts,tsx}',
@@ -29,7 +30,7 @@ export function createJestConfig() {
       '!**/vendor/**',
       '!**/*.d.ts',
     ],
-    watchPathIgnorePatterns: ['<rootDir>/node_modules/'],
+    watchPathIgnorePatterns: ['<rootDir>/node_modules/', '/dist/'],
     testRegex: '.*\\.(spec|test)\\.tsx?$',
     watchPlugins: [
       'jest-watch-typeahead/filename',
