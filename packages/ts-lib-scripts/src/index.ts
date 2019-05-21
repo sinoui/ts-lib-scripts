@@ -19,8 +19,8 @@ program
   .option('-i', '以交互的方式创建项目')
   .option('--packageDescription,-d <description>', '添加项目描述')
   .option('--author <author>', '指定作者')
-  .action(async (projectName) => {
-    create(projectName, program);
+  .action(async (projectName, options) => {
+    create(projectName, options);
   });
 
 program.on('command:*', () => {
