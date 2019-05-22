@@ -41,6 +41,7 @@ export function test() {
     !isInCI &&
     argv.indexOf('--watch') === -1 &&
     argv.indexOf('--watchAll') === -1 &&
+    argv.indexOf('--coverage') === -1 &&
     isInGitRepository()
   ) {
     argv.push('--watch');
