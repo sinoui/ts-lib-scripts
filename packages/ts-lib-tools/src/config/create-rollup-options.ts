@@ -119,7 +119,7 @@ export function createRollupOutputOptions(
     globals,
     format,
     freeze: false,
-    esModule: format === 'es',
+    esModule: format === 'cjs',
     exports: 'named',
   };
 
