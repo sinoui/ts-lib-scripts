@@ -46,6 +46,10 @@ const eslintConfig = {
     ],
     '@typescript-eslint/explicit-function-return-type': 0,
     'import/named': 0,
+    'react/jsx-filename-extension': [
+      'error',
+      { extensions: ['.js', '.jsx', '.tsx'] },
+    ],
   },
 };
 
