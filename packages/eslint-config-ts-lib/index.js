@@ -43,7 +43,7 @@ const eslintConfig = {
     'react-hooks/exhaustive-deps': 'warn',
     'import/no-extraneous-dependencies': [
       'error',
-      { devDependencies: ['** /*.test.{ts,tsx}', '**/*.spec.{ts,tsx}'] },
+      { devDependencies: ['**/*.{spec,test}.{ts,tsx,js,jsx}'] },
     ],
     '@typescript-eslint/explicit-function-return-type': 0,
     'import/named': 0,
