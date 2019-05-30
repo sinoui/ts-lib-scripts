@@ -10,6 +10,7 @@ const eslintConfig = {
     'airbnb',
     'plugin:@typescript-eslint/recommended',
     'prettier',
+    'prettier/react',
     'prettier/@typescript-eslint',
   ],
   globals: {
