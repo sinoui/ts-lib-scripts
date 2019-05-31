@@ -10,6 +10,7 @@ import sourceMaps from 'rollup-plugin-sourcemaps';
 import { terser } from 'rollup-plugin-terser';
 import babel from 'rollup-plugin-babel';
 import typescript from 'rollup-plugin-typescript2';
+import svgr from '@svgr/rollup';
 import { external, getOutputFilePath } from '../utils';
 import { createBabelConfig } from './create-babel-config';
 import {
@@ -17,7 +18,19 @@ import {
   MAIN_FIELDS_FOR_NODE,
   moduleFileExtensions,
 } from './constants';
-import { globals } from './paths';
+import { globals, getAppPackageInfo } from './paths';
+
+/**
+ * 判断是否是React组件库
+ */
+function isReactLib() {
+  const pkgInfo = getAppPackageInfo();
+
+  return (
+    (pkgInfo.dependencies && pkgInfo.dependencies.react) ||
+    (pkgInfo.peerDependencies && pkgInfo.peerDependencies.react)
+  );
+}
 
 /**
  * 创建rollup输入配置选项
@@ -51,6 +64,11 @@ export function createRollupInputOptions(
           include: /\/node_modules\//,
         }),
       json(),
+      isReactLib() &&
+        svgr({
+          prettier: true,
+          svgo: true,
+        }),
       watchMode &&
         typescript({
           typescript: require('typescript'),

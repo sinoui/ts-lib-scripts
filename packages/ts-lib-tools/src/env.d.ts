@@ -5,6 +5,9 @@ declare module 'babel-preset-ts-lib';
 declare module 'babel-preset-ts-lib/dev';
 declare module 'babel-preset-ts-lib/production';
 declare module 'babel-preset-ts-lib/umd';
+declare module 'rollup-plugin-url';
+declare module '@svgr/rollup';
+declare module '*.svg';
 
 interface BuildOptions {
   /**
