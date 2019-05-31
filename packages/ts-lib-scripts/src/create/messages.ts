@@ -33,6 +33,6 @@ export const dependenciesMessage = (
   return `安装依赖：${'\n    '}${chalk.bold.cyan(
     dependencies.join('\n    '),
   )}${'\n  devDependencies:\n    '}${chalk.bold.cyan(
-    devDependencies.join('\n    '),
+    devDependencies.join('    '),
   )}`;
 };

@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "include": ["src", "../ts-lib-scripts-utils/src/utils.spec.ts"],
-  "exclude": ["**/*.spec.ts", "**/*.test/ts"],
+  "exclude": ["**/*.spec.ts", "**/*.test/ts", "assets"],
   "compilerOptions": {
     "composite": true,
     "baseUrl": "./",

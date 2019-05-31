@@ -1,0 +1,47 @@
+{
+  "name": "my-ts-lib",
+  "version": "0.1.0",
+  "license": "MIT",
+  "description": "描述库的用途",
+  "main": "dist/index.js",
+  "umd:main": "dist/sinoui-use-rest-api.umd.production.js",
+  "module": "dist/sinoui-use-rest-api.es.production.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "start": "ts-lib-tools watch",
+    "test": "ts-lib-tools test",
+    "build": "ts-lib-tools build",
+    "format": "ts-lib-tools format",
+    "lint": "ts-lib-tools lint",
+    "prepublishOnly": "ts-lib-tools build"
+  },
+  "prettier": {
+    "printWidth": 80,
+    "useTabs": false,
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "bracketSpacing": true,
+    "jsxBracketSameLine": false,
+    "arrowParens": "always"
+  },
+  "eslintConfig": {
+    "extends": "ts-lib"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/*.{ts,tsx}": [
+      "cross-env CI=true ts-lib-tools test",
+      "eslint --fix --color",
+      "git add"
+    ]
+  },
+  "peerDependencies": {
+    "react": "^16.8.0"
+  }
+}

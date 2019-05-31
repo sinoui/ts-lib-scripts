@@ -20,8 +20,6 @@
   "files": [
     "dist/**/*",
     "assets/**/*",
-    "template/**/*",
-    "template/.gitignore",
     "index.js"
   ],
   "dependencies": {

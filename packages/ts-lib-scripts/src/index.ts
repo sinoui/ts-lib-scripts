@@ -19,6 +19,7 @@ program
   .option('-i', '以交互的方式创建项目')
   .option('--packageDescription,-d <description>', '添加项目描述')
   .option('--author <author>', '指定作者')
+  .option('--react', '开发React组件', false)
   .action(async (projectName, options) => {
     create(projectName, options);
   });

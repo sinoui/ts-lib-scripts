@@ -15,18 +15,31 @@ export const devDependencies = [
 export const dependencies = ['@babel/runtime', '@babel/polyfill'];
 
 /**
- * react库依赖
- */
-export const dependenciesForReact = ['react', 'react-dom'];
-
-/**
  * react库开发依赖
  */
 export const devDependenciesForReact = [
-  'react-test-renderer',
+  'react',
+  'react-dom',
+  '@types/react',
+  '@types/react-dom',
   'react-testing-library',
-  'react-hooks-testing-library',
   'jest-dom',
-  'enzyme',
-  'enzyme-adapter-react-16',
 ];
+
+/**
+ * docz依赖
+ */
+export const devDependenciesForDocz = [
+  'docz',
+  'docz-theme-default',
+  'style-loader',
+  'css-loader',
+  'postcss-loader',
+  'postcss-import',
+  'postcss-preset-env',
+];
+
+/**
+ * github pages依赖
+ */
+export const devDependenciesForGhpages = ['gh-pages'];

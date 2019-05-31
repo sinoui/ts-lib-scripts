@@ -8,18 +8,11 @@ import { logError } from 'ts-lib-scripts-utils';
 import { validatePackageName } from './validatePackageName';
 import { getOptions } from './getOptions';
 import { genProject } from './genProject';
-import getInstallCmd from './getInstallCmd';
-import {
-  failureMessage,
-  successMessage,
-  dependenciesMessage,
-} from './messages';
-import { dependencies, devDependencies } from './constants';
 import { resolveRoot } from '../config/paths';
-import getInstallDepsCmd from './getInstallDepsCmd';
 import isCmdInstalled from './isCmdInstalled';
 import createGitRepository from './createGitRepository';
 import gitCommit from './gitCommit';
+import installDeps from './installDeps';
 
 import execa = require('execa');
 
@@ -52,24 +45,7 @@ export default async function create(projectName: string, program: Command) {
   const projectPath = resolveRoot(options.projectName);
   const gitCreated = createGitRepository(projectPath);
 
-  spinner.start(dependenciesMessage(dependencies, devDependencies));
-  try {
-    await execa(getInstallDepsCmd(dependencies), {
-      cwd: resolveRoot(projectName),
-    });
-    await execa(getInstallDepsCmd(devDependencies, true), {
-      cwd: resolveRoot(projectName),
-    });
-    spinner.succeed('安装依赖包');
-    successMessage(getInstallCmd(), projectName);
-  } catch (error) {
-    spinner.fail(`安装依赖失败`);
-    failureMessage([
-      getInstallDepsCmd(dependencies),
-      getInstallDepsCmd(devDependencies, true),
-    ]);
-    process.exit(1);
-  }
+  await installDeps(spinner, options);
 
   if (gitCreated) {
     try {

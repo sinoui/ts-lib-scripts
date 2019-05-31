@@ -7,13 +7,19 @@ import {
   readFile,
   writeFile,
   outputJSON,
-  move,
 } from 'fs-extra';
 import chalk from 'chalk';
 import { resolve } from 'path';
 import { safePackageName } from 'ts-lib-scripts-utils';
-import { resolveRoot, TEMPLATE_PATH } from '../config/paths';
+import {
+  resolveRoot,
+  TEMPLATE_PATH,
+  REACT_TEMPLATE_PATH,
+  COMMON_TEMPLATE_PATH,
+  GIT_IGNORE_FILE_PATH,
+} from '../config/paths';
 import parseTemplateStr from './parseTemplateStr';
+import genDoczFiles from './genDoczFiles';
 
 /**
  * 生成package.json文件
@@ -84,7 +90,7 @@ export async function genLicenseFile(
     licensePath,
     parseTemplateStr(content, {
       time: new Date().getFullYear(),
-      author: options.auth,
+      author: options.author || '',
     }),
   );
 }
@@ -108,13 +114,15 @@ export async function genProject(options: CreateOptions) {
     process.exit(1);
   }
 
-  await copy(TEMPLATE_PATH, projectPath);
-  await move(
-    resolve(projectPath, '.gitignore.tpl'),
-    resolve(projectPath, '.gitignore'),
-  );
+  await copy(COMMON_TEMPLATE_PATH, projectPath);
+  await copy(options.react ? REACT_TEMPLATE_PATH : TEMPLATE_PATH, projectPath);
+  await copy(GIT_IGNORE_FILE_PATH, resolve(projectPath, '.gitignore'));
 
   await genPackageFile(projectPath, options);
   await genREADMEFile(projectPath, options);
   await genLicenseFile(projectPath, options);
+
+  if (options.docz) {
+    await genDoczFiles(projectPath, options);
+  }
 }

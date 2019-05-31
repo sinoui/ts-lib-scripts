@@ -59,6 +59,7 @@ export function createJestConfig() {
     'transformIgnorePatterns',
     'watchPathIgnorePatterns',
     'testRegex',
+    'testPathIgnorePatterns',
   ];
 
   if (overrides) {

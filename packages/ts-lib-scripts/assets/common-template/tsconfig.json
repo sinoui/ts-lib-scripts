@@ -25,6 +25,7 @@
     "allowJs": false,
     "baseUrl": "./",
     "rootDir": "./src",
-    "outDir": "./build"
+    "outDir": "./build",
+    "resolveJsonModule": true
   }
 }

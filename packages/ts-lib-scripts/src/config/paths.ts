@@ -24,9 +24,37 @@ export const cliPackageInfo = readJsonSync(
 /**
  * 模板位置
  */
-export const TEMPLATE_PATH = resolve(__dirname, '../../template');
+export const TEMPLATE_PATH = resolve(__dirname, '../../assets/template');
+/**
+ * react组件库模板位置
+ */
+export const REACT_TEMPLATE_PATH = resolve(
+  __dirname,
+  '../../assets/react-template',
+);
+
+/**
+ * 通用模板位置
+ */
+export const COMMON_TEMPLATE_PATH = resolve(
+  __dirname,
+  '../../assets/common-template',
+);
+
+/**
+ * git忽略文件位置
+ */
+export const GIT_IGNORE_FILE_PATH = resolve(
+  __dirname,
+  '../../assets/gitignore',
+);
 
 /**
  * assets路径
  */
 export const ASSETS_PATH = resolve(__dirname, '../../assets');
+
+/**
+ * docz模板路径
+ */
+export const DOCZ_TEMPLATE_PATH = resolve(ASSETS_PATH, './docz-template');
