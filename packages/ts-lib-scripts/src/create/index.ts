@@ -22,8 +22,14 @@ import execa = require('execa');
  * @param projectName 项目名称
  * @param program 命令行对象
  */
-export default async function create(projectName: string, program: Command) {
-  const packageName = (program.packageName || projectName) as string;
+export default async function create(
+  projectNameConfig: string,
+  program: Command,
+) {
+  const projectName = projectNameConfig.startsWith('@')
+    ? projectNameConfig.substr(projectNameConfig.indexOf('/') + 1)
+    : projectNameConfig;
+  const packageName = (program.packageName || projectNameConfig) as string;
 
   if (!validatePackageName(packageName)) {
     process.exit(1);
