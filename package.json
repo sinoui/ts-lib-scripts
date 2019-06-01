@@ -61,7 +61,7 @@
     "prepublishOnly": "yarn clean && yarn build"
   },
   "jest": {
-    "testRegex": "\\/packages\\/.*\\.(spec|test)\\.tsx?$",
+    "testRegex": "/packages/.*\\.(spec|test)\\.tsx?$",
     "testPathIgnorePatterns": [
       "/node_modules/",
       "/assets/"
