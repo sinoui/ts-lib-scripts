@@ -27,6 +27,30 @@ function getDevPendencies(options: CreateOptions) {
 }
 
 /**
+ * 执行安装依赖的命令
+ *
+ * @param projectName 项目名称
+ * @param deps 依赖
+ * @param isDev 是否是开发依赖
+ */
+async function execInstallDeps(
+  projectName: string,
+  deps: string[],
+  isDev: boolean = false,
+) {
+  const cmd = getInstallCmd();
+  const args = [
+    cmd === 'npm' ? 'i' : 'add',
+    ...deps,
+    isDev ? '--dev' : '',
+    cmd === 'npm' ? '--save' : '',
+  ].filter(Boolean);
+  await execa(cmd, args, {
+    cwd: resolveRoot(projectName),
+  });
+}
+
+/**
  * 安装依赖
  *
  * @param {CreateOptions} options
@@ -36,12 +60,8 @@ async function installDeps(spinner: ora.Ora, options: CreateOptions) {
   const devDeps = getDevPendencies(options);
   spinner.start(dependenciesMessage(dependencies, devDeps));
   try {
-    await execa(getInstallDepsCmd(dependencies), {
-      cwd: resolveRoot(projectName),
-    });
-    await execa(getInstallDepsCmd(devDeps, true), {
-      cwd: resolveRoot(projectName),
-    });
+    await execInstallDeps(projectName, dependencies);
+    await execInstallDeps(projectName, devDeps, true);
     spinner.succeed('安装依赖包');
     successMessage(getInstallCmd(), projectName);
   } catch (error) {
