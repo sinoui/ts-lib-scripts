@@ -382,10 +382,10 @@ ts-lib-scripts 会围绕着 TypeScript 库的开发、构建、部署体验继�
 近期规划清单：
 
 - [ ] 更易用的 ts-lib-scripts 文档
-- [ ] 支持 React（正在内部测试中）
+- [x] 支持 React (0.2.0)
 - [ ] 添加 demo 支持
 - [ ] 文档支持：docusaurus（针对普通库）
-- [ ] 文档支持：docz（针对 React 组件库）
+- [x] 文档支持：docz（针对 React 组件库） (0.2.0)
 - [ ] TypeScript 编译缓存，提升 TypeScript 编译速度
 - [ ] 默认启用 UMD（正在提升 UMD 打包体验）
 - [ ] 文档：CircleCI 集成
