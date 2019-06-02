@@ -22,7 +22,7 @@ export const devDependenciesForReact = [
   'react-dom',
   '@types/react',
   '@types/react-dom',
-  'react-testing-library',
+  '@testing-library/react',
   'jest-dom',
   'react-test-renderer'
 ];
