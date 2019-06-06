@@ -93,5 +93,6 @@ export async function runBuild(buildOptions: BuildOptions) {
     await logger(buildPromise, '使用rollup编译js文件');
   } catch (error) {
     logError(error);
+    process.exit(1);
   }
 }
