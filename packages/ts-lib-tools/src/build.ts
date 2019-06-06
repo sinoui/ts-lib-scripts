@@ -1,13 +1,13 @@
 import util from 'util';
 import { writeFile, readFile } from 'fs';
-import { mkdirp } from 'fs-extra';
+import { mkdirp, remove } from 'fs-extra';
 import execa from 'execa';
 import { resolve } from 'path';
 import { rollup } from 'rollup';
 import { safePackageName } from 'ts-lib-scripts-utils';
 import { createRollupOptions } from './config/create-rollup-options';
 import logError from './logError';
-import { rootPath, getAppPackageInfo } from './config/paths';
+import { rootPath, getAppPackageInfo, DIST_PATH } from './config/paths';
 import { flatMap } from './utils';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const createLogger = require('progress-estimator');
@@ -62,6 +62,13 @@ export async function createTsDeclarationFiles(buildOptions: BuildOptions) {
 }
 
 /**
+ *  清除打包文件存放目录dist
+ */
+export async function clean() {
+  await remove(DIST_PATH);
+}
+
+/**
  * 运行编译命令
  *
  * @export
@@ -72,6 +79,7 @@ export async function runBuild(buildOptions: BuildOptions) {
   const envs: Env[] = ['production', 'development'];
 
   try {
+    await logger(clean(), '清除dist');
     await logger(
       createTsDeclarationFiles(buildOptions),
       '使用tsc生成.d.ts文件',

@@ -78,6 +78,11 @@ export const testsSetup = resolveModule(resolveRoot, 'src/setupTests');
 export const ASSETS_PATH = resolve(__dirname, '../../assets');
 
 /**
+ * 打包目标目录
+ */
+export const DIST_PATH = resolveRoot('./dist');
+
+/**
  * 库对应的全局名称
  */
 export const globals = () => {
