@@ -42,13 +42,13 @@ module.exports = function create(_api, _opts, env) {
           useBuiltIns: true,
         },
       ],
-      '@babel/preset-typescript',
+      require('@babel/preset-typescript'),
     ].filter(Boolean),
     plugins: [
       require('babel-plugin-macros'),
-      'annotate-pure-calls',
-      'dev-expression',
-      ['transform-rename-import', { replacements }],
+      require('babel-plugin-annotate-pure-calls'),
+      require('babel-plugin-dev-expression'),
+      [require('babel-plugin-transform-rename-import'), { replacements }],
       // 添加装饰器语法支持(typescript支持的语法)
       [require('@babel/plugin-proposal-decorators').default, false],
       // 添加类属性语法支持(typescript支持的语法)
