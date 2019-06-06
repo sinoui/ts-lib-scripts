@@ -47,10 +47,14 @@ export async function clean() {
 }
 
 function nextTick<T>(callback: () => Promise<T>): Promise<T> {
-  return new Promise<T>((resolveFn) => {
+  return new Promise<T>((resolveFn, reject) => {
     setTimeout(async () => {
-      const result = await callback();
-      resolveFn(result);
+      try {
+        const result = await callback();
+        resolveFn(result);
+      } catch (e) {
+        reject(e);
+      }
     });
   });
 }
