@@ -13,6 +13,7 @@
 - fix(ts-lib-tools): 包含 async/await 代码时导致`start`失败的缺陷
 - fix(ts-lib-scripts): 修复无法在 mac 创建项目的缺陷
 - fix(eslint-config-ts-lib): 修复 prettier 与 react eslint 规则冲突的缺陷
+- feat(ts-lib-scripts): 启用[ts incremental](https://devblogs.microsoft.com/typescript/announcing-typescript-3-4/#faster-subsequent-builds-with-the---incremental-flag)
 
 对于历史项目，需要手动调整：
 
@@ -32,4 +33,14 @@
    [core]
      autocrlf = input
      safecrlf = true
+   ```
+
+3. 在`tsconfig.json`中添加`incremental`：（可选）
+
+   ```json
+   {
+     "compilerOptions": {
+       "increumental": true
+     }
+   }
    ```
