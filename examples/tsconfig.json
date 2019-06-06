@@ -25,6 +25,7 @@
     "allowJs": false,
     "baseUrl": "./",
     "rootDir": "./src",
-    "declarationDir": "./build"
+    "declarationDir": "./build",
+    "incremental": true
   }
 }
