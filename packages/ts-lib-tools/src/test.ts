@@ -1,6 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import jest from 'jest';
 import { execSync } from 'child_process';
+import { resolve, isAbsolute, relative } from 'path';
 import { createJestConfig } from './config/create-jest-config';
 
 /**
@@ -18,13 +19,22 @@ function isInGitRepository() {
 /**
  * 运行单元测试命令
  */
-export function test() {
+export async function test() {
   process.env.BABEL_ENV = 'test';
   process.env.NODE_ENV = 'test';
 
   const isInCI = process.env.CI === 'true';
 
-  const argv = process.argv.slice(3);
+  const argv = process.argv.slice(3).map((arg) => {
+    if (
+      !arg.startsWith('-') &&
+      isAbsolute(arg) &&
+      resolve(arg).startsWith(process.cwd())
+    ) {
+      return relative(process.cwd(), resolve(arg));
+    }
+    return arg;
+  });
 
   const jestConfig = createJestConfig();
   argv.push('--config', JSON.stringify(jestConfig));
@@ -47,5 +57,9 @@ export function test() {
     argv.push('--watch');
   }
 
-  jest.run(argv);
+  try {
+    await jest.run(argv);
+  } catch (e) {
+    process.exit(1);
+  }
 }
