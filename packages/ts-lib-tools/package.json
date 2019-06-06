@@ -45,6 +45,7 @@
     "eslint-plugin-react-hooks": "^1.6.0",
     "execa": "^1.0.0",
     "fs-extra": "^8.0.1",
+    "globby": "^9.2.0",
     "jest": "^24.8.0",
     "jest-watch-typeahead": "^0.3.1",
     "ora": "^3.4.0",

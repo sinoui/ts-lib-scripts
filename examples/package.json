@@ -13,8 +13,10 @@
     "lint": "ts-lib-tools lint"
   },
   "devDependencies": {
+    "@types/react": "^16.8.19",
     "husky": "^2.3.0",
     "lint-staged": "^8.1.7",
+    "react": "^16.8.6",
     "rimraf": "^2.6.3",
     "typescript": "^3.4.5"
   },

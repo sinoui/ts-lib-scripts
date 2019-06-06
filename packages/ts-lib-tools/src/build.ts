@@ -1,13 +1,13 @@
 import util from 'util';
 import { writeFile, readFile } from 'fs';
-import { mkdirp, remove } from 'fs-extra';
-import execa from 'execa';
+import { mkdirp, remove, copy } from 'fs-extra';
 import { resolve } from 'path';
 import { rollup } from 'rollup';
 import { safePackageName } from 'ts-lib-scripts-utils';
+import globby from 'globby';
 import { createRollupOptions } from './config/create-rollup-options';
 import logError from './logError';
-import { rootPath, getAppPackageInfo, DIST_PATH } from './config/paths';
+import { getAppPackageInfo, DIST_PATH, resolveRoot } from './config/paths';
 import { flatMap } from './utils';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const createLogger = require('progress-estimator');
@@ -40,32 +40,35 @@ export async function createCjsIndexFile(outDir: string) {
 }
 
 /**
- * 生成.d.ts文件
- *
- * @export
- */
-export async function createTsDeclarationFiles(buildOptions: BuildOptions) {
-  await execa(
-    'yarn',
-    [
-      'tsc',
-      '-d',
-      '--emitDeclarationOnly',
-      '--skipLibCheck',
-      '--declarationDir',
-      buildOptions.outDir,
-    ].filter(Boolean),
-    {
-      cwd: rootPath,
-    },
-  );
-}
-
-/**
  *  清除打包文件存放目录dist
  */
 export async function clean() {
   await remove(DIST_PATH);
+}
+
+function nextTick<T>(callback: () => Promise<T>): Promise<T> {
+  return new Promise<T>((resolveFn) => {
+    setTimeout(async () => {
+      const result = await callback();
+      resolveFn(result);
+    });
+  });
+}
+
+/**
+ * 拷贝ts声明文件
+ *
+ */
+async function copyDeclarationFiles() {
+  const declarationFiles = await globby('src/**/*.d.ts');
+  await Promise.all(
+    declarationFiles.map(async (filePath) => {
+      await copy(
+        resolveRoot(filePath),
+        resolveRoot(filePath.replace('src/', 'dist/')),
+      );
+    }),
+  );
 }
 
 /**
@@ -81,10 +84,6 @@ export async function runBuild(buildOptions: BuildOptions) {
   try {
     await logger(clean(), '清除dist');
     await logger(
-      createTsDeclarationFiles(buildOptions),
-      '使用tsc生成.d.ts文件',
-    );
-    await logger(
       createCjsIndexFile(buildOptions.outDir),
       '生成dist/index.js文件(cjs入口文件)',
     );
@@ -93,12 +92,16 @@ export async function runBuild(buildOptions: BuildOptions) {
       flatMap(formats, (formatMode) =>
         envs.map((env) => createRollupOptions(formatMode, env, buildOptions)),
       ).map(async ([inputOptions, outputOptions]) => {
-        const bundle = await rollup(inputOptions);
-        await bundle.write(outputOptions);
+        await nextTick(async () => {
+          const bundle = await rollup(inputOptions);
+          await bundle.write(outputOptions);
+        });
       }),
     );
 
     await logger(buildPromise, '使用rollup编译js文件');
+
+    await logger(copyDeclarationFiles(), '拷贝src中的ts声明文件');
   } catch (error) {
     logError(error);
     process.exit(1);

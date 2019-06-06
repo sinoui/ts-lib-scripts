@@ -18,7 +18,7 @@ export async function runWatch(buildOptions: BuildOptions) {
   const envs: Env[] = ['production', 'development'];
 
   const configs = flatMap(formats, (formatMode) =>
-    envs.map((env) => createRollupOptions(formatMode, env, buildOptions, true)),
+    envs.map((env) => createRollupOptions(formatMode, env, buildOptions)),
   ).map(([input, output]) => ({
     ...input,
     output,

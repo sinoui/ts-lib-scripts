@@ -45,7 +45,6 @@ export function createRollupInputOptions(
   format: 'es' | 'cjs' | 'umd',
   env: 'development' | 'production',
   input: BuildOptions,
-  watchMode: boolean,
 ) {
   const inputOptions: InputOptions = {
     external,
@@ -69,24 +68,23 @@ export function createRollupInputOptions(
           prettier: true,
           svgo: true,
         }),
-      watchMode &&
-        typescript({
-          typescript: require('typescript'),
-          cacheRoot: `./.cache/.rts2_cache_${format}`,
-          objectHashIgnoreUnknownHack: true,
-          tsconfigDefaults: {
-            compilerOptions: {
-              sourceMap: true,
-              declaration: true,
-              jsx: 'react',
-            },
+      typescript({
+        typescript: require('typescript'),
+        cacheRoot: `./.cache/.rts2_cache_${format}`,
+        objectHashIgnoreUnknownHack: true,
+        tsconfigDefaults: {
+          compilerOptions: {
+            sourceMap: true,
+            declaration: true,
+            jsx: 'preserve',
           },
-          tsconfigOverride: {
-            compilerOptions: {
-              target: 'esnext',
-            },
+        },
+        tsconfigOverride: {
+          compilerOptions: {
+            target: 'esnext',
           },
-        }),
+        },
+      }),
       babel({
         babelrc: false,
         runtimeHelpers: format !== 'umd',
@@ -158,10 +156,9 @@ export function createRollupOptions(
   format: 'es' | 'cjs' | 'umd',
   env: 'development' | 'production',
   input: BuildOptions,
-  watchMode: boolean = false,
 ): [InputOptions, OutputOptions] {
   return [
-    createRollupInputOptions(format, env, input, watchMode),
+    createRollupInputOptions(format, env, input),
     createRollupOutputOptions(format, env, input),
   ];
 }
