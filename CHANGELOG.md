@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.2.3 - 2019.6.10
+
+- fix(ts-lib-scripts): 修复 gitattributes 配置错误
+
 ## v0.2.2 - 2019.6.6
 
 - fix(babel-preset-ts-lib): 修复 jest 可能执行失败的缺陷
