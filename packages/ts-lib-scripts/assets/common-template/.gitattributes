@@ -1,16 +1,16 @@
-*.ts text
-*.tsx text
-*.js text
-*.jsx text
-*.md text
-*.mdx text
-*.json text
-*.lock text
-.editorconfig text
-.gitignore text
-.gitattributes text
-*.txt text
-LICENSE text
+*.ts text eol=lf
+*.tsx text eol=lf
+*.js text eol=lf
+*.jsx text eol=lf
+*.md text eol=lf
+*.mdx text eol=lf
+*.json text eol=lf
+*.lock text eol=lf
+.editorconfig text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
+*.txt text eol=lf
+LICENSE text eol=lf
 
 [core]
   autocrlf=input
