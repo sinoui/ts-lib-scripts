@@ -1,5 +1,31 @@
 # 变更说明
 
+## v0.2.4 - 2019.6.27
+
+- fix(ts-lib-scripts): 修复 GIT 换行符配置错误
+
+对于历史项目，可以手动调整`.gitattributes`文件：
+
+```ini
+*.ts text
+*.tsx text
+*.js text
+*.jsx text
+*.md text
+*.mdx text
+*.json text
+*.lock text
+.editorconfig text
+.gitignore text
+.gitattributes text
+*.txt text
+LICENSE text
+
+[core]
+  autocrlf=input
+  safecrlf=true
+```
+
 ## v0.2.3 - 2019.6.10
 
 - fix(ts-lib-scripts): 修复 gitattributes 配置错误
