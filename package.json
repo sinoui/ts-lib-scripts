@@ -51,8 +51,8 @@
     "arrowParens": "always"
   },
   "scripts": {
-    "lint": "eslint --ignore-pattern **/*.d.ts assets --ext .ts --ext .tsx packages/",
-    "format": "eslint --ignore-pattern **/*.d.ts assets --fix --ext .ts --ext .tsx packages/",
+    "lint": "eslint --ignore-pattern **/*.d.ts **/assets/** **/node_modules/** --ext .ts --ext .tsx packages/",
+    "format": "eslint --ignore-pattern **/*.d.ts --fix --ext .ts --ext .tsx packages/",
     "test": "ts-lib-tools test",
     "test:coverage": "ts-lib-tools test --coverage",
     "build": "tsc --build packages/tsconfig.json",
