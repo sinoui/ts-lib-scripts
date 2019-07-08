@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.2.8 - 2019.7.8
+
+- fix(ts-lib-tools): 代码中包含@sinoui, sinoui-components 时，jest 单元测试失败
+
 ## v0.2.7 - 2019.7.8
 
 v0.2.6 发布失败，再次发布。
