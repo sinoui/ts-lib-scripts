@@ -23,7 +23,6 @@
     "jsx": "react",
     "esModuleInterop": true,
     "allowJs": false,
-    "baseUrl": "./",
     "rootDir": "./src",
     "outDir": "./build",
     "resolveJsonModule": true,
