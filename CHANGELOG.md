@@ -3,6 +3,7 @@
 ## v0.2.8 - 2019.7.8
 
 - fix(ts-lib-tools): 代码中包含@sinoui, sinoui-components 时，jest 单元测试失败
+- fix(ts-lib-scripts): 修复 typescript 自动导入时引入了 amd 路径的错误
 
 ## v0.2.7 - 2019.7.8
 
