@@ -51,6 +51,7 @@ const eslintConfig = {
       'error',
       { extensions: ['.js', '.jsx', '.tsx'] },
     ],
+    'react/prop-types': 0,
     // disallow reassignment of function parameters
     // disallow parameter object manipulation except for specific exclusions
     // rule: https://eslint.org/docs/rules/no-param-reassign.html

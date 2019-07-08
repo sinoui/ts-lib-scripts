@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.2.6 - 2019.7.8
+
+- fix(eslint-config-ts-lib): 去掉多余的 react 属性校验
+
 ## v0.2.5 - 2019.6.27
 
 - fix(ts-lib-scripts): 修复 GIT 换行符配置错误
