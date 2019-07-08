@@ -1,7 +1,7 @@
 {
   "name": "eslint-config-ts-lib",
   "description": "ts-lib-scripts创建的ts库项目使用的ESLint配置",
-  "version": "0.2.2",
+  "version": "0.2.7",
   "main": "index.js",
   "license": "MIT",
   "homepage": "https://github.com/sinoui/ts-lib-scripts",
