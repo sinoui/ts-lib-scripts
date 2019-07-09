@@ -1,6 +1,6 @@
 {
   "name": "webpack-docz-ghpages-plugin",
-  "version": "0.2.10",
+  "version": "0.2.11",
   "description": "将docz文档发布到github pages时需要使用的webpack插件。",
   "license": "MIT",
   "homepage": "https://github.com/sinoui/ts-lib-scripts",
