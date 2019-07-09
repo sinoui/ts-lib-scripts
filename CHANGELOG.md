@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.2.12 - 2019.7.9
+
+- fix(webpack-docz-ghpages-plugin): 修复实现错误
+
 ## v0.2.11 - 2019.7.9
 
 - fix(webpack-docz-ghpages-plugin): 修复包主文件错误
