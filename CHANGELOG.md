@@ -12,7 +12,7 @@
    yarn add webpack-docz-ghpages-plugin --dev
    ```
 
-2. 调整`docz.js`文件：
+2. 调整`doczrc.js`文件：
 
    ```diff
 
