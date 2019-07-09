@@ -1,5 +1,26 @@
 # 变更说明
 
+## v0.2.10 - 2019.7.9
+
+- fix: 修复 docz 文档发布到 ghpages 上之后，刷新页面进入 404 的缺陷
+
+对于已有项目，手动调整一下：
+
+1. 添加 webpack-docz-ghpages-plugin 依赖
+
+   ```shell
+   yarn add webpack-docz-ghpages-plugin --dev
+   ```
+
+2. 调整`docz.js`文件：
+
+   ```diff
+
+   +  config.plugin('ghpages').use(require('webpack-docz-ghpages-plugin'));
+
+      return config;
+   ```
+
 ## v0.2.9 - 2019.7.9
 
 - fix(ts-lib-scripts): 修复发布文档命令错误
