@@ -15,7 +15,7 @@
     "dist/**/*",
     "index.js"
   ],
-  "main": "dist/index.js",
+  "main": "index.js",
   "devDependencies": {
     "@types/webpack": "^4.4.34",
     "webpack": "^4.35.3"
