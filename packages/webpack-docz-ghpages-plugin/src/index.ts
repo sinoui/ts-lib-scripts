@@ -10,7 +10,7 @@ const PluginName = 'WebpackDoczGhpagesPlugin';
  * @class WebpackDoczGhpagesPlugin
  * @extends {Webpack.Plugin}
  */
-class WebpackDoczGhpagesPlugin extends Webpack.Plugin {
+class WebpackDoczGhpagesPlugin implements Webpack.Plugin {
   public apply(compiler: Compiler) {
     compiler.hooks.emit.tapAsync(PluginName, (compilation, callback) => {
       compilation.assets['404.html'] = compilation.assets['index.html'];
