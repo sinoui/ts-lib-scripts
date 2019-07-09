@@ -54,7 +54,10 @@ export default {
             browsers: ['last 2 versions', 'not dead', 'IE 10', 'IE 11'],
           }),
         ],
-      });
+      }).end();
+
+    config.plugin('ghpages')
+      .use(require('webpack-docz-ghpages-plugin'));
 
     return config;
   },

@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": ["src", "../ts-lib-scripts-utils/src/utils.spec.ts"],
+  "exclude": ["**/*.spec.ts", "**/*.test/ts"],
+  "compilerOptions": {
+    "composite": true,
+    "baseUrl": "./",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "declarationDir": "./dist",
+    "module": "commonjs"
+  },
+  "references": [
+    {
+      "path": "../ts-lib-scripts-utils"
+    }
+  ]
+}

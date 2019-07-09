@@ -24,7 +24,7 @@ export const devDependenciesForReact = [
   '@types/react-dom',
   '@testing-library/react',
   'jest-dom',
-  'react-test-renderer'
+  'react-test-renderer',
 ];
 
 /**
@@ -38,6 +38,7 @@ export const devDependenciesForDocz = [
   'postcss-loader',
   'postcss-import',
   'postcss-preset-env',
+  'webpack-docz-ghpages-plugin',
 ];
 
 /**

@@ -9,6 +9,9 @@
     },
     {
       "path": "./ts-lib-tools"
+    },
+    {
+      "path": "./webpack-docz-ghpages-plugin"
     }
   ]
 }
