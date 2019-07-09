@@ -32,7 +32,7 @@ async function genDoczFiles(projectPath: string, options: CreateOptions) {
   packageInfo.scripts['doc:dev'] = 'docz dev';
   packageInfo.scripts['doc:build'] = 'docz build';
   if (options.doczGithubPages) {
-    packageInfo.scripts['doc:publish'] = 'docz dev && gh-pages -d .docz/dist';
+    packageInfo.scripts['doc:publish'] = 'docz build && gh-pages -d .docz/dist';
     packageInfo.homepage = getHomepage(options);
   }
   await outputJSON(resolve(projectPath, './package.json'), packageInfo, {

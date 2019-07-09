@@ -1,5 +1,16 @@
 # 变更说明
 
+## v0.2.9 - 2019.7.9
+
+- fix(ts-lib-scripts): 修复发布文档命令错误
+
+对于已有项目，手动调整一下`package.json`:
+
+```diff
+-  "doc:publish": "docz dev && gh-pages -d .docz/dist"
++  "doc:publish": "docz build && gh-pages -d .docz/dist"
+```
+
 ## v0.2.8 - 2019.7.8
 
 - fix(ts-lib-tools): 代码中包含@sinoui, sinoui-components 时，jest 单元测试失败
