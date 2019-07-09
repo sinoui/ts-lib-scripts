@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.2.11 - 2019.7.9
+
+- fix(webpack-docz-ghpages-plugin): 修复包主文件错误
+
 ## v0.2.10 - 2019.7.9
 
 - fix: 修复 docz 文档发布到 ghpages 上之后，刷新页面进入 404 的缺陷
