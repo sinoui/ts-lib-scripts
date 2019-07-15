@@ -71,7 +71,7 @@ export function createJestConfig() {
 
   if (overrides) {
     supportedKeys.forEach((key) => {
-      if (overrides[key] !== undefined || overrides[key] !== null) {
+      if (overrides[key] !== undefined && overrides[key] !== null) {
         if (
           Array.isArray(jestConfig[key]) ||
           typeof jestConfig[key] !== 'object'
