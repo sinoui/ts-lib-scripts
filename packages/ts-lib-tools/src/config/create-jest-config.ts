@@ -30,7 +30,14 @@ export function createJestConfig() {
       '!**/vendor/**',
       '!**/*.d.ts',
     ],
-    watchPathIgnorePatterns: ['<rootDir>/node_modules/', '/dist/'],
+    watchPathIgnorePatterns: [
+      'node_modules',
+      'dist',
+      '.docz',
+      '.cache',
+      'coverage',
+      'examples',
+    ],
     testRegex: '.*\\.(spec|test)\\.tsx?$',
     watchPlugins: [
       'jest-watch-typeahead/filename',

@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.2.13 - 2019.7.15
+
+- improve(ts-lib-tools): 改进 jest 的监听范围，不再监听生成的文件。
+
 ## v0.2.12 - 2019.7.9
 
 - fix(webpack-docz-ghpages-plugin): 修复实现错误
