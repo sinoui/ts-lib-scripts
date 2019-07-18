@@ -25,6 +25,7 @@
     "allowJs": false,
     "resolveJsonModule": true,
     "incremental": true,
+    "baseUrl": ".",
     "paths": {
       "*": ["packages/*/src"]
     }

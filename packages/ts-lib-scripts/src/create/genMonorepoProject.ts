@@ -50,6 +50,25 @@ async function updateProjectConfig(
 }
 
 /**
+ * 更新tsconfig配置
+ *
+ * @param {string} projectPath
+ * @param {CreateOptions} options
+ */
+async function updateTsConfig(projectPath: string, options: CreateOptions) {
+  const tsconfigPath = resolve(projectPath, 'tsconfig.json');
+  const tsconfig = await readJSON(tsconfigPath);
+
+  tsconfig.paths = {
+    [`@${options.npmScope || options.packageName}/*`]: ['packages/*/src'],
+  };
+
+  await outputJSON(tsconfigPath, tsconfig, {
+    spaces: 2,
+  });
+}
+
+/**
  * 生成monorepo模式的项目
  *
  * @param {CreateOptions} options
@@ -75,6 +94,7 @@ async function genMonorepoProject(options: CreateOptions) {
   await updateProjectConfig(projectPath, options);
   await updateREADMEFile(projectPath, options);
   await genLicenseFile(projectPath, options);
+  await updateTsConfig(projectPath, options);
 
   if (options.docz) {
     await genDoczFiles(projectPath, options);

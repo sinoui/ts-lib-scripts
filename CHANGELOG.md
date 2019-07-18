@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.3.1 - 2019.7.19
+
+- fix(ts-lib-scripts): 修复 tsconfig 配置错误，导致 ts 找不到内部模块的缺陷
+
 ## v0.3.0 - 2019.7.19
 
 - feat(babel-preset-ts-lib): babel 支持从 tsconfig.json 文件中读取`paths`，作为自定义的模块路径映射
