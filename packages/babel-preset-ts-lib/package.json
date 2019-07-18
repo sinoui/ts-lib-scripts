@@ -1,6 +1,6 @@
 {
   "name": "babel-preset-ts-lib",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "ts-lib-scripts创建的ts库项目使用的Babel配置",
   "license": "MIT",
   "main": "index.js",
