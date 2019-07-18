@@ -1,4 +1,5 @@
 import React from 'react';
+import './Wrapper.css'
 
 interface WrapperProps {
   children: React.ReactNode;
