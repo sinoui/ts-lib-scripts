@@ -17,6 +17,7 @@ npx ts-lib-scripts create my-ts-lib
   - [`yarn lint`](#yarn-lint)
   - [`yarn format`](#yarn-format)
   - [`yarn test`](#yarn-test)
+- [monorepo](#monorepo-v030)
 - [优化](#%E4%BC%98%E5%8C%96)
   - [开发日志](#%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97)
   - [warning](#warning)
