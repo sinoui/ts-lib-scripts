@@ -20,6 +20,8 @@ program
   .option('--packageDescription,-d <description>', '添加项目描述')
   .option('--author <author>', '指定作者')
   .option('--react', '开发React组件', false)
+  .option('--monorepo', '生成monorepo模式项目', false)
+  .option('--npmScope', '指定npm的作用域名称')
   .action(async (projectName, options) => {
     create(projectName, options);
   });

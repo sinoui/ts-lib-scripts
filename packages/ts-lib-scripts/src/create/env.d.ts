@@ -49,4 +49,12 @@ interface CreateOptions {
    * 将docz文档发布到Github Pages上
    */
   doczGithubPages?: boolean;
+  /**
+   * 启用monorepo模式
+   */
+  monorepo?: boolean;
+  /**
+   * npm作用域名称
+   */
+  npmScope?: string;
 }

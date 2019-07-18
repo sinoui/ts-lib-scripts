@@ -42,6 +42,14 @@ export const COMMON_TEMPLATE_PATH = resolve(
 );
 
 /**
+ * monorepo模式项目的模板
+ */
+export const MONOREPO_TEMPLATE_PATH = resolve(
+  __dirname,
+  '../../assets/monorepo-template',
+);
+
+/**
  * git忽略文件位置
  */
 export const GIT_IGNORE_FILE_PATH = resolve(

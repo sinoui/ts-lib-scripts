@@ -95,6 +95,8 @@ export async function getOptions(
     packageDescription: program.packageDescription as string,
     packageVersion: program.packageVersion as string,
     react: program.react as boolean,
+    monorepo: program.monorepo as boolean,
+    npmScope: program.npmScope as string,
   };
 
   if (program.i) {

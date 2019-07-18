@@ -10,6 +10,7 @@ import {
   devDependenciesForReact,
   devDependenciesForDocz,
   devDependenciesForGhpages,
+  monorepoDevDependencies,
 } from './constants';
 import getInstallDepsCmd from './getInstallDepsCmd';
 import { resolveRoot } from '../config/paths';
@@ -23,6 +24,7 @@ function getDevPendencies(options: CreateOptions) {
     ...(options.react ? devDependenciesForReact : []),
     ...(options.docz ? devDependenciesForDocz : []),
     ...(options.doczGithubPages ? devDependenciesForGhpages : []),
+    ...(options.monorepo ? monorepoDevDependencies : []),
   ];
 }
 
@@ -37,6 +39,7 @@ async function execInstallDeps(
   projectName: string,
   deps: string[],
   isDev: boolean = false,
+  monorepo: boolean = false,
 ) {
   const cmd = getInstallCmd();
   const args = [
@@ -44,6 +47,7 @@ async function execInstallDeps(
     ...deps,
     isDev ? '--dev' : '',
     cmd === 'npm' ? '--save' : '',
+    monorepo ? '-W' : '',
   ].filter(Boolean);
   await execa(cmd, args, {
     cwd: resolveRoot(projectName),
@@ -60,8 +64,8 @@ async function installDeps(spinner: ora.Ora, options: CreateOptions) {
   const devDeps = getDevPendencies(options);
   spinner.start(dependenciesMessage(dependencies, devDeps));
   try {
-    await execInstallDeps(projectName, dependencies);
-    await execInstallDeps(projectName, devDeps, true);
+    await execInstallDeps(projectName, dependencies, false, true);
+    await execInstallDeps(projectName, devDeps, true, true);
     spinner.succeed('安装依赖包');
     successMessage(getInstallCmd(), projectName);
   } catch (error) {

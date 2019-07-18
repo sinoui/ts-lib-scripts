@@ -4,7 +4,6 @@
   "exclude": ["**/*.spec.ts", "**/*.test/ts", "assets"],
   "compilerOptions": {
     "composite": true,
-    "baseUrl": "./",
     "rootDir": "./src",
     "outDir": "./dist",
     "declarationDir": "./dist",

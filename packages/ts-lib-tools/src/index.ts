@@ -10,6 +10,7 @@ import { lint } from './lint';
 import { format } from './format';
 import { runWatch } from './watch';
 import { DIST_PATH_NAME } from './config/constants';
+import genModule from './gen-module';
 
 const program = new Command('ts-lib-tools');
 program.version(cliPackageInfo.version);
@@ -88,6 +89,13 @@ program
   )
   .action(async (options: BuildOptions) => {
     await runWatch(getBuildOptions(options));
+  });
+
+program
+  .command('gen-module <moduleName>')
+  .description('生成模块')
+  .action(async (moduleName) => {
+    await genModule(moduleName);
   });
 
 program.command('lint').description('代码检查');

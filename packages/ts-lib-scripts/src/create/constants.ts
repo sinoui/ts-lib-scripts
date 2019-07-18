@@ -45,3 +45,8 @@ export const devDependenciesForDocz = [
  * github pages依赖
  */
 export const devDependenciesForGhpages = ['gh-pages'];
+
+/**
+ * monorepo需要的依赖
+ */
+export const monorepoDevDependencies = ['lerna'];

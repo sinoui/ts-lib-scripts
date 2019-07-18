@@ -13,6 +13,7 @@ import isCmdInstalled from './isCmdInstalled';
 import createGitRepository from './createGitRepository';
 import gitCommit from './gitCommit';
 import installDeps from './installDeps';
+import genMonorepoProject from './genMonorepoProject';
 
 import execa = require('execa');
 
@@ -37,10 +38,21 @@ export default async function create(
 
   const options = await getOptions(projectName, packageName, program);
 
+  if (packageName.startsWith('@') && !options.npmScope && options.monorepo) {
+    console.error(
+      `monorepo模式时，项目，项目名称不能以@开头。现在是：${packageName}`,
+    );
+    return;
+  }
+
   const spinner = ora().start();
   spinner.start('正在生成项目...');
   try {
-    await genProject(options);
+    if (options.monorepo) {
+      await genMonorepoProject(options);
+    } else {
+      await genProject(options);
+    }
     spinner.succeed(`已生成项目 ${chalk.green(packageName)}`);
   } catch (error) {
     spinner.fail('生成项目失败');

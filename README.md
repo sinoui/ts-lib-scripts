@@ -103,6 +103,49 @@ my-ts-lib
 
 开启 vscode 的 jest 插件，会在文件变化时自动运行单元测试。
 
+## monorepo (v0.3.0)
+
+从 0.3.0 开始，`ts-lib-scripts`支持生成 monorepo 结构的项目：
+
+```shell
+npx ts-lib-scripts create my-ts-lib --monorepo
+```
+
+生成的项目结构如下：
+
+```text
+my-ts-lib
+|__ .vscode
+|__ pacakges
+|__ .editorconfig
+|__ .gitignore
+|__ lerna.json
+|__ package.json
+|__ README.md
+|__ tsconfig.json
+```
+
+采用[lerna](https://github.com/lerna/lerna)管理模块的依赖和发布，所有模块都放在 pacakges 目录中。有以下几个命令行可用：
+
+- `yarn build` - 编译所有模块
+- `yarn lint` - 检查所有模块的代码
+- `yarn test` - 以监听者模式执行所有模块的单元测试
+- `yarn lerna publish` - 发布
+- `yarn gen` - 添加新模块。例如：`yarn gen module-a`。
+- `yarn lerna add` - 添加依赖。
+
+可以为所有模块添加依赖，如给所有模块添加`ts-lib`依赖：
+
+```shell
+yarn lerna add ts-lib
+```
+
+也可以为单个模块添加依赖：
+
+```shell
+yarn lerna add immer --scope=module-a
+```
+
 ## 优化
 
 前端代码的大小是前端项目中至关重要的指标，但是压缩代码大小不能以牺牲开发者体验为代价。ts-lib-scripts 做代码优化就是本着这个原则来的。
@@ -401,7 +444,7 @@ ts-lib-scripts 会围绕着 TypeScript 库的开发、构建、部署体验继�
 
 - [ ] 使用 16 倍速的[swc](https://github.com/swc-project/swc)编译 TypeScript 代码（等着 swc 的成熟）
 - [ ] 英文文档
-- [ ] monorepo 支持
+- [x] monorepo 支持
 - [ ] 分离的 ES Module 支持（不合并文件，只针对单个文件进行编译处理）
 
 ## API
