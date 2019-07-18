@@ -20,7 +20,7 @@ export function createJestConfig() {
       ),
     },
     transformIgnorePatterns: [
-      'node_modules/(?!(@sinoui|sinoui-components)/)',
+      'node_modules/(?!(@sinoui|sinoui-components|lodash-es)/)',
       '^.+\\.module\\.(css|sass|scss)$',
       '^.+[/\\\\]dist[/\\\\]',
     ],
