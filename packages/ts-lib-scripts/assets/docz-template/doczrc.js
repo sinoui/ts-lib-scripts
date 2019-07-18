@@ -29,6 +29,7 @@ export default {
   public: './docs/assets',
   menu: ['首页'],
   wrapper: 'docs/Wrapper.tsx',
+  indexHtml: 'docs/index.html',
   base: getBaseUrl(),
   onCreateWebpackChain: (config) => {
     // 配置webpack的方式：[webpack-chain](https://github.com/neutrinojs/webpack-chain)
@@ -54,10 +55,10 @@ export default {
             browsers: ['last 2 versions', 'not dead', 'IE 10', 'IE 11'],
           }),
         ],
-      }).end();
+      })
+      .end();
 
-    config.plugin('ghpages')
-      .use(require('webpack-docz-ghpages-plugin'));
+    config.plugin('ghpages').use(require('webpack-docz-ghpages-plugin'));
 
     return config;
   },
