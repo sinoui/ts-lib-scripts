@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.3.3 - 2019.7.19
+
+- fix(ts-lib-scripts): 修复 monorepo 项目中多出 src 目录的缺陷
+
 ## v0.3.2 - 2019.7.19
 
 - fix(ts-lib-scripts): 修复 monorepo 项目中多出 src 目录的缺陷

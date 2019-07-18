@@ -1,12 +1,5 @@
 /* eslint-disable no-console */
-import {
-  pathExists,
-  copy,
-  readJSON,
-  outputJSON,
-  remove,
-  rmdir,
-} from 'fs-extra';
+import { pathExists, copy, readJSON, outputJSON, remove } from 'fs-extra';
 import chalk from 'chalk';
 import { resolve } from 'path';
 import {
@@ -102,7 +95,7 @@ async function genMonorepoProject(options: CreateOptions) {
   await updateREADMEFile(projectPath, options);
   await genLicenseFile(projectPath, options);
   await updateTsConfig(projectPath, options);
-  await rmdir(resolve(projectPath, 'src'));
+  await remove(resolve(projectPath, 'src'));
 
   if (options.docz) {
     await genDoczFiles(projectPath, options);
