@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.3.0
+
+- feat(babel-preset-ts-lib): babel 支持从 tsconfig.json 文件中读取`paths`，作为自定义的模块路径映射
+
 ## v0.2.17 - 2019.7.18
 
 - fix(ts-lib-tools): 修复依赖关系错误
