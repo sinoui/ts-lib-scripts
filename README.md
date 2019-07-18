@@ -1,6 +1,4 @@
----
-title: ts-lib-scripts
----
+# ts-lib-scripts
 
 ts-lib-scripts，一个以 🚀 速度创建零配置 TypeScript 库项目的命令行工具。
 
