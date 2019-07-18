@@ -1,8 +1,10 @@
 # 变更说明
 
-## v0.3.0
+## v0.3.0 - 2019.7.19
 
 - feat(babel-preset-ts-lib): babel 支持从 tsconfig.json 文件中读取`paths`，作为自定义的模块路径映射
+- feat: 支持 monorepo
+- fix(ts-lib-scripts): 修复 docz 若干问题
 
 ## v0.2.17 - 2019.7.18
 
