@@ -1,6 +1,14 @@
-import { copy, readFile, writeFile, readJSON, outputJSON } from 'fs-extra';
+import {
+  copy,
+  readFile,
+  writeFile,
+  readJSON,
+  outputJSON,
+  createReadStream,
+} from 'fs-extra';
 import { resolve } from 'path';
-import { DOCZ_TEMPLATE_PATH } from '../config/paths';
+import { DOCZ_TEMPLATE_PATH, DOC_README_PATH } from '../config/paths';
+import appendContentToFile from './fns/appendContentToFile';
 
 function getHomepage(options: CreateOptions) {
   if (options.packageName.startsWith('@')) {
@@ -38,6 +46,13 @@ async function genDoczFiles(projectPath: string, options: CreateOptions) {
   await outputJSON(resolve(projectPath, './package.json'), packageInfo, {
     spaces: 2,
   });
+
+  // 添加doc指令说明
+  await appendContentToFile(
+    resolve(projectPath, 'README.md'),
+    '\n',
+    createReadStream(DOC_README_PATH),
+  );
 }
 
 export default genDoczFiles;

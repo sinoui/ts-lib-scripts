@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.3.4
+
+- fix(ts-lib-scripts): 修复未开启 docz，但是生成项目的 README.md 中有 doc 相关命令行说明的缺陷
+
 ## v0.3.3 - 2019.7.19
 
 - fix(ts-lib-scripts): 修复 monorepo 项目中多出 src 目录的缺陷

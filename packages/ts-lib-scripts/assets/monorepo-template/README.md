@@ -31,9 +31,3 @@
 ```shell
 yarn gen my-ts-module
 ```
-
-## 启动 docz
-
-```shell
-yarn doc:start
-```

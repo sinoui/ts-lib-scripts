@@ -66,3 +66,8 @@ export const ASSETS_PATH = resolve(__dirname, '../../assets');
  * docz模板路径
  */
 export const DOCZ_TEMPLATE_PATH = resolve(ASSETS_PATH, './docz-template');
+
+/**
+ * doc命令行内容
+ */
+export const DOC_README_PATH = resolve(ASSETS_PATH, 'doc-readme.md');
