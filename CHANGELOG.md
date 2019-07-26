@@ -1,5 +1,10 @@
 # 变更说明
 
+## v0.3.5
+
+- chore(ts-lib-scripts): 调整 jest-dom 为@testing-library/jest-dom
+- chore(ts-lib-scripts): 添加@testing-library/react-hooks，方便做 react hooks 的单元测试
+
 ## v0.3.4
 
 - fix(ts-lib-scripts): 修复未开启 docz，但是生成项目的 README.md 中有 doc 相关命令行说明的缺陷
