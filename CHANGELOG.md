@@ -1,5 +1,9 @@
 # 变更说明
 
+## next
+
+- feat: 规范 vscode 的换行符和缩进
+
 ## v0.3.5
 
 - chore(ts-lib-scripts): 调整 jest-dom 为@testing-library/jest-dom
