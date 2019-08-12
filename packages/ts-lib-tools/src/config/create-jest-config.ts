@@ -4,12 +4,39 @@
 
 import chalk from 'chalk';
 import { resolve } from 'path';
+import { isMonorepo } from 'ts-lib-scripts-utils';
 import { getAppPackageInfo } from './paths';
+
+const monorepoJestConfig = {
+  collectCoverageFrom: [
+    'packages/**/*.{ts,tsx}',
+    '!**/node_modules/**',
+    '!**/vendor/**',
+    '!**/*.d.ts',
+    '!**/dist/**',
+    '!**/.cache/**',
+  ],
+  watchPathIgnorePatterns: [
+    'node_modules',
+    '.docz',
+    'coverage',
+    'examples',
+    '.*/node_modules/.*',
+    '.*/dist/.*',
+    '.*/\\.cache/.*',
+  ],
+  testPathIgnorePatterns: [
+    '.*/node_modules/.*',
+    '.*/dist/.*',
+    '.*/\\.cache/.*',
+  ],
+};
 
 /**
  * 创建Jest配置
  */
 export function createJestConfig() {
+  const isMono = isMonorepo();
   const jestConfig: { [x: string]: any } = {
     transform: {
       '^.+\\.(js|jsx|ts|tsx)$': resolve(__dirname, './jest/babelTransform.js'),
@@ -47,6 +74,7 @@ export function createJestConfig() {
       '^react-native$': 'react-native-web',
       '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
     },
+    ...(isMono ? monorepoJestConfig : {}),
   };
 
   const overrides = Object.assign({}, getAppPackageInfo().jest);

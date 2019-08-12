@@ -71,6 +71,14 @@ export function createRollupInputOptions(
       typescript({
         typescript: require('typescript'),
         cacheRoot: `./.cache/.rts2_cache_${format}`,
+        exclude: [
+          '*.d.ts',
+          '**/*.d.ts',
+          '**/*.test.ts',
+          '**/*.test.tsx',
+          '**/*.spec.ts',
+          '**/*.spec.tsx',
+        ],
         objectHashIgnoreUnknownHack: true,
         tsconfigDefaults: {
           compilerOptions: {

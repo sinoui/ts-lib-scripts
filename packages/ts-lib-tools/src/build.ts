@@ -43,7 +43,15 @@ export async function createCjsIndexFile(outDir: string) {
  *  清除打包文件存放目录dist
  */
 export async function clean() {
-  await remove(DIST_PATH);
+  try {
+    await remove(DIST_PATH);
+  } catch (e) {
+    try {
+      await remove(DIST_PATH);
+    } catch (error) {
+      console.error('清除文件夹失败', error);
+    }
+  }
 }
 
 function nextTick<T>(callback: () => Promise<T>): Promise<T> {

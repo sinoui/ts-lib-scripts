@@ -3,6 +3,7 @@
 ## next
 
 - feat: 规范 vscode 的换行符和缩进
+- fix(ts-lib-tools): 修复在 monorepo 模式下执行 jest 单元测试失败的缺陷
 
 ## v0.3.5
 
