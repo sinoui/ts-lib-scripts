@@ -59,7 +59,7 @@ async function updateTsConfig(projectPath: string, options: CreateOptions) {
   const tsconfigPath = resolve(projectPath, 'tsconfig.json');
   const tsconfig = await readJSON(tsconfigPath);
 
-  tsconfig.paths = {
+  tsconfig.compilerOptions.paths = {
     [`@${options.npmScope || options.packageName}/*`]: ['packages/*/src'],
   };
 
