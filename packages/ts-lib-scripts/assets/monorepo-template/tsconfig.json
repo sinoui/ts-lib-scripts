@@ -1,5 +1,5 @@
 {
-  "include": ["src", "types"],
+  "include": ["packages", "types", "docs"],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "target": "es5",

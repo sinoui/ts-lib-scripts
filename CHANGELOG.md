@@ -9,6 +9,7 @@
 - fix: 修复 prepublishOnly 在 monorepo 模式下配置错误
 - feat(ts-lib-tools): 生成模块时添加上许可证信息
 - fix(ts-lib-tools): 修复`gen`生成的模块缺少.gitignore，导致将很多临时文件发布到 npm 仓库的缺陷
+- fix(ts-lib-scripts): 修复 monorepo 模式，tsconfig.json 的 includes 配置错误
 
 ## v0.3.5
 
