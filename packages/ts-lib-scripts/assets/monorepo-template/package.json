@@ -34,7 +34,7 @@
     }
   },
   "lint-staged": {
-    "src/*.{ts,tsx}": [
+    "packages/*.{ts,tsx}": [
       "cross-env CI=true ts-lib-tools test",
       "eslint --fix --color",
       "git add"
