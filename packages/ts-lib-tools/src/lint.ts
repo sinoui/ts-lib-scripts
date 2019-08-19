@@ -5,10 +5,10 @@ import { rootPath } from './config/paths';
 // eslint-disable-next-line import/prefer-default-export
 export async function lint() {
   const otherArgv = process.argv.slice(3);
-  const mono = isMonorepo();
+  const mono = await isMonorepo();
   await execa(
     'eslint',
-    ['--color', '--ext', '.ts', '--ext', '.tsx', mono? 'packages/' : 'src/', ...otherArgv],
+    ['--color', '--ignore-pattern', '**/node_modules/*', '--ignore-pattern', '**/*.d.ts', '--ext', '.ts', '--ext', '.tsx', mono? 'packages/' : 'src/', ...otherArgv],
     {
       cwd: rootPath,
     },

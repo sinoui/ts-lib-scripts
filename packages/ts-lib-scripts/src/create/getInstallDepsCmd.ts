@@ -8,7 +8,7 @@ import getInstallCmd from './getInstallCmd';
  */
 export default function getInstallDepsCmd(
   deps: string[],
-  isDev: boolean = false,
+  isDev = false,
 ) {
   const cmd = getInstallCmd();
 

@@ -35,8 +35,8 @@ const monorepoJestConfig = {
 /**
  * 创建Jest配置
  */
-export function createJestConfig() {
-  const isMono = isMonorepo();
+export async function createJestConfig() {
+  const isMono = await isMonorepo();
   const jestConfig: { [x: string]: any } = {
     transform: {
       '^.+\\.(js|jsx|ts|tsx)$': resolve(__dirname, './jest/babelTransform.js'),
@@ -78,7 +78,7 @@ export function createJestConfig() {
     ...(isMono ? monorepoJestConfig : {}),
   };
 
-  const overrides = Object.assign({}, getAppPackageInfo().jest);
+  const overrides = { ...getAppPackageInfo().jest };
 
   const supportedKeys = [
     'collectCoverageFrom',
@@ -109,7 +109,7 @@ export function createJestConfig() {
           jestConfig[key] = overrides[key];
         } else {
           // for object types, extend gracefully
-          jestConfig[key] = Object.assign({}, jestConfig[key], overrides[key]);
+          jestConfig[key] = { ...jestConfig[key], ...overrides[key] };
         }
 
         delete overrides[key];

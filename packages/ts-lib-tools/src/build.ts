@@ -49,6 +49,7 @@ export async function clean() {
     try {
       await remove(DIST_PATH);
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error('清除文件夹失败', error);
     }
   }

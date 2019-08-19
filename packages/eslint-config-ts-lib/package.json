@@ -16,11 +16,11 @@
     "index.js"
   ],
   "peerDependencies": {
-    "@typescript-eslint/eslint-plugin": "^1.9.0",
-    "@typescript-eslint/parser": "1.x",
-    "eslint": "5.x",
-    "eslint-config-airbnb": "17.x",
-    "eslint-config-prettier": "4.x",
+    "@typescript-eslint/eslint-plugin": "2.x",
+    "@typescript-eslint/parser": "2.x",
+    "eslint": "6.x",
+    "eslint-config-airbnb": "18.x",
+    "eslint-config-prettier": "6.x",
     "eslint-import-resolver-typescript": "1.x",
     "eslint-plugin-import": "2.x",
     "eslint-plugin-jsx-a11y": "6.x",

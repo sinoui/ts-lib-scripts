@@ -15,7 +15,7 @@ async function appendContentToFile(
     flags: 'a',
   });
 
-  const append = (content: string | ReadStream, end: boolean = false) => {
+  const append = (content: string | ReadStream, end = false) => {
     return new Promise((resolve, reject) => {
       if (typeof content === 'string') {
         const cb = (error?: Error | null) => {

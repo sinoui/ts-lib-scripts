@@ -36,7 +36,7 @@ export async function test() {
     return arg;
   });
 
-  const jestConfig = createJestConfig();
+  const jestConfig = await createJestConfig();
   argv.push('--config', JSON.stringify(jestConfig));
 
   if (

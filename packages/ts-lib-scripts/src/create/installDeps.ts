@@ -38,8 +38,8 @@ function getDevPendencies(options: CreateOptions) {
 async function execInstallDeps(
   projectName: string,
   deps: string[],
-  isDev: boolean = false,
-  monorepo: boolean = false,
+  isDev = false,
+  monorepo = false,
 ) {
   const cmd = getInstallCmd();
   const args = [
