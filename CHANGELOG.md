@@ -6,6 +6,7 @@
 - fix(ts-lib-tools): 修复在 monorepo 模式下执行 jest 单元测试失败的缺陷
 - fix(ts-lib-tools): 修复 monorepo 模式下，yarn lint 找不到文件的缺陷
 - fix(ts-lib-scripts): 修复 monorepo 模式，lint-staged 配置错误
+- fix: 修复 prepublishOnly 在 monorepo 模式下配置错误
 
 ## v0.3.5
 

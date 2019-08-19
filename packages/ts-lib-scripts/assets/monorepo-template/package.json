@@ -11,7 +11,6 @@
     "build": "lerna run build",
     "format": "ts-lib-tools format",
     "lint": "ts-lib-tools lint",
-    "prepublishOnly": "ts-lib-tools build",
     "gen": "ts-lib-tools gen-module"
   },
   "prettier": {

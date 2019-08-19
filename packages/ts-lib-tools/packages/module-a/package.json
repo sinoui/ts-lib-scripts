@@ -9,6 +9,7 @@
   "scripts": {
     "build": "ts-lib-tools build",
     "test": "ts-lib-tools test",
-    "lint": "ts-lib-tools lint"
+    "lint": "ts-lib-tools lint",
+    "prepublishOnly": "ts-lib-tools build"
   }
 }
