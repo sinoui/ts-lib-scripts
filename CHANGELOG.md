@@ -11,6 +11,7 @@
 - fix(ts-lib-tools): 修复`gen`生成的模块缺少.gitignore，导致将很多临时文件发布到 npm 仓库的缺陷
 - fix(ts-lib-scripts): 修复 monorepo 模式，tsconfig.json 的 includes 配置错误
 - fix(ts-lib-scripts): 修复 monorepo 模式，tsconfig.json 中的 paths 配置错误
+- fix(eslint-config-ts-lib): eslint 的 import/no-unresolved 无法解析`tsconfig.json`的`paths`缺陷
 
 ## v0.3.5
 

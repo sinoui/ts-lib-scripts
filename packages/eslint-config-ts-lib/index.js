@@ -12,6 +12,7 @@ const eslintConfig = {
     'prettier',
     'prettier/react',
     'prettier/@typescript-eslint',
+    'plugin:import/typescript',
   ],
   globals: {
     Atomics: 'readonly',
@@ -32,6 +33,7 @@ const eslintConfig = {
       '@typescript-eslint/parser': ['.js', '.jsx', '.ts', '.tsx'],
     },
     'import/resolver': {
+      typescript: {},
       node: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },

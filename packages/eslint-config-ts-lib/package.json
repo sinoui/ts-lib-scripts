@@ -21,6 +21,7 @@
     "eslint": "5.x",
     "eslint-config-airbnb": "17.x",
     "eslint-config-prettier": "4.x",
+    "eslint-import-resolver-typescript": "1.x",
     "eslint-plugin-import": "2.x",
     "eslint-plugin-jsx-a11y": "6.x",
     "eslint-plugin-react": "7.x",
