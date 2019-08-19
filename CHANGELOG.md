@@ -14,6 +14,7 @@
 - fix(eslint-config-ts-lib): eslint 的 import/no-unresolved 无法解析`tsconfig.json`的`paths`缺陷
 - fix(ts-lib-scripts): 修复 docz 文档中无法解析 ts paths 的错误
 - fix(ts-lib-tools): 修复 monorepo 中，单元测试包含对模块引用导致单元测试失败的缺陷
+- feat: jest 24.8.0 -> 24.9.0
 
 ## v0.3.5
 
