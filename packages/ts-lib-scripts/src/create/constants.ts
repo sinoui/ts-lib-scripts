@@ -40,6 +40,7 @@ export const devDependenciesForDocz = [
   'postcss-import',
   'postcss-preset-env',
   'webpack-docz-ghpages-plugin',
+  'tsconfig-paths-webpack-plugin',
 ];
 
 /**

@@ -58,7 +58,15 @@ export default {
       })
       .end();
 
-    config.plugin('ghpages').use(require('webpack-docz-ghpages-plugin'));
+    config
+      .plugin('ghpages')
+      .use(require('webpack-docz-ghpages-plugin'))
+      .end();
+
+    config.resolve
+      .plugin('tsconfig-paths')
+      .use(require('tsconfig-paths-webpack-plugin'))
+      .end();
 
     return config;
   },
