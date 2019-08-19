@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { pathExists, readJSON, copy, outputJSON } from 'fs-extra';
+import { pathExists, readJSON, copy, outputJSON, move } from 'fs-extra';
 import { resolve } from 'path';
 import { safePackageName } from 'ts-lib-scripts-utils';
 import chalk from 'chalk';
@@ -18,6 +18,18 @@ async function genLicenseFile(modulePath: string) {
   if (isExists) {
     await copy(resolveRoot('LICENSE'), resolve(modulePath, 'LICENSE'));
   }
+}
+
+/**
+ * 生成.gitignore
+ *
+ * @param modulePath 模块路径
+ */
+async function genGitignoreFile(modulePath: string) {
+  await move(
+    resolve(modulePath, 'gitignore'),
+    resolve(modulePath, '.gitignore'),
+  );
 }
 
 /**
@@ -60,6 +72,7 @@ async function genModule(moduleName: string) {
   });
 
   await genLicenseFile(modulePath);
+  await genGitignoreFile(modulePath);
 
   spinner.succeed(`已生成模块 ${chalk.green(moduleName)}`);
 
