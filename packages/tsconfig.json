@@ -12,6 +12,9 @@
     },
     {
       "path": "./webpack-docz-ghpages-plugin"
+    },
+    {
+      "path": "./jest-resolver-tsconfig-paths"
     }
   ]
 }

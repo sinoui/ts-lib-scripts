@@ -1,0 +1,25 @@
+{
+  "name": "jest-resolver-tsconfig-paths",
+  "version": "0.3.0",
+  "description": "支持tsconfig paths的jest模块解析器",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "homepage": "https://github.com/sinoui/ts-lib-scripts",
+  "bugs": {
+    "url": "https://github.com/sinoui/ts-lib-scripts/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sinoui/ts-lib-scripts.git"
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "dependencies": {
+    "tsconfig-paths": "^3.8.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.17"
+  }
+}

@@ -74,6 +74,7 @@ export function createJestConfig() {
       '^react-native$': 'react-native-web',
       '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
     },
+    resolver: 'jest-resolver-tsconfig-paths',
     ...(isMono ? monorepoJestConfig : {}),
   };
 

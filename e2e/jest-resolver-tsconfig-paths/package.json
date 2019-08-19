@@ -1,0 +1,9 @@
+{
+  "name": "jest-resolver-e2e",
+  "jest": {
+    "resolver": "jest-resolver-tsconfig-paths"
+  },
+  "dependencies": {
+    "jest": "^24.9.0"
+  }
+}
