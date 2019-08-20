@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.4.1 - 2019.8.20
+
+- fix(ts-lib-tools): 修复缺少 jest-resolver-tsconfig-paths 依赖的错误
+
 ## v0.4.0 - 2019.8.20
 
 - feat: 规范 vscode 的换行符和缩进

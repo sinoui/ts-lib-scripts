@@ -48,6 +48,7 @@
     "fs-extra": "^7.0.1",
     "globby": "^9.2.0",
     "jest": "^24.9.0",
+    "jest-resolver-tsconfig-paths": "^0.4.0",
     "jest-watch-typeahead": "^0.3.1",
     "ora": "^3.4.0",
     "prettier": "^1.18.2",
