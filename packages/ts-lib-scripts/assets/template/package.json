@@ -5,7 +5,7 @@
   "description": "描述库的用途",
   "main": "dist/index.js",
   "umd:main": "dist/sinoui-use-rest-api.umd.production.js",
-  "module": "dist/sinoui-use-rest-api.es.production.js",
+  "module": "dist/sinoui-use-rest-api.esm.js",
   "typings": "dist/index.d.ts",
   "scripts": {
     "start": "ts-lib-tools watch",

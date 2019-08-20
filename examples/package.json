@@ -44,5 +44,6 @@
       "eslint --fix",
       "git add"
     ]
-  }
+  },
+  "module": "dist/ts-lib-scripts-example.esm.js"
 }

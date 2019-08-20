@@ -21,10 +21,6 @@
     "jsx": "react",
     "esModuleInterop": true,
     "allowJs": false,
-    "incremental": true,
-    "baseUrl": ".",
-    "paths": {
-      "*": ["packages/*/src"]
-    }
+    "incremental": true
   }
 }

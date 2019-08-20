@@ -16,6 +16,9 @@ export function getOutputFilePath(
   format: 'es' | 'cjs' | 'umd',
   env: 'development' | 'production',
 ) {
+  if (format === 'es') {
+    return resolve(outDir, `${safePackageName(getAppPackageInfo().name)}.esm.js`);
+  }
   return resolve(
     outDir,
     `${safePackageName(getAppPackageInfo().name)}.${format}.${env}.js`,

@@ -17,14 +17,23 @@
 - feat: jest 24.8.0 -> 24.9.0
 - feat: eslint 5.16.0 -> 6.1.0
 - fix(ts-lib-tools): 修复 lint 命令行范围错误
+- fix(ts-lib-tools): package.json 中的 esm 包应引用.esm.development.js 文件 (#18)
+- improve(ts-lib-tools): 不需要打包.esm.production.js (#18)
+- BREADK CHANGE(ts-lib-scripts): package.json 的`module`引用`<moduelName>.esm.js`
 
-### 破坏性变更
+### 破坏性变
+
+变更 1：
 
 由于 eslint 已经相关插件的升级，eslint 规则有所变化，需要在项目中执行下面的命令行：
 
 ```shell
 yarn lint --fix
 ```
+
+变更 2：
+
+package.json 的`module`从`<moduleName>.es.prodution.js`改成了`<moduleName>.esm.js`。已经使用 ts-lib-scripts 的项目会在`build`时自动调整`module`。
 
 ## v0.3.5
 

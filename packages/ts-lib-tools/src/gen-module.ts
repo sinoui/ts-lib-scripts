@@ -65,7 +65,7 @@ async function genModule(moduleName: string) {
   packageInfo.version = version;
   packageInfo.devDependencies['ts-lib-tools'] = devDependencies['ts-lib-tools'];
   packageInfo['umd:main'] = `dist/${safePackageName(name)}.umd.production.js`;
-  packageInfo.module = `dist/${safePackageName(name)}.es.production.js`;
+  packageInfo.module = `dist/${safePackageName(name)}.esm.js`;
   packageInfo.license = license;
   await outputJSON(resolve(modulePath, 'package.json'), packageInfo, {
     spaces: 2,

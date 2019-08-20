@@ -9,6 +9,7 @@ import { createRollupOptions } from './config/create-rollup-options';
 import logError from './logError';
 import { getAppPackageInfo, DIST_PATH, resolveRoot } from './config/paths';
 import { flatMap } from './utils';
+import upgradePakageModule from './upgradePackageModule';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const createLogger = require('progress-estimator');
 
@@ -95,15 +96,18 @@ export async function runBuild(buildOptions: BuildOptions) {
   const envs: Env[] = ['production', 'development'];
 
   try {
+    await upgradePakageModule();
     await logger(clean(), '清除dist');
     await logger(
       createCjsIndexFile(buildOptions.outDir),
       '生成dist/index.js文件(cjs入口文件)',
     );
 
+    const buildTargets = flatMap(formats, formatMode => envs.map(env => [formatMode, env] as [FormatMode, Env]))
+      .filter(([formatMode, env]) => !(formatMode === 'es' && env === 'production'));
+
     const buildPromise = Promise.all(
-      flatMap(formats, (formatMode) =>
-        envs.map((env) => createRollupOptions(formatMode, env, buildOptions)),
+      buildTargets.map(([formatMode, env]) => createRollupOptions(formatMode, env, buildOptions)
       ).map(async ([inputOptions, outputOptions]) => {
         await nextTick(async () => {
           const bundle = await rollup(inputOptions);
