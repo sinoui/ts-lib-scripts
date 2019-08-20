@@ -99,7 +99,7 @@ async function mvDeclarationFiles() {
   if (isExists) {
     const files = await readdir(from);
     await Promise.all(files.map(file => move(join(from, file), join(to, file))));
-    await remove(from);
+    await remove(resolveRoot(`dist/${moduleName}`));
   }
 }
 

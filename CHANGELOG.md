@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.4.2 - 2019.8.20
+
+- fix(ts-lib-tools): 修复 dist 目录中多出以模块名为名称的文件夹的缺陷
+
 ## v0.4.1 - 2019.8.20
 
 - fix(ts-lib-tools): 修复缺少 jest-resolver-tsconfig-paths 依赖的错误
