@@ -1,5 +1,15 @@
 # 变更说明
 
+## v0.4.3 - 2019.8.20
+
+- fix(eslint-config-ts-lib): 调整 eslint 规则
+  - 禁用：react/jsx-props-no-spreading
+  - 禁用：no-explicit-any
+  - 启用：允许未使用的`_arg`(@typescript-eslint/no-unused-vars)
+  - 启用：允许未使用的`const {arg, ...rest} = obj;`的`arg`变量(@typescript-eslint/no-unused-vars)
+  - 启用：允许`console.warn`和`console.error` (no-console)
+  - 启用：允许在单元测试中使用`console` api (no-console)
+
 ## v0.4.2 - 2019.8.20
 
 - fix(ts-lib-tools): 修复 dist 目录中多出以模块名为名称的文件夹的缺陷
