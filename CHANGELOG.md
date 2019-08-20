@@ -1,6 +1,6 @@
 # 变更说明
 
-## next
+## v0.4.0 - 2019.8.20
 
 - feat: 规范 vscode 的换行符和缩进
 - fix(ts-lib-tools): 修复在 monorepo 模式下执行 jest 单元测试失败的缺陷
