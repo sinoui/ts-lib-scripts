@@ -6,10 +6,7 @@ import getInstallCmd from './getInstallCmd';
  * @param deps 依赖
  * @param isDev 是否是开发依赖
  */
-export default function getInstallDepsCmd(
-  deps: string[],
-  isDev = false,
-) {
+export default function getInstallDepsCmd(deps: string[], isDev = false) {
   const cmd = getInstallCmd();
 
   if (cmd === 'npm') {

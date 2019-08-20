@@ -34,9 +34,7 @@ export async function genPackageFile(
   packageInfo['umd:main'] = `dist/${safePackageName(
     options.packageName,
   )}.umd.production.js`;
-  packageInfo.module = `dist/${safePackageName(
-    options.packageName,
-  )}.esm.js`;
+  packageInfo.module = `dist/${safePackageName(options.packageName)}.esm.js`;
 
   await outputJSON(packagePath, packageInfo, {
     spaces: 2,

@@ -24,8 +24,10 @@
     "eslint-import-resolver-typescript": "1.x",
     "eslint-plugin-import": "2.x",
     "eslint-plugin-jsx-a11y": "6.x",
+    "eslint-plugin-prettier": "3.x",
     "eslint-plugin-react": "7.x",
-    "eslint-plugin-react-hooks": "1.x"
+    "eslint-plugin-react-hooks": "1.x",
+    "eslint-plugin-standard": "4.x"
   },
   "gitHead": "a0ec9d27b2f24cb228993286530f89957d055b9b"
 }

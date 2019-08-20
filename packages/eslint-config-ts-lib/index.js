@@ -8,10 +8,11 @@ const eslintConfig = {
   },
   extends: [
     'airbnb',
-    'plugin:@typescript-eslint/recommended',
     'prettier',
-    'prettier/react',
     'prettier/@typescript-eslint',
+    'prettier/standard',
+    'prettier/react',
+    'plugin:@typescript-eslint/recommended',
     'plugin:import/typescript',
   ],
   globals: {
@@ -25,7 +26,14 @@ const eslintConfig = {
     ecmaVersion: 2019,
     sourceType: 'module',
   },
-  plugins: ['react', 'import', '@typescript-eslint', 'react-hooks'],
+  plugins: [
+    'react',
+    'import',
+    '@typescript-eslint',
+    'react-hooks',
+    'prettier',
+    'standard',
+  ],
   settings: {
     'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
     'import/ignore': ['.css$', '.png$', '.jpg$', '.svg'],
@@ -41,6 +49,7 @@ const eslintConfig = {
   },
 
   rules: {
+    'prettier/prettier': 'warn',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'import/no-extraneous-dependencies': [
@@ -80,22 +89,27 @@ const eslintConfig = {
     'react/jsx-props-no-spreading': 'off',
     'no-explicit-any': 'off',
     'no-unused-vars': 'off',
-    '@typescript-eslint/no-unused-vars': ['error', {
-      'vars': 'all',
-      'args': 'after-used',
-      'ignoreRestSiblings': true,
-      'argsIgnorePattern': '^_',
-      'caughtErrors': 'none'
-    }],
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      {
+        vars: 'all',
+        args: 'after-used',
+        ignoreRestSiblings: true,
+        argsIgnorePattern: '^_',
+        caughtErrors: 'none',
+      },
+    ],
     'no-console': ['warn', { allow: ['warn', 'error'] }],
   },
 
-  overrides: [{
-    files: ['*.test.ts', '*.spec.ts', '*.test.tsx', '*.spec.tsx'],
-    'rules': {
-      'no-console': 'off'
-    }
-  }]
+  overrides: [
+    {
+      files: ['*.test.ts', '*.spec.ts', '*.test.tsx', '*.spec.tsx'],
+      rules: {
+        'no-console': 'off',
+      },
+    },
+  ],
 };
 
 module.exports = eslintConfig;

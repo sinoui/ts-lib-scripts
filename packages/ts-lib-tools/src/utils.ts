@@ -17,7 +17,10 @@ export function getOutputFilePath(
   env: 'development' | 'production',
 ) {
   if (format === 'es') {
-    return resolve(outDir, `${safePackageName(getAppPackageInfo().name)}.esm.js`);
+    return resolve(
+      outDir,
+      `${safePackageName(getAppPackageInfo().name)}.esm.js`,
+    );
   }
   return resolve(
     outDir,

@@ -5,5 +5,7 @@ it('parse template str', () => {
     'I am Jacking.',
   );
 
-  expect(parseTemplateStr('I am <%=name%>.', { name: 'zinuo' })).toBe('I am zinuo.');
+  expect(parseTemplateStr('I am <%=name%>.', { name: 'zinuo' })).toBe(
+    'I am zinuo.',
+  );
 });

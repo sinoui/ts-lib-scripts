@@ -8,7 +8,19 @@ export async function lint() {
   const mono = await isMonorepo();
   await execa(
     'eslint',
-    ['--color', '--ignore-pattern', '**/node_modules/*', '--ignore-pattern', '**/*.d.ts', '--ext', '.ts', '--ext', '.tsx', mono? 'packages/' : 'src/', ...otherArgv],
+    [
+      '--color',
+      '--ignore-pattern',
+      '**/node_modules/*',
+      '--ignore-pattern',
+      '**/*.d.ts',
+      '--ext',
+      '.ts',
+      '--ext',
+      '.tsx',
+      mono ? 'packages/' : 'src/',
+      ...otherArgv,
+    ],
     {
       cwd: rootPath,
     },

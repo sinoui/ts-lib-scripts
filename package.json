@@ -15,28 +15,11 @@
     "url": "git+https://github.com/sinoui/ts-lib-scripts.git"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.13",
-    "@typescript-eslint/eslint-plugin": "^2.0.0",
-    "@typescript-eslint/parser": "^2.0.0",
-    "babel-jest": "^24.8.0",
     "cross-env": "^5.2.0",
-    "eslint": "6.1.0",
-    "eslint-config-airbnb": "18.0.1",
-    "eslint-config-prettier": "^6.1.0",
-    "eslint-config-ts-lib": "^0.3.0",
-    "eslint-import-resolver-typescript": "^1.1.1",
-    "eslint-plugin-import": "2.18.2",
-    "eslint-plugin-jsx-a11y": "6.2.3",
-    "eslint-plugin-react": "7.14.3",
-    "eslint-plugin-react-hooks": "1.7.0",
     "husky": "^2.3.0",
-    "jest": "^24.8.0",
-    "jest-watch-typeahead": "^0.3.1",
-    "lerna": "^3.14.1",
+    "lerna": "^3.16.4",
     "lint-staged": "^8.1.7",
-    "prettier": "^1.18.2",
-    "rimraf": "^2.6.3",
-    "typescript": "^3.4.5"
+    "typescript": "^3.5.3"
   },
   "eslintConfig": {
     "extends": "ts-lib"
@@ -53,21 +36,14 @@
     "arrowParens": "always"
   },
   "scripts": {
-    "lint": "eslint --ignore-pattern **/node_modules/* --ext .ts --ext .tsx packages/",
-    "format": "eslint --fix --ext .ts --ext .tsx packages/",
+    "lint": "ts-lib-tools lint",
+    "format": "ts-lib-tools lint --fix",
     "test": "ts-lib-tools test",
     "test:coverage": "ts-lib-tools test --coverage",
     "build": "tsc --build packages/tsconfig.json",
     "clean": "yarn build --clean",
     "postinstall": "yarn build",
     "prepublishOnly": "yarn clean && yarn build"
-  },
-  "jest": {
-    "testRegex": "/packages/.*\\.(spec|test)\\.tsx?$",
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/assets/"
-    ]
   },
   "husky": {
     "hooks": {

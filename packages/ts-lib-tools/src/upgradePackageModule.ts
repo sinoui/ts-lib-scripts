@@ -1,4 +1,4 @@
-import { isMonorepo, safePackageName } from "ts-lib-scripts-utils";
+import { isMonorepo, safePackageName } from 'ts-lib-scripts-utils';
 import globby from 'globby';
 import { readJSON, outputJSON } from 'fs-extra';
 import { resolveRoot } from './config/paths';
@@ -21,8 +21,6 @@ export default async function upgradePakageModule() {
     await updatePackage('./package.json');
   } else {
     const packages = await globby('packages/*/package.json');
-    await Promise.all(
-      packages.map(updatePackage)
-    );
+    await Promise.all(packages.map(updatePackage));
   }
 }

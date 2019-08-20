@@ -1,6 +1,14 @@
 import util from 'util';
 import { writeFile, readFile } from 'fs';
-import { mkdirp, remove, copy, readJSON, move, pathExists, readdir } from 'fs-extra';
+import {
+  mkdirp,
+  remove,
+  copy,
+  readJSON,
+  move,
+  pathExists,
+  readdir,
+} from 'fs-extra';
 import { resolve, join } from 'path';
 import { rollup } from 'rollup';
 import { safePackageName } from 'ts-lib-scripts-utils';
@@ -31,7 +39,7 @@ export async function createCjsIndexFile(outDir: string) {
   );
 
   await mkdirp(outDir);
-  
+
   await util.promisify(writeFile)(
     resolve(outDir, 'index.js'),
     content.replace(
@@ -90,7 +98,9 @@ async function mvDeclarationFiles() {
 
   if (isExists) {
     const files = await readdir(from);
-    await Promise.all(files.map(file => move(join(from, file), join(to, file))));
+    await Promise.all(
+      files.map((file) => move(join(from, file), join(to, file))),
+    );
     await remove(resolveRoot(`dist/${moduleName}`));
   }
 }
@@ -113,17 +123,23 @@ export async function runBuild(buildOptions: BuildOptions) {
       '生成dist/index.js文件(cjs入口文件)',
     );
 
-    const buildTargets = flatMap(formats, formatMode => envs.map(env => [formatMode, env] as [FormatMode, Env]))
-      .filter(([formatMode, env]) => !(formatMode === 'es' && env === 'production'));
+    const buildTargets = flatMap(formats, (formatMode) =>
+      envs.map((env) => [formatMode, env] as [FormatMode, Env]),
+    ).filter(
+      ([formatMode, env]) => !(formatMode === 'es' && env === 'production'),
+    );
 
     const buildPromise = Promise.all(
-      buildTargets.map(([formatMode, env]) => createRollupOptions(formatMode, env, buildOptions)
-      ).map(async ([inputOptions, outputOptions]) => {
-        await nextTick(async () => {
-          const bundle = await rollup(inputOptions);
-          await bundle.write(outputOptions);
-        });
-      }),
+      buildTargets
+        .map(([formatMode, env]) =>
+          createRollupOptions(formatMode, env, buildOptions),
+        )
+        .map(async ([inputOptions, outputOptions]) => {
+          await nextTick(async () => {
+            const bundle = await rollup(inputOptions);
+            await bundle.write(outputOptions);
+          });
+        }),
     );
 
     await logger(buildPromise, '使用rollup编译js文件');

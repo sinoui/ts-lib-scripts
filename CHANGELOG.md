@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.4.5
+
+- improve(eslint-config-ts-lib): eslint 集成 prettier 的 fix 功能
+
 ## v0.4.4 - 2019.8.20
 
 - fix(ts-lib-scripts): 修复在 doc:dev 时，`yarn build`失败的缺陷 (#20)
