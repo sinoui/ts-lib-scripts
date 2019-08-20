@@ -19,6 +19,7 @@ import {
   moduleFileExtensions,
 } from './constants';
 import { globals, getAppPackageInfo } from './paths';
+import getTsConfigPaths from './getTsConfigPaths';
 
 /**
  * 判断是否是React组件库
@@ -90,6 +91,8 @@ export function createRollupInputOptions(
         tsconfigOverride: {
           compilerOptions: {
             target: 'esnext',
+            baseUrl: '.',
+            paths: getTsConfigPaths(),
           },
         },
       }),

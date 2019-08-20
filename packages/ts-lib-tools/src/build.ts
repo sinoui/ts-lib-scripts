@@ -1,7 +1,7 @@
 import util from 'util';
 import { writeFile, readFile } from 'fs';
-import { mkdirp, remove, copy } from 'fs-extra';
-import { resolve } from 'path';
+import { mkdirp, remove, copy, readJSON, move, pathExists, readdir } from 'fs-extra';
+import { resolve, join } from 'path';
 import { rollup } from 'rollup';
 import { safePackageName } from 'ts-lib-scripts-utils';
 import globby from 'globby';
@@ -86,6 +86,24 @@ async function copyDeclarationFiles() {
 }
 
 /**
+ * 移动.d.ts到dist根目录下
+ */
+async function mvDeclarationFiles() {
+  const pacakgeInfo = await readJSON(resolveRoot('package.json'));
+  const moduleName = pacakgeInfo.name.replace(/^@.+?\//, '');
+
+  const from = resolveRoot(`dist/${moduleName}/src/`);
+  const to = resolveRoot(`dist/`);
+  const isExists = await pathExists(from);
+
+  if (isExists) {
+    const files = await readdir(from);
+    await Promise.all(files.map(file => move(join(from, file), join(to, file))));
+    await remove(from);
+  }
+}
+
+/**
  * 运行编译命令
  *
  * @export
@@ -117,6 +135,8 @@ export async function runBuild(buildOptions: BuildOptions) {
     );
 
     await logger(buildPromise, '使用rollup编译js文件');
+
+    await mvDeclarationFiles();
 
     await logger(copyDeclarationFiles(), '拷贝src中的ts声明文件');
   } catch (error) {

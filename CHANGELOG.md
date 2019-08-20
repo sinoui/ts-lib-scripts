@@ -20,12 +20,13 @@
 - fix(ts-lib-tools): package.json 中的 esm 包应引用.esm.development.js 文件 (#18)
 - improve(ts-lib-tools): 不需要打包.esm.production.js (#18)
 - BREADK CHANGE(ts-lib-scripts): package.json 的`module`引用`<moduelName>.esm.js`
+- fix(ts-lib-tools): 修复 monorepo 模式下打包时.d.ts 文件路径错误
 
-### 破坏性变
+### 破坏性变更
 
 变更 1：
 
-由于 eslint 已经相关插件的升级，eslint 规则有所变化，需要在项目中执行下面的命令行：
+由于 eslint 相关插件的升级，eslint 规则有所变化，需要在项目中执行下面的命令行：
 
 ```shell
 yarn lint --fix
