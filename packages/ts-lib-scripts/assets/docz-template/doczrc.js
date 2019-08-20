@@ -68,6 +68,10 @@ export default {
       .use(require('tsconfig-paths-webpack-plugin'))
       .end();
 
+    config.watchOptions({
+        ignored: ['node_modules', 'dist', '.cache', 'coverage', '.docz']
+      });
+
     return config;
   },
 };
