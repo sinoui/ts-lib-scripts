@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.4.4 - 2019.8.20
+
+- fix(ts-lib-scripts): 修复在 doc:dev 时，`yarn build`失败的缺陷 (#20)
+
 ## v0.4.3 - 2019.8.20
 
 - fix(eslint-config-ts-lib): 调整 eslint 规则

@@ -31,6 +31,7 @@ export async function createCjsIndexFile(outDir: string) {
   );
 
   await mkdirp(outDir);
+  
   await util.promisify(writeFile)(
     resolve(outDir, 'index.js'),
     content.replace(
@@ -44,16 +45,7 @@ export async function createCjsIndexFile(outDir: string) {
  *  清除打包文件存放目录dist
  */
 export async function clean() {
-  try {
-    await remove(DIST_PATH);
-  } catch (e) {
-    try {
-      await remove(DIST_PATH);
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error('清除文件夹失败', error);
-    }
-  }
+  await remove(DIST_PATH);
 }
 
 function nextTick<T>(callback: () => Promise<T>): Promise<T> {
