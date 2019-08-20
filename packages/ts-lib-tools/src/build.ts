@@ -30,7 +30,17 @@ export async function createCjsIndexFile(outDir: string) {
     'utf-8',
   );
 
-  await mkdirp(outDir);
+  try {
+    await mkdirp(outDir);
+  } catch (e) {
+    try {
+      await mkdirp(outDir);
+    } catch (e2) {
+      console.error(`创建${outDir}目录失败`, e);
+      throw e2;
+    }
+  }
+  
   await util.promisify(writeFile)(
     resolve(outDir, 'index.js'),
     content.replace(
