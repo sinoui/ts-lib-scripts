@@ -3,6 +3,7 @@
 ## v0.4.5
 
 - improve(eslint-config-ts-lib): eslint 集成 prettier 的 fix 功能
+- fix(ts-lib-tools): 修复 monorepo 下生成的模块发布时没有带上 dist 目录的缺陷
 
 ## v0.4.4 - 2019.8.20
 

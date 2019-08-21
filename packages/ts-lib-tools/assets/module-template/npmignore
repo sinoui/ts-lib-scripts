@@ -4,9 +4,8 @@ node_modules
 # testing
 coverage
 
-# production
-build
-dist
+# source code
+src
 
 # cache
 .cache

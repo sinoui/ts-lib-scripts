@@ -25,10 +25,10 @@ async function genLicenseFile(modulePath: string) {
  *
  * @param modulePath 模块路径
  */
-async function genGitignoreFile(modulePath: string) {
+async function genNpmignoreFile(modulePath: string) {
   await move(
-    resolve(modulePath, 'gitignore'),
-    resolve(modulePath, '.gitignore'),
+    resolve(modulePath, 'npmignore'),
+    resolve(modulePath, '.npmignore'),
   );
 }
 
@@ -72,7 +72,7 @@ async function genModule(moduleName: string) {
   });
 
   await genLicenseFile(modulePath);
-  await genGitignoreFile(modulePath);
+  await genNpmignoreFile(modulePath);
 
   spinner.succeed(`已生成模块 ${chalk.green(moduleName)}`);
 
