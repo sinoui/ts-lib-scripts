@@ -101,10 +101,12 @@ export function createRollupInputOptions(
         runtimeHelpers: format !== 'umd',
         exclude: ['**/node_modules/**'],
         extensions: moduleFileExtensions,
-        ...createBabelConfig(format, env),
+        ...createBabelConfig(format, format === 'es' ? 'production' : env),
       }),
       replace({
-        'process.env.NODE_ENV': JSON.stringify(env),
+        'process.env.NODE_ENV': JSON.stringify(
+          format === 'es' ? 'produciton' : env,
+        ),
       }),
       sourceMaps(),
       env === 'production' &&
