@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.4.6 - 2019.9.2
+
+- fix(ts-lib-scripts): 修复 monorepo 模板中 lint-staged 范围配置错误
+
 ## v0.4.5
 
 - improve(eslint-config-ts-lib): eslint 集成 prettier 的 fix 功能
