@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.4.7 - 2019.9.3
+
+- fix(eslint-config-ts-lib): 关闭标准缩进和 typescript 缩进规则，只保留 prettier 缩进规则
+
 ## v0.4.6 - 2019.9.2
 
 - fix(ts-lib-scripts): 修复 monorepo 模板中 lint-staged 范围配置错误
