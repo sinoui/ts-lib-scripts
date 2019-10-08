@@ -1,8 +1,11 @@
 # 变更说明
 
-## next
+## v0.4.8 - 2019.10.8
 
 - fix(ts-lib-scripts): 修复 git 换行符问题
+- fix(ts-lib-scripts): 修复 React 项目模板的单元测试错误
+- fix(ts-lib-scripts): 修复 docz 文档模板中 index.html 错误
+- fix(ts-lib-scripts): 默认请用 vscode 的 `eslint.autoFixOnSave` （eslint 插件的自动保存功能）
 
 ## v0.4.7 - 2019.9.3
 
