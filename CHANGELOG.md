@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.4.9 - 2019.10.18
+
+- fix(ts-lib-scripts): 修复无法发布 docz 文档的缺陷
+
 ## v0.4.8 - 2019.10.8
 
 - fix(ts-lib-scripts): 修复 git 换行符问题
