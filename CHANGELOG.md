@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.5.0 - 2019.10.21
+
+- feat(babel-preset-ts-lib): 内置 babel-plugin-styled-components
+
 ## v0.4.9 - 2019.10.18
 
 - fix(ts-lib-scripts): 修复无法发布 docz 文档的缺陷
