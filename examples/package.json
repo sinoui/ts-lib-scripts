@@ -1,9 +1,9 @@
 {
   "name": "ts-lib-scripts-example",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "private": true,
   "dependencies": {
-    "ts-lib-tools": "^0.5.0"
+    "ts-lib-tools": "^0.5.1"
   },
   "scripts": {
     "start": "ts-lib-tools watch",
