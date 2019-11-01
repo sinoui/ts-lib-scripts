@@ -16,20 +16,6 @@ const monorepoJestConfig = {
     '!**/dist/**',
     '!**/.cache/**',
   ],
-  watchPathIgnorePatterns: [
-    'node_modules',
-    '.docz',
-    'coverage',
-    'examples',
-    '.*/node_modules/.*',
-    '.*/dist/.*',
-    '.*/\\.cache/.*',
-  ],
-  testPathIgnorePatterns: [
-    '.*/node_modules/.*',
-    '.*/dist/.*',
-    '.*/\\.cache/.*',
-  ],
 };
 
 /**
@@ -59,11 +45,14 @@ export async function createJestConfig() {
     ],
     watchPathIgnorePatterns: [
       'node_modules',
-      'dist',
       '.docz',
-      '.cache',
       'coverage',
       'examples',
+      '.cache',
+      'dist',
+      '.*/node_modules/.*',
+      '.*/dist/.*',
+      '.*/\\.cache/.*',
     ],
     testRegex: '.*\\.(spec|test)\\.tsx?$',
     watchPlugins: [
@@ -75,6 +64,11 @@ export async function createJestConfig() {
       '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
     },
     resolver: 'jest-resolver-tsconfig-paths',
+    testPathIgnorePatterns: [
+      '.*/node_modules/.*',
+      '.*/dist/.*',
+      '.*/\\.cache/.*',
+    ],
     ...(isMono ? monorepoJestConfig : {}),
   };
 
