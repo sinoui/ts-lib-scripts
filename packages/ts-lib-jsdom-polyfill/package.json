@@ -1,0 +1,33 @@
+{
+  "name": "ts-lib-jsdom-polyfill",
+  "description": "ts库的 jsdom polyfill",
+  "version": "0.5.1",
+  "main": "index.js",
+  "license": "MIT",
+  "homepage": "https://github.com/sinoui/ts-lib-scripts",
+  "bugs": {
+    "url": "https://github.com/sinoui/ts-lib-scripts/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sinoui/ts-lib-scripts.git"
+  },
+  "files": [
+    "index.js"
+  ],
+  "peerDependencies": {
+    "@typescript-eslint/eslint-plugin": "2.x",
+    "@typescript-eslint/parser": "2.x",
+    "eslint": "6.x",
+    "eslint-config-airbnb": "18.x",
+    "eslint-config-prettier": "6.x",
+    "eslint-import-resolver-typescript": "1.x",
+    "eslint-plugin-import": "2.x",
+    "eslint-plugin-jsx-a11y": "6.x",
+    "eslint-plugin-prettier": "3.x",
+    "eslint-plugin-react": "7.x",
+    "eslint-plugin-react-hooks": "1.x",
+    "eslint-plugin-standard": "4.x"
+  },
+  "gitHead": "a0ec9d27b2f24cb228993286530f89957d055b9b"
+}

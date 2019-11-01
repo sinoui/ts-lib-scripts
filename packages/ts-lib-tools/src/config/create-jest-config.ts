@@ -5,7 +5,11 @@
 import chalk from 'chalk';
 import { resolve } from 'path';
 import { isMonorepo } from 'ts-lib-scripts-utils';
-import { getAppPackageInfo } from './paths';
+import {
+  getAppPackageInfo,
+  getTestSetups,
+  getJestDOMModulePath,
+} from './paths';
 
 const monorepoJestConfig = {
   collectCoverageFrom: [
@@ -69,6 +73,10 @@ export async function createJestConfig() {
       '.*/dist/.*',
       '.*/\\.cache/.*',
     ],
+    setupFiles: [require.resolve('ts-lib-jsdom-polyfill')],
+    setupFilesAfterEnv: [getJestDOMModulePath(), getTestSetups()].filter(
+      Boolean,
+    ),
     ...(isMono ? monorepoJestConfig : {}),
   };
 
@@ -121,7 +129,7 @@ export async function createJestConfig() {
           chalk.red(
             `在package.json中发现了${chalk.bold('setupFilesAfterEnv')}。\n\n` +
               `请将它删除掉, 并将你的初始化代码放在 ${chalk.bold(
-                'src/setupTests.js',
+                'src/setupTests.ts',
               )}。\n这个文件会自动加载。\n`,
           ),
         );

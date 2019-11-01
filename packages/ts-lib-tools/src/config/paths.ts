@@ -45,6 +45,7 @@ export const getAppVersion = () => {
 export const resolveModule = (
   resolveFn: (relativePath: string) => string,
   filePath: string,
+  testExists = false,
 ) => {
   const extension = moduleFileExtensions.find((_) =>
     existsSync(resolveFn(`${filePath}.${_}`)),
@@ -54,7 +55,7 @@ export const resolveModule = (
     return resolveFn(`${filePath}.${extension}`);
   }
 
-  return resolveFn(`${filePath}.ts`);
+  return testExists ? '' : resolveFn(`${filePath}.ts`);
 };
 
 /**
@@ -86,6 +87,23 @@ export const DIST_PATH = resolveRoot('./dist');
  * 模块模板路径
  */
 export const MODULE_TEMPLATE_PATH = resolve(ASSETS_PATH, './module-template');
+
+/**
+ * 获取初始化测试文件
+ */
+export const getTestSetups = () =>
+  resolveModule(resolveRoot, 'src/setupTests', true);
+
+/**
+ * 获取 @testing-library/jest-dom 模块的路径
+ */
+export const getJestDOMModulePath = () => {
+  try {
+    return require.resolve('@testing-library/jest-dom/extend-expect');
+  } catch {
+    return undefined;
+  }
+};
 
 /**
  * 库对应的全局名称
