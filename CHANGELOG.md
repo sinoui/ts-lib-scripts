@@ -4,6 +4,7 @@
 
 - fix(ts-lib-scripts): 修复 lint-staged 配置错误
 - fix(eslint-config-ts-lib): 修复单元测试代码提示 `import/no-extraneous-dependencies` 错误
+- fix: 修复无法添加 Jest 初始化配置文件的缺陷 ( #24 )
 
 ## v0.5.1 - 2019.11.1
 
