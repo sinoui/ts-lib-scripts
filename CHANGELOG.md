@@ -3,6 +3,7 @@
 ## v0.5.2 - 2019.11.1
 
 - fix(ts-lib-scripts): 修复 lint-staged 配置错误
+- fix(eslint-config-ts-lib): 修复单元测试代码提示 `import/no-extraneous-dependencies` 错误
 
 ## v0.5.1 - 2019.11.1
 

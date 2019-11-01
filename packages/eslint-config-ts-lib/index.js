@@ -54,7 +54,18 @@ const eslintConfig = {
     'react-hooks/exhaustive-deps': 'warn',
     'import/no-extraneous-dependencies': [
       'error',
-      { devDependencies: ['**/*.{spec,test}.{ts,tsx,js,jsx}'] },
+      {
+        devDependencies: [
+          '**/*.test.ts',
+          '**/*.test.tsx',
+          '**/*.spec.ts',
+          '**/*.spec.tsx',
+          '**/*.test.js',
+          '**/*.test.jsx',
+          '**/*.spec.js',
+          '**/*.spec.jsx',
+        ],
+      },
     ],
     '@typescript-eslint/explicit-function-return-type': 0,
     'import/named': 0,
@@ -101,8 +112,8 @@ const eslintConfig = {
     ],
     'no-console': ['warn', { allow: ['warn', 'error'] }],
     // 关闭标准的缩进和typescript缩进规则，启用prettier的缩进规则
-    "indent": "off",
-    "@typescript-eslint/indent": "off"
+    indent: 'off',
+    '@typescript-eslint/indent': 'off',
   },
 
   overrides: [
