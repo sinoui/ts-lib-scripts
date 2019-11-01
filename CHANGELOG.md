@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.5.2 - 2019.11.1
+
+- fix(ts-lib-scripts): 修复 lint-staged 配置错误
+
 ## v0.5.1 - 2019.11.1
 
 - fix(ts-lib-tools): 修复非 monorepo 模式下，单元测试会阻止打包命令执行的错误 ( #23 )
