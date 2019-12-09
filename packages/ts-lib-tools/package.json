@@ -49,6 +49,7 @@
     "execa": "^2.0.4",
     "fs-extra": "^8.1.0",
     "globby": "^10.0.1",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^24.9.0",
     "jest-resolver-tsconfig-paths": "^0.5.0",
     "jest-watch-typeahead": "^0.4.0",

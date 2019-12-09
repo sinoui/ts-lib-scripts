@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.5.3 - 2019.12.9
+
+- fix(ts-lib-tools): 修复 jest 无法解析 `.module.css` 文件的错误
+
 ## v0.5.2 - 2019.11.1
 
 - fix(ts-lib-scripts): 修复 lint-staged 配置错误
