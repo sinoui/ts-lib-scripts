@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.6.0 - 2019.12.10
+
+- feat(ts-lib-tools): 新增图片的编译
+
 ## v0.5.3 - 2019.12.9
 
 - fix(ts-lib-tools): 修复 jest 无法解析 `.module.css` 文件的错误

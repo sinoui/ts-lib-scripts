@@ -8,6 +8,7 @@ declare module 'babel-preset-ts-lib/umd';
 declare module 'rollup-plugin-url';
 declare module '@svgr/rollup';
 declare module '*.svg';
+declare module '@rollup/plugin-image';
 
 interface BuildOptions {
   /**

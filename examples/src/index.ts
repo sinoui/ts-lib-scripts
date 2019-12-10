@@ -1,3 +1,5 @@
+import Hello from './Hello';
+
 const a = 1;
 
 export class Example {
@@ -12,5 +14,7 @@ export class Example {
     console.log(this.x);
   }
 }
+
+export { Hello };
 
 export default a;

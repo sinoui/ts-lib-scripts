@@ -11,6 +11,7 @@ import { terser } from 'rollup-plugin-terser';
 import babel from 'rollup-plugin-babel';
 import typescript from 'rollup-plugin-typescript2';
 import svgr from '@svgr/rollup';
+import image from '@rollup/plugin-image';
 import { external, getOutputFilePath } from '../utils';
 import { createBabelConfig } from './create-babel-config';
 import {
@@ -69,6 +70,7 @@ export function createRollupInputOptions(
           prettier: true,
           svgo: true,
         }),
+      image(),
       typescript({
         typescript: require('typescript'),
         cacheRoot: `./.cache/.rts2_cache_${format}`,

@@ -25,6 +25,7 @@
     "index.js"
   ],
   "dependencies": {
+    "@rollup/plugin-image": "^2.0.0",
     "@svgr/rollup": "^4.3.2",
     "@types/jest": "^24.0.18",
     "@typescript-eslint/eslint-plugin": "^2.0.0",
