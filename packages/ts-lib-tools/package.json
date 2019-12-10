@@ -1,6 +1,6 @@
 {
   "name": "ts-lib-tools",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "ts-lib-scripts创建的ts项目使用的开箱即用命令和配置。",
   "license": "MIT",
   "homepage": "https://github.com/sinoui/ts-lib-scripts",
@@ -39,7 +39,7 @@
     "eslint": "6.7.2",
     "eslint-config-airbnb": "18.0.1",
     "eslint-config-prettier": "^6.7.0",
-    "eslint-config-ts-lib": "^0.7.0",
+    "eslint-config-ts-lib": "^0.7.1",
     "eslint-import-resolver-typescript": "^2.0.0",
     "eslint-plugin-import": "2.19.1",
     "eslint-plugin-jsx-a11y": "6.2.3",
