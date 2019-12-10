@@ -8,12 +8,12 @@ const eslintConfig = {
   },
   extends: [
     'airbnb',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:import/typescript',
     'prettier',
     'prettier/@typescript-eslint',
     'prettier/standard',
     'prettier/react',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:import/typescript',
   ],
   globals: {
     Atomics: 'readonly',
@@ -49,7 +49,7 @@ const eslintConfig = {
   },
 
   rules: {
-    'prettier/prettier': 'warn',
+    'prettier/prettier': 'error',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'import/no-extraneous-dependencies': [
@@ -67,8 +67,9 @@ const eslintConfig = {
         ],
       },
     ],
-    '@typescript-eslint/explicit-function-return-type': 0,
     'import/named': 0,
+    'import/no-named-as-default-member': 0,
+    'import/prefer-default-export': 0,
     'react/jsx-filename-extension': [
       'error',
       { extensions: ['.js', '.jsx', '.tsx'] },
@@ -98,18 +99,19 @@ const eslintConfig = {
       },
     ],
     'react/jsx-props-no-spreading': 'off',
-    'no-explicit-any': 'off',
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': [
       'error',
       {
         vars: 'all',
-        args: 'after-used',
+        args: 'all',
         ignoreRestSiblings: true,
         argsIgnorePattern: '^_',
         caughtErrors: 'none',
       },
     ],
+    '@typescript-eslint/explicit-function-return-type': 0,
+    '@typescript-eslint/no-explicit-any': 'off',
     'no-console': ['warn', { allow: ['warn', 'error'] }],
     // 关闭标准的缩进和typescript缩进规则，启用prettier的缩进规则
     indent: 'off',
