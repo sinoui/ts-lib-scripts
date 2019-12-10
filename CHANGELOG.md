@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.7.1 - 2019.12.10
+
+- fix(eslint-config-ts-lib): 修复 import/extensions 误报 ts, tsx 文件引入错误
+
 ## v0.7.0 - 2019.12.10
 
 - feat: 支持 ts 3.7 新语法

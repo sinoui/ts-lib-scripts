@@ -1,4 +1,5 @@
 import React from 'react';
+import { x } from './any';
 
 it('测试', () => {
   const element = React.createElement('div');
@@ -6,4 +7,6 @@ it('测试', () => {
   console.log(element, <div>123</div>);
 
   expect(element).toBe(element);
+
+  console.log(x);
 });

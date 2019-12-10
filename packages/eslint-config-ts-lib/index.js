@@ -70,6 +70,15 @@ const eslintConfig = {
     'import/named': 0,
     'import/no-named-as-default-member': 0,
     'import/prefer-default-export': 0,
+    'import/extensions': [
+      'error',
+      {
+        js: 'never',
+        ts: 'never',
+        tsx: 'never',
+        jsx: 'never',
+      },
+    ],
     'react/jsx-filename-extension': [
       'error',
       { extensions: ['.js', '.jsx', '.tsx'] },
