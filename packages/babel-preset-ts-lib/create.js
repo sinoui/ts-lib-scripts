@@ -45,6 +45,7 @@ module.exports = function create(_api, _opts, env) {
       require('@babel/preset-typescript'),
     ].filter(Boolean),
     plugins: [
+      require('@babel/plugin-proposal-optional-chaining'),
       require('babel-plugin-styled-components'),
       require('babel-plugin-module-resolver'),
       require('babel-plugin-macros'),

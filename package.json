@@ -19,7 +19,7 @@
     "husky": "^2.3.0",
     "lerna": "^3.16.4",
     "lint-staged": "^8.1.7",
-    "typescript": "^3.5.3"
+    "typescript": "^3.7.3"
   },
   "eslintConfig": {
     "extends": "ts-lib"

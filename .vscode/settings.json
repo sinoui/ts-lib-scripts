@@ -4,7 +4,6 @@
   "typescript.format.enable": false,
   "eslint.enable": true,
   "eslint.autoFixOnSave": true,
-  "prettier.eslintIntegration": true,
   "eslint.validate": [
     "javascript",
     "javascriptreact",
@@ -20,5 +19,6 @@
   "jest.pathToJest": "npm test --",
   "files.eol": "\n",
   "editor.tabSize": 2,
-  "editor.detectIndentation": false
+  "editor.detectIndentation": false,
+  "typescript.tsdk": "node_modules\\typescript\\lib"
 }
