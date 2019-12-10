@@ -1,6 +1,6 @@
 {
   "name": "jest-resolver-tsconfig-paths",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "支持tsconfig paths的jest模块解析器",
   "license": "MIT",
   "main": "dist/index.js",
