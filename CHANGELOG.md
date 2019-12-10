@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.7.2 - 2019.12.11
+
+- fix(eslint-config-ts-lib): 去掉 import/no-named-as-default 规则
+
 ## v0.7.1 - 2019.12.10
 
 - fix(eslint-config-ts-lib): 修复 import/extensions 误报 ts, tsx 文件引入错误
