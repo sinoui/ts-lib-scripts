@@ -1,10 +1,14 @@
 import { execSync } from 'child_process';
+import { dirname, resolve } from 'path';
+import { pathExists } from 'fs-extra';
 import logError from './logError';
 import isMonorepo from './isMonorepo';
+import getInstallCmd from './getInstallCmd';
+import getInstallDepsCmd from './getInstallDepsCmd';
 
 export const SCOPE_NAME_REGEXP = /^@(.+)\//;
 export const BLANK_CHARACTER_REGEXP = /((^[^a-zA-Z]+)|[^\w.-])|([^a-zA-Z0-9]+$)/g;
-export { logError, isMonorepo };
+export { logError, isMonorepo, getInstallCmd, getInstallDepsCmd };
 /**
  * 获取安全的包名称，用于文件路径中
  *
@@ -61,4 +65,33 @@ export function isInGitRepository(appPath: string) {
   } catch (e) {
     return false;
   }
+}
+
+function getParents(path: string) {
+  let currentPath = path;
+  let parentPath = dirname(path);
+  const paths: string[] = [];
+
+  while (parentPath !== currentPath) {
+    paths.push(parentPath);
+    currentPath = parentPath;
+    parentPath = dirname(parentPath);
+  }
+
+  return paths;
+}
+
+/**
+ * 判断是否在 monorepo 项目中
+ */
+export async function isInMonorepo() {
+  const isMonoTsLib = async (path: string) => {
+    const isMono = await isMonorepo(path);
+    const isTsLib = await pathExists(resolve(path, 'ts-lib.config.json'));
+    return isMono && isTsLib;
+  };
+
+  const results = await Promise.all(getParents(process.cwd()).map(isMonoTsLib));
+
+  return results.some(Boolean);
 }

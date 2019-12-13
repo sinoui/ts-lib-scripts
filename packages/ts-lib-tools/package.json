@@ -69,7 +69,8 @@
     "ts-lib-jsdom-polyfill": "^0.7.0",
     "ts-lib-scripts-utils": "^0.7.0",
     "tsconfig-paths": "^3.8.0",
-    "tslib": "^1.10.0"
+    "tslib": "^1.10.0",
+    "typescript": "^3.7.3"
   },
   "devDependencies": {
     "@types/chalk": "^2.2.0",

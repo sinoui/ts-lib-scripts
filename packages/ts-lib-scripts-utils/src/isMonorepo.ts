@@ -4,8 +4,8 @@ import { pathExists, readJSON } from 'fs-extra';
 /**
  * 判断是否在monorepo模式下。
  */
-export default async function isMonorepo() {
-  const packageFilePath = join(process.cwd(), 'package.json');
+export default async function isMonorepo(modulePath = process.cwd()) {
+  const packageFilePath = join(modulePath, 'package.json');
   const isExists = await pathExists(packageFilePath);
 
   if (!isExists) {

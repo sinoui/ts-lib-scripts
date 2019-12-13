@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.8.0 - 2019.12.13
+
+- improve: 采用 tsc 编译生成 .d.ts 文件
+
 ## v0.7.2 - 2019.12.11
 
 - fix(eslint-config-ts-lib): 去掉 import/no-named-as-default 规则

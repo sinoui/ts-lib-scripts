@@ -1,4 +1,5 @@
 import ora from 'ora';
+import { getInstallDepsCmd, getInstallCmd } from 'ts-lib-scripts-utils';
 import {
   dependenciesMessage,
   successMessage,
@@ -12,9 +13,7 @@ import {
   devDependenciesForGhpages,
   monorepoDevDependencies,
 } from './constants';
-import getInstallDepsCmd from './getInstallDepsCmd';
 import { resolveRoot } from '../config/paths';
-import getInstallCmd from './getInstallCmd';
 
 import execa = require('execa');
 

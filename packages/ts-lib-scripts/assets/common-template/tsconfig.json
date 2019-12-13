@@ -1,5 +1,5 @@
 {
-  "include": ["src", "types"],
+  "include": ["src"],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "target": "es5",
@@ -26,6 +26,9 @@
     "baseUrl": ".",
     "rootDir": "./src",
     "outDir": "./build",
+    "declarationDir": "types",
+    "skipLibCheck": true,
+    "composite": true,
     "resolveJsonModule": true,
     "incremental": true
   }

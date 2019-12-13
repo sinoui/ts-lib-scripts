@@ -1,5 +1,5 @@
 {
-  "include": ["packages", "types", "docs"],
+  "include": ["packages", "docs"],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "target": "es5",
@@ -26,6 +26,10 @@
     "resolveJsonModule": true,
     "incremental": true,
     "baseUrl": ".",
+    "outDir": "dist",
+    "declarationDir": "types",
+    "skipLibCheck": true,
+    "composite": true,
     "paths": {
       "*": ["packages/*/src"]
     }

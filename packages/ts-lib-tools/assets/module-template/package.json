@@ -2,9 +2,9 @@
   "name": "module-a",
   "version": "1.0.0",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "types": "types/index.d.ts",
   "devDependencies": {
-    "ts-lib-tools": "^0.2.16"
+    "ts-lib-tools": "^0.7.2"
   },
   "scripts": {
     "build": "ts-lib-tools build",

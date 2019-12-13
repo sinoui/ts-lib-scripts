@@ -1,5 +1,5 @@
 {
-  "include": ["src", "types"],
+  "include": ["src"],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "target": "es5",
@@ -25,7 +25,10 @@
     "allowJs": false,
     "baseUrl": "./",
     "rootDir": "./src",
-    "declarationDir": "./build",
-    "incremental": true
+    "declarationDir": "./types",
+    "incremental": true,
+    "composite": true,
+    "outDir": "dist",
+    "skipLibCheck": true
   }
 }

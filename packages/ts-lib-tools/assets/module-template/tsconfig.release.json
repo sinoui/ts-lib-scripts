@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declarationDir": "types",
+    "emitDeclarationOnly": true,
+    "rootDir": "src",
+    "composite": true,
+    "declaration": true,
+    "skipLibCheck": true,
+    "tsBuildInfoFile": "release.tsbuildinfo"
+  },
+  "include": ["src/**/*"],
+  "references": []
+}

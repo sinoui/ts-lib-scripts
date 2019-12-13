@@ -4,7 +4,7 @@
   "description": "ts-lib-scripts公用方法",
   "license": "MIT",
   "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "homepage": "https://github.com/sinoui/ts-lib-scripts",
   "bugs": {
     "url": "https://github.com/sinoui/ts-lib-scripts/issues"
@@ -19,6 +19,10 @@
   "gitHead": "a0ec9d27b2f24cb228993286530f89957d055b9b",
   "dependencies": {
     "chalk": "^2.4.2",
+    "execa": "^3.4.0",
     "fs-extra": "^8.1.0"
+  },
+  "devDependencies": {
+    "@types/execa": "^2.0.0"
   }
 }

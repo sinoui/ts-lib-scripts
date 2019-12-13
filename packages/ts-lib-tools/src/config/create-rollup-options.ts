@@ -9,7 +9,6 @@ import replace from 'rollup-plugin-replace';
 import sourceMaps from 'rollup-plugin-sourcemaps';
 import { terser } from 'rollup-plugin-terser';
 import babel from 'rollup-plugin-babel';
-import typescript from 'rollup-plugin-typescript2';
 import svgr from '@svgr/rollup';
 import image from '@rollup/plugin-image';
 import { external, getOutputFilePath } from '../utils';
@@ -20,7 +19,6 @@ import {
   moduleFileExtensions,
 } from './constants';
 import { globals, getAppPackageInfo } from './paths';
-import getTsConfigPaths from './getTsConfigPaths';
 
 /**
  * 判断是否是React组件库
@@ -71,33 +69,6 @@ export function createRollupInputOptions(
           svgo: true,
         }),
       image(),
-      typescript({
-        typescript: require('typescript'),
-        cacheRoot: `./.cache/.rts2_cache_${format}`,
-        exclude: [
-          '*.d.ts',
-          '**/*.d.ts',
-          '**/*.test.ts',
-          '**/*.test.tsx',
-          '**/*.spec.ts',
-          '**/*.spec.tsx',
-        ],
-        objectHashIgnoreUnknownHack: true,
-        tsconfigDefaults: {
-          compilerOptions: {
-            sourceMap: true,
-            declaration: true,
-            jsx: 'preserve',
-          },
-        },
-        tsconfigOverride: {
-          compilerOptions: {
-            target: 'esnext',
-            baseUrl: '.',
-            paths: getTsConfigPaths(),
-          },
-        },
-      }),
       babel({
         babelrc: false,
         runtimeHelpers: format !== 'umd',

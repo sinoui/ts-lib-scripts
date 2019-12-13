@@ -7,13 +7,15 @@ coverage
 # production
 build
 dist
+types/
+!**/src/types
 
 # cache
 .cache
 .docz
 
 # typescript
-tsconfig.tsbuildinfo
+*.tsbuildinfo
 
 # misc
 .DS_Store

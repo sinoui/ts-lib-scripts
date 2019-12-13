@@ -12,7 +12,7 @@ src
 .docz
 
 # typescript
-tsconfig.tsbuildinfo
+*.tsbuildinfo
 
 # misc
 .DS_Store

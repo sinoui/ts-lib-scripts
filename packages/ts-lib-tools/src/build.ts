@@ -1,6 +1,6 @@
-import util from 'util';
-import { writeFile, readFile } from 'fs';
 import {
+  writeFile,
+  readFile,
   mkdirp,
   remove,
   copy,
@@ -11,11 +11,21 @@ import {
 } from 'fs-extra';
 import { resolve, join } from 'path';
 import { rollup } from 'rollup';
-import { safePackageName } from 'ts-lib-scripts-utils';
+import {
+  safePackageName,
+  getInstallCmd,
+  isInMonorepo,
+} from 'ts-lib-scripts-utils';
 import globby from 'globby';
+import execa from 'execa';
 import { createRollupOptions } from './config/create-rollup-options';
 import logError from './logError';
-import { getAppPackageInfo, DIST_PATH, resolveRoot } from './config/paths';
+import {
+  getAppPackageInfo,
+  DIST_PATH,
+  resolveRoot,
+  ASSETS_PATH,
+} from './config/paths';
 import { flatMap } from './utils';
 import upgradePakageModule from './upgradePackageModule';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -33,14 +43,14 @@ const logger = createLogger({
  * @export
  */
 export async function createCjsIndexFile(outDir: string) {
-  const content = await util.promisify(readFile)(
+  const content = await readFile(
     resolve(__dirname, '../assets/index.js.tpl'),
     'utf-8',
   );
 
   await mkdirp(outDir);
 
-  await util.promisify(writeFile)(
+  await writeFile(
     resolve(outDir, 'index.js'),
     content.replace(
       /\{packageName\}/g,
@@ -86,6 +96,42 @@ async function copyDeclarationFiles() {
 }
 
 /**
+ * 确保有 tsconfig.release.json
+ */
+async function ensureReleaseTsConfig(templateFilePath: string) {
+  const releaseTsConfigPath = resolve(process.cwd(), 'tsconfig.release.json');
+  const isFileExists = await pathExists(releaseTsConfigPath);
+
+  if (!isFileExists) {
+    copy(templateFilePath, releaseTsConfigPath);
+  }
+}
+
+/**
+ * 确保有 tsconfig.release.json
+ */
+async function ensureModuleReleaseTsConfig() {
+  const isIn = await isInMonorepo();
+  if (isIn) {
+    ensureReleaseTsConfig(
+      resolve(ASSETS_PATH, 'module-template/tsconfig.release.json'),
+    );
+  } else {
+    ensureReleaseTsConfig(resolve(ASSETS_PATH, 'tsconfig.release.json'));
+  }
+}
+
+/**
+ * 编译出.d.ts文件
+ */
+async function compileDeclarationFiles() {
+  await ensureModuleReleaseTsConfig();
+
+  const cmd = `${getInstallCmd()} tsc --build tsconfig.release.json`;
+  await execa(cmd);
+}
+
+/**
  * 移动.d.ts到dist根目录下
  */
 async function mvDeclarationFiles() {
@@ -118,6 +164,8 @@ export async function runBuild(buildOptions: BuildOptions) {
   try {
     await upgradePakageModule();
     await logger(clean(), '清除dist');
+    await logger(compileDeclarationFiles(), '编译生成.d.ts');
+    await logger(copyDeclarationFiles(), '拷贝src中的ts声明文件');
     await logger(
       createCjsIndexFile(buildOptions.outDir),
       '生成dist/index.js文件(cjs入口文件)',
@@ -145,8 +193,6 @@ export async function runBuild(buildOptions: BuildOptions) {
     await logger(buildPromise, '使用rollup编译js文件');
 
     await mvDeclarationFiles();
-
-    await logger(copyDeclarationFiles(), '拷贝src中的ts声明文件');
   } catch (error) {
     logError(error);
     process.exit(1);
