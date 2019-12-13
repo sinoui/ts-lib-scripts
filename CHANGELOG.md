@@ -4,6 +4,15 @@
 
 - improve: 采用 tsc 编译生成 .d.ts 文件
 - fix(babel-preset-ts-lib): 修复打包的代码无法在旧版本浏览器上运行的缺陷
+- chore(eslint-config-ts-lib): 去掉不常用的 eslint 规则，包括
+  - 去掉 `import/no-webpack-loader-syntax`
+  - `@typescript-eslint/camelcase` 对测试文件和 stories 文件放开
+  - `no-underscore-dangle` 对 `__REDUX_DEVTOOLS_ExTENSION__` 放开
+  - 去掉 `no-useless-constructor`
+  - `no-console` 对 `stories` 和 `examples` 放开
+  - 去掉 `no-empty-function`
+  - 去掉 `class-methods-use-this`
+  - `no-param-reassign` 对 `ref.current` 放开
 
 ## v0.7.2 - 2019.12.11
 

@@ -105,6 +105,7 @@ const eslintConfig = {
           'staticContext', // for ReactRouter context
           'draft', // for immer
           'draftState', // for immer
+          'ref', // for React ref.current
         ],
       },
     ],
@@ -126,6 +127,13 @@ const eslintConfig = {
     // 关闭标准的缩进和typescript缩进规则，启用prettier的缩进规则
     indent: 'off',
     '@typescript-eslint/indent': 'off',
+    'no-useless-constructor': 'off',
+    'class-methods-use-this': 'off',
+    'no-empty-function': 'off',
+    'no-underscore-dangle': [
+      'error',
+      { allow: ['__REDUX_DEVTOOLS_EXTENSION__'] },
+    ],
   },
 
   overrides: [
@@ -133,6 +141,15 @@ const eslintConfig = {
       files: ['*.test.ts', '*.spec.ts', '*.test.tsx', '*.spec.tsx'],
       rules: {
         'no-console': 'off',
+        '@typescript-eslint/camelcase': 'off',
+      },
+    },
+    {
+      files: ['**/examples/**', '**/demos/**', '**/stories/**', '**/mock/**'],
+      rules: {
+        'no-console': 'off',
+        'import/no-webpack-loader-syntax': 'off',
+        '@typescript-eslint/camelcase': 'off',
       },
     },
   ],
