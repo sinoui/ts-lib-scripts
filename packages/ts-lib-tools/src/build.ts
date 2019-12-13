@@ -139,7 +139,7 @@ async function mvDeclarationFiles() {
   const moduleName = pacakgeInfo.name.replace(/^@.+?\//, '');
 
   const from = resolveRoot(`dist/${moduleName}/src/`);
-  const to = resolveRoot(`dist/`);
+  const to = resolveRoot(`types/`);
   const isExists = await pathExists(from);
 
   if (isExists) {
