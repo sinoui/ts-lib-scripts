@@ -1,7 +1,7 @@
 {
   "name": "eslint-config-ts-lib-fast",
   "description": "ts-lib-scripts创建的ts库项目使用的ESLint配置（快速版）",
-  "version": "0.7.2",
+  "version": "0.8.0",
   "main": "index.js",
   "license": "MIT",
   "homepage": "https://github.com/sinoui/ts-lib-scripts",
@@ -16,6 +16,6 @@
     "index.js"
   ],
   "dependencies": {
-    "eslint-config-ts-lib": "^0.7.2"
+    "eslint-config-ts-lib": "^0.8.0"
   }
 }
