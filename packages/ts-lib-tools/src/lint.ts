@@ -1,14 +1,15 @@
-import execa from 'execa';
-import { isMonorepo } from 'ts-lib-scripts-utils';
+import { exec } from 'child_process';
+import { isMonorepo, getInstallCmd } from 'ts-lib-scripts-utils';
 import { rootPath } from './config/paths';
 
-// eslint-disable-next-line import/prefer-default-export
 export async function lint() {
   const otherArgv = process.argv.slice(3);
   const mono = await isMonorepo();
-  await execa(
-    'eslint',
+
+  exec(
     [
+      getInstallCmd(),
+      'eslint',
       '--color',
       '--ignore-pattern',
       '**/node_modules/*',
@@ -20,7 +21,7 @@ export async function lint() {
       '.tsx',
       mono ? 'packages/' : 'src/',
       ...otherArgv,
-    ],
+    ].join(' '),
     {
       cwd: rootPath,
     },
