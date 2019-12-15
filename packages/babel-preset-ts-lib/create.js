@@ -92,6 +92,8 @@ module.exports = function create(_api, _opts, env) {
       isEnvTest &&
         // 将import()转变为require
         require('babel-plugin-dynamic-import-node'),
+      // 移除 typescript 类型导出、导入
+      require('babel-plugin-clean-dead-imports'),
     ].filter(Boolean),
     overrides: [
       {

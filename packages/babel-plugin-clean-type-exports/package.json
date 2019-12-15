@@ -1,0 +1,34 @@
+{
+  "name": "babel-plugin-clean-type-exports",
+  "version": "0.8.0",
+  "description": "清除类型导出的babel插件",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "homepage": "https://github.com/sinoui/ts-lib-scripts",
+  "bugs": {
+    "url": "https://github.com/sinoui/ts-lib-scripts/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sinoui/ts-lib-scripts.git"
+  },
+  "dependencies": {
+    "@babel/core": "^7.7.5",
+    "@types/babel-core": "^6.25.6",
+    "@types/babel-traverse": "^6.25.5",
+    "@types/babel-types": "^7.0.7",
+    "@types/babylon": "^6.16.5",
+    "babel-traverse": "^6.26.0",
+    "babel-types": "^6.26.0",
+    "babylon": "^6.18.0"
+  },
+  "files": [
+    "dist/**/*",
+    "assets/**/*",
+    "index.js"
+  ],
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}

@@ -1,0 +1,6 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`移除无用导入 1`] = `
+"import A, { B } from './E';
+export { B };"
+`;

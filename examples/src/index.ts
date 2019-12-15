@@ -1,4 +1,9 @@
 import Hello from './Hello';
+import { Pointer } from './types';
+
+export interface Props {
+  xxx: string;
+}
 
 const a = 1;
 
@@ -15,6 +20,6 @@ export class Example {
   }
 }
 
-export { Hello };
+export { Hello, /* type */ Pointer };
 
 export default a;

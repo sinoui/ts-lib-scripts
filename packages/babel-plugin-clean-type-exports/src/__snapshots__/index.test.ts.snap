@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`验证变量名变更 1`] = `
+"import { B, C, D, E } from './E';
+x === y;
+console.log(B);
+export { E };"
+`;

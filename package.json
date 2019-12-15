@@ -22,7 +22,11 @@
     "typescript": "^3.7.3"
   },
   "eslintConfig": {
-    "extends": "ts-lib"
+    "extends": "ts-lib",
+    "rules": {
+      "no-param-reassign": "off",
+      "no-console": "off"
+    }
   },
   "prettier": {
     "printWidth": 80,
