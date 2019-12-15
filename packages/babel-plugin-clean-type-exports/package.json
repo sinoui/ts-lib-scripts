@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-clean-type-exports",
-  "version": "0.8.0",
+  "version": "0.8.2",
   "description": "清除类型导出的babel插件",
   "license": "MIT",
   "main": "dist/index.js",

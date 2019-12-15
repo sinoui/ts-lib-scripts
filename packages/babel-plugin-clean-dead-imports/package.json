@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-clean-dead-imports",
-  "version": "0.8.0",
+  "version": "0.8.2",
   "description": "清除无用导入的babel插件",
   "license": "MIT",
   "main": "dist/index.js",
