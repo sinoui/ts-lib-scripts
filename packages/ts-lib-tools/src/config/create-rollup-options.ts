@@ -1,11 +1,10 @@
 /* eslint-disable @typescript-eslint/camelcase */
 /* eslint-disable global-require */
-/* eslint-disable import/no-extraneous-dependencies */
 import { InputOptions, OutputOptions } from 'rollup';
-import nodeResolve from 'rollup-plugin-node-resolve';
+import nodeResolve from '@rollup/plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
-import json from 'rollup-plugin-json';
-import replace from 'rollup-plugin-replace';
+import json from '@rollup/plugin-json';
+import replace from '@rollup/plugin-replace';
 import sourceMaps from 'rollup-plugin-sourcemaps';
 import { terser } from 'rollup-plugin-terser';
 import babel from 'rollup-plugin-babel';
