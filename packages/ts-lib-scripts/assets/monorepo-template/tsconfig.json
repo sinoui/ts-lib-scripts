@@ -32,6 +32,7 @@
     "composite": true,
     "paths": {
       "*": ["packages/*/src"]
-    }
+    },
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
   }
 }

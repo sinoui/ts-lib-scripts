@@ -35,7 +35,7 @@ const eslintConfig = {
     'standard',
   ],
   settings: {
-    'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
+    'import/extensions': ['.js', '.jsx', '.ts', '.tsx', '.json'],
     'import/ignore': ['.css$', '.png$', '.jpg$', '.svg'],
     'import/parsers': {
       '@typescript-eslint/parser': ['.js', '.jsx', '.ts', '.tsx'],

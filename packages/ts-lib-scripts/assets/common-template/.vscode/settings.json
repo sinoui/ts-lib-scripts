@@ -13,5 +13,6 @@
   "jest.pathToJest": "npm test --",
   "files.eol": "\n",
   "editor.tabSize": 2,
-  "editor.detectIndentation": false
+  "editor.detectIndentation": false,
+  "typescript.tsdk": "node_modules\\typescript\\lib"
 }

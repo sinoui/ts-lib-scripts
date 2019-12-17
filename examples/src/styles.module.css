@@ -1,0 +1,14 @@
+.test--disabled {
+  color: red;
+}
+
+.test__subelement--disabled {
+  color: yellow;
+}
+
+/**
+ * 子元素
+ */
+.test__subelement {
+  color: green;
+}

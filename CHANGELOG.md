@@ -1,8 +1,10 @@
 # 变更说明
 
-## v0.8.3 - 2019.12.16
+## v0.8.3 - 2019.12.17
 
 - fix(ts-lib-tools): 修复编译 ts 时报无法找到 json 文件的错误
+- fix(ts-lib-tools): 修复项目中引入图片、svg、json 等文件，ts 提示错误的缺陷
+- improve: 改善 module css 的语法提示
 
 ## v0.8.2 - 2019.12.15
 

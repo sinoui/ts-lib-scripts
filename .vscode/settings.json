@@ -16,7 +16,6 @@
       "autoFix": true
     }
   ],
-  "jest.pathToJest": "npm test --",
   "files.eol": "\n",
   "editor.tabSize": 2,
   "editor.detectIndentation": false,

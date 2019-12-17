@@ -29,6 +29,7 @@
     "incremental": true,
     "composite": true,
     "outDir": "dist",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
   }
 }

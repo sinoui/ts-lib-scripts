@@ -30,6 +30,7 @@
     "skipLibCheck": true,
     "composite": true,
     "resolveJsonModule": true,
-    "incremental": true
+    "incremental": true,
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
   }
 }
