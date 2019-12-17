@@ -51,6 +51,11 @@ export function createRollupInputOptions(
     treeshake: {
       propertyReadSideEffects: false,
     },
+    // 忽略此 rollup 警告：The 'this' keyword is equivalent to 'undefined' at the top level of an ES module, and has been rewritten
+    onwarn(warning, warn) {
+      if (warning.code === 'CIRCULAR_DEPENDENCY') return;
+      warn(warning);
+    },
     plugins: [
       nodeResolve({
         mainFields:
