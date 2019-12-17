@@ -31,6 +31,7 @@
     "composite": true,
     "resolveJsonModule": true,
     "incremental": true,
+    "isolatedModules": true,
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
   }
 }

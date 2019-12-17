@@ -30,6 +30,8 @@
     "composite": true,
     "outDir": "dist",
     "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
   }
 }
