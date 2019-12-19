@@ -24,7 +24,6 @@
     "esModuleInterop": true,
     "allowJs": false,
     "resolveJsonModule": true,
-    "isolatedModules": true,
     "incremental": true,
     "baseUrl": ".",
     "outDir": "dist",
