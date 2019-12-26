@@ -1,3 +1,4 @@
+import 'rc-pagination/assets/index.css';
 import Hello from './Hello';
 import { Pointer } from './types';
 

@@ -3,6 +3,8 @@
   "version": "0.8.5",
   "private": true,
   "dependencies": {
+    "@babel/cli": "^7.7.7",
+    "rc-pagination": "^1.20.11",
     "ts-lib-tools": "^0.8.5"
   },
   "scripts": {

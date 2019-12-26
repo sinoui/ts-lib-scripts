@@ -164,7 +164,11 @@ export async function runBuild(buildOptions: BuildOptions) {
   try {
     await upgradePakageModule();
     await logger(clean(), '清除dist');
-    await logger(compileDeclarationFiles(), '编译生成.d.ts');
+    try {
+      await logger(compileDeclarationFiles(), '编译生成.d.ts');
+    } catch (e) {
+      console.error(e);
+    }
     await logger(copyDeclarationFiles(), '拷贝src中的ts声明文件');
     await logger(
       createCjsIndexFile(buildOptions.outDir),

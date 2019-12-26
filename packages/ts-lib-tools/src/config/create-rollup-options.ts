@@ -10,6 +10,7 @@ import { terser } from 'rollup-plugin-terser';
 import babel from 'rollup-plugin-babel';
 import svgr from '@svgr/rollup';
 import image from '@rollup/plugin-image';
+import postcss from 'rollup-plugin-postcss';
 import { external, getOutputFilePath } from '../utils';
 import { createBabelConfig } from './create-babel-config';
 import {
@@ -57,6 +58,7 @@ export function createRollupInputOptions(
       warn(warning);
     },
     plugins: [
+      postcss(),
       nodeResolve({
         mainFields:
           input.target === 'web' ? MAIN_FIELDS_FOR_WEB : MAIN_FIELDS_FOR_NODE,

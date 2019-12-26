@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.8.6 - 2019.12.26
+
+- fix(ts-lib-tools): 修复无法编译 css 的缺陷
+
 ## v0.8.5 - 2019.12.26
 
 - fix(eslint-config-ts-lib): 修复编写 storybook 时提示依赖包没有定义在 dependencies 的错误
