@@ -150,6 +150,7 @@ const eslintConfig = {
         'no-console': 'off',
         'import/no-webpack-loader-syntax': 'off',
         '@typescript-eslint/camelcase': 'off',
+        'import/no-extraneous-dependencies': 'off',
       },
     },
   ],
