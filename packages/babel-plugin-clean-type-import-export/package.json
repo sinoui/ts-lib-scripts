@@ -1,7 +1,7 @@
 {
-  "name": "babel-plugin-clean-dead-imports",
+  "name": "babel-plugin-clean-type-import-export",
   "version": "0.8.2",
-  "description": "清除无用导入的babel插件",
+  "description": "清除类型导入和导出的 Babel 插件。",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",

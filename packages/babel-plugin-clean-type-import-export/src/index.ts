@@ -69,6 +69,21 @@ function isTypeExportSpecifier(nodePath: NodePath<Node>) {
   );
 }
 
+/**
+ * 判断指定变量是否被引用
+ *
+ * @param path 路径
+ * @param name 名称
+ */
+function isUsedOnlyByType(path: NodePath<any>, name: string) {
+  const referencePaths = path.scope.getBinding(name)?.referencePaths;
+  return (
+    referencePaths &&
+    referencePaths.length > 0 &&
+    referencePaths?.every((item) => isTypeExportSpecifier(item))
+  );
+}
+
 export default function() {
   return {
     visitor: {
@@ -81,23 +96,27 @@ export default function() {
        * @param path 导出语句的路径
        */
       ExportNamedDeclaration(path: NodePath<ExportNamedDeclaration>) {
-        let nextRemoved = false;
-        path.node.specifiers = path.node.specifiers.filter((specifier) => {
-          const result = !(
-            containsTypeComment(specifier.leadingComments) || nextRemoved
-          );
+        try {
+          let nextRemoved = false;
+          path.node.specifiers = path.node.specifiers.filter((specifier) => {
+            const result = !(
+              containsTypeComment(specifier.leadingComments) || nextRemoved
+            );
 
-          nextRemoved = containsTypeComment(specifier.trailingComments);
+            nextRemoved = containsTypeComment(specifier.trailingComments);
 
-          specifier.leadingComments = removeTypeComments(
-            specifier.leadingComments,
-          );
-          specifier.trailingComments = removeTypeComments(
-            specifier.trailingComments,
-          );
+            specifier.leadingComments = removeTypeComments(
+              specifier.leadingComments,
+            );
+            specifier.trailingComments = removeTypeComments(
+              specifier.trailingComments,
+            );
 
-          return result;
-        });
+            return result;
+          });
+        } catch (e) {
+          console.error(e);
+        }
       },
 
       /**
@@ -106,14 +125,16 @@ export default function() {
        * @param path 导入语法
        */
       ImportDeclaration(path: NodePath<ImportDeclaration>) {
-        path.node.specifiers = path.node.specifiers.filter((specifier) => {
-          if (isImportSpecifier(specifier)) {
-            return path.scope
-              .getBinding(specifier.imported.name)
-              ?.referencePaths?.some((item) => !isTypeExportSpecifier(item));
-          }
-          return true;
-        });
+        try {
+          path.node.specifiers = path.node.specifiers.filter((specifier) => {
+            if (isImportSpecifier(specifier)) {
+              return !isUsedOnlyByType(path, specifier.local.name);
+            }
+            return true;
+          });
+        } catch (e) {
+          console.warn(e);
+        }
       },
     },
   };

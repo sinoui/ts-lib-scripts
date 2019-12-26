@@ -3,6 +3,7 @@
 ## v0.8.6 - 2019.12.26
 
 - fix(ts-lib-tools): 修复无法编译 css 的缺陷
+- fix(babel-plugin-clean-type-import-export): 修复清除了已有引用的 `import as` 表达式的缺陷
 
 ## v0.8.5 - 2019.12.26
 

@@ -94,7 +94,7 @@ module.exports = function create(_api, _opts, env) {
         // 将import()转变为require
         require('babel-plugin-dynamic-import-node'),
       // 移除 typescript 类型导出、导入
-      require('babel-plugin-clean-dead-imports'),
+      require('babel-plugin-clean-type-import-export'),
     ].filter(Boolean),
     overrides: [
       {

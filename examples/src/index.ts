@@ -1,6 +1,9 @@
 import 'rc-pagination/assets/index.css';
+import { useMemo as x } from 'react';
 import Hello from './Hello';
 import { Pointer } from './types';
+
+console.log(x);
 
 export interface Props {
   xxx: string;
