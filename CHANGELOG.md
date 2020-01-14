@@ -1,5 +1,9 @@
 # 变更说明
 
+## next
+
+- chore(ts-lib-scripts): .gitattributes 中添加 `\*.snap` 文件的换行符定义
+
 ## v0.8.6 - 2019.12.26
 
 - fix(ts-lib-tools): 修复无法编译 css 的缺陷

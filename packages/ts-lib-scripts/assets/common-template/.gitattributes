@@ -12,6 +12,7 @@
 *.txt text eol=lf
 *.html text eol=lf
 *.css text eol=lf
+*.snap text eol=lf
 LICENSE text eol=lf
 
 [core]
