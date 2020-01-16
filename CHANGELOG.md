@@ -1,8 +1,9 @@
 # 变更说明
 
-## next
+## v0.8.7 - 2020.1.16
 
 - chore(ts-lib-scripts): .gitattributes 中添加 `\*.snap` 文件的换行符定义
+- fix: 去掉 \*_/_.json 配置，以修复 tsc 编译失败
 
 ## v0.8.6 - 2019.12.26
 
