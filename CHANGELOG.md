@@ -4,6 +4,7 @@
 
 - chore(ts-lib-scripts): .gitattributes 中添加 `\*.snap` 文件的换行符定义
 - fix: 去掉 \*_/_.json 配置，以修复 tsc 编译失败
+- chore(ts-lib-tools): tsc 打包时过滤掉测试文件
 
 ## v0.8.6 - 2019.12.26
 
