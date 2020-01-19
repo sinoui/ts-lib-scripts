@@ -8,6 +8,7 @@ import {
   move,
   pathExists,
   readdir,
+  pathExistsSync,
 } from 'fs-extra';
 import { resolve, join } from 'path';
 import { rollup } from 'rollup';
@@ -18,6 +19,7 @@ import {
 } from 'ts-lib-scripts-utils';
 import globby from 'globby';
 import execa from 'execa';
+import prettier from 'prettier';
 import { createRollupOptions } from './config/create-rollup-options';
 import logError from './logError';
 import {
@@ -25,6 +27,7 @@ import {
   DIST_PATH,
   resolveRoot,
   ASSETS_PATH,
+  getMonoRootPath,
 } from './config/paths';
 import { flatMap } from './utils';
 import upgradePakageModule from './upgradePackageModule';
@@ -122,10 +125,57 @@ async function ensureModuleReleaseTsConfig() {
 }
 
 /**
+ * 确保生成 ts 类型的临时文件在 gitignore 中
+ */
+async function ensureGitignoreForTsBuildInfoAndTypes() {
+  const isIn = await isInMonorepo();
+  const monoPath = await getMonoRootPath();
+  const gitignorePath = isIn
+    ? resolve(monoPath, '.gitignore')
+    : resolveRoot('.gitignore');
+  if (pathExistsSync(gitignorePath)) {
+    let content = await readFile(gitignorePath, 'utf-8');
+    let isNeedUpdate = false;
+    if (!content.includes('*.tsbuildinfo')) {
+      content = content.replace('tsconfig.tsbuildinfo', '*.tsbuildinfo');
+      isNeedUpdate = true;
+    }
+    if (!content.includes('types')) {
+      content = content.replace('dist', 'dist\ntypes');
+      isNeedUpdate = true;
+    }
+    if (isNeedUpdate) {
+      await writeFile(gitignorePath, content);
+    }
+  }
+}
+
+/**
+ * 确保包的类型入口文件正确性
+ */
+async function ensurePackageTypesEntry() {
+  const pkg = await readJSON(resolveRoot('package.json'));
+  const isNeedUpdate = pkg.types !== 'types/index.d.ts';
+
+  if (isNeedUpdate) {
+    pkg.types = 'types/index.d.ts';
+  }
+
+  await writeFile(
+    resolveRoot('package.json'),
+    prettier.format(JSON.stringify(pkg), {
+      parser: 'json',
+    }),
+  );
+}
+
+/**
  * 编译出.d.ts文件
  */
 async function compileDeclarationFiles() {
   await ensureModuleReleaseTsConfig();
+  await ensureGitignoreForTsBuildInfoAndTypes();
+  await ensurePackageTypesEntry();
 
   const cmd = `${getInstallCmd()} tsc --build tsconfig.release.json`;
   await execa(cmd);

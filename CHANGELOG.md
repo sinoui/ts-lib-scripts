@@ -4,6 +4,7 @@
 
 - feat(ts-lib-tools): `yarn build` 支持 `--skip-tsc` 选项
 - fix(ts-lib-tools): 修复 tsc 执行失败未结束编译的缺陷
+- fix(ts-lib-tools): 修复从低版本升级到 0.8.0+之后打包后没有引用到 ts 类型文件的缺陷
 
 ## v0.8.7 - 2020.1.16
 

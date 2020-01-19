@@ -1,5 +1,6 @@
 import { realpathSync, readJsonSync, existsSync } from 'fs-extra';
-import { resolve } from 'path';
+import { resolve, dirname } from 'path';
+import { isMonorepo } from 'ts-lib-scripts-utils/src';
 import { moduleFileExtensions } from './constants';
 
 /**
@@ -114,4 +115,29 @@ export const globals = () => {
     'react-native': 'ReactNative',
     ...getAppPackageInfo().globals,
   };
+};
+
+/**
+ * 获取 mono 项目的根目录
+ */
+export const getMonoRootPath = async () => {
+  const findMonoPath = async (dirPath: string): Promise<string> => {
+    const isResult = await isMonorepo(dirPath);
+
+    if (isResult) {
+      return dirPath;
+    }
+
+    const parentPath = dirname(dirPath);
+
+    if (parentPath === dirPath) {
+      throw new Error('未找到根目录');
+    }
+
+    return findMonoPath(parentPath);
+  };
+
+  const result = await findMonoPath(process.cwd());
+
+  return result;
 };
