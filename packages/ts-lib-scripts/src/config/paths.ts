@@ -58,6 +58,14 @@ export const GIT_IGNORE_FILE_PATH = resolve(
 );
 
 /**
+ * .npmignore 文件位置
+ */
+export const NPM_IGNORE_FILE_PATH = resolve(
+  __dirname,
+  '../../assets/npmignore',
+);
+
+/**
  * assets路径
  */
 export const ASSETS_PATH = resolve(__dirname, '../../assets');

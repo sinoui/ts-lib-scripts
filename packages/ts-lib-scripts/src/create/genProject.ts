@@ -10,6 +10,7 @@ import {
   REACT_TEMPLATE_PATH,
   COMMON_TEMPLATE_PATH,
   GIT_IGNORE_FILE_PATH,
+  NPM_IGNORE_FILE_PATH,
 } from '../config/paths';
 import genDoczFiles from './genDoczFiles';
 import updateREADMEFile from './fns/updateREADMEFile';
@@ -63,6 +64,7 @@ export async function genProject(options: CreateOptions) {
   await copy(COMMON_TEMPLATE_PATH, projectPath);
   await copy(options.react ? REACT_TEMPLATE_PATH : TEMPLATE_PATH, projectPath);
   await copy(GIT_IGNORE_FILE_PATH, resolve(projectPath, '.gitignore'));
+  await copy(NPM_IGNORE_FILE_PATH, resolve(projectPath, '.npmignore'));
 
   await genPackageFile(projectPath, options);
   await updateREADMEFile(projectPath, options);

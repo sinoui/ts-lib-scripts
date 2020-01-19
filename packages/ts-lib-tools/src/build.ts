@@ -155,9 +155,11 @@ async function ensureGitignoreForTsBuildInfoAndTypes() {
  */
 async function ensurePackageTypesEntry() {
   const pkg = await readJSON(resolveRoot('package.json'));
-  const isNeedUpdate = pkg.types !== 'types/index.d.ts';
+  const isNeedUpdate = pkg.types !== 'types/index.d.ts' || pkg.files;
 
   if (isNeedUpdate) {
+    delete pkg.typings;
+    delete pkg.files;
     pkg.types = 'types/index.d.ts';
   }
 
@@ -170,12 +172,28 @@ async function ensurePackageTypesEntry() {
 }
 
 /**
+ * 确保 .npmignore 文件存在
+ */
+async function ensureNpmIgnore() {
+  const npmIgnorePath = resolveRoot('.npmignore');
+  const isExists = await pathExists(npmIgnorePath);
+
+  if (!isExists) {
+    await copy(
+      resolve(ASSETS_PATH, 'module-template', 'npmignore'),
+      npmIgnorePath,
+    );
+  }
+}
+
+/**
  * 编译出.d.ts文件
  */
 async function compileDeclarationFiles() {
   await ensureModuleReleaseTsConfig();
   await ensureGitignoreForTsBuildInfoAndTypes();
   await ensurePackageTypesEntry();
+  await ensureNpmIgnore();
 
   const cmd = `${getInstallCmd()} tsc --build tsconfig.release.json`;
   await execa(cmd);
