@@ -47,5 +47,6 @@
       "git add"
     ]
   },
-  "module": "dist/ts-lib-scripts-example.esm.js"
+  "module": "dist/ts-lib-scripts-example.esm.js",
+  "types": "types/index.d.ts"
 }

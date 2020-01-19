@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.9.1 - 2020.1.19
+
+- fix(ts-lib-tools): 修复打包失败的缺陷
+
 ## v0.9.0 - 2020.1.19
 
 - feat(ts-lib-tools): `yarn build` 支持 `--skip-tsc` 选项

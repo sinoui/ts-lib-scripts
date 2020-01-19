@@ -1,6 +1,6 @@
 import { realpathSync, readJsonSync, existsSync } from 'fs-extra';
 import { resolve, dirname } from 'path';
-import { isMonorepo } from 'ts-lib-scripts-utils/src';
+import { isMonorepo } from 'ts-lib-scripts-utils';
 import { moduleFileExtensions } from './constants';
 
 /**
