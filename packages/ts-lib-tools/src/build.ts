@@ -170,6 +170,7 @@ export async function runBuild(buildOptions: BuildOptions) {
         await logger(compileDeclarationFiles(), '编译生成.d.ts');
       } catch (e) {
         console.error(e);
+        throw e;
       }
     }
 

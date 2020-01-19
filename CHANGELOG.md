@@ -3,6 +3,7 @@
 ## v0.9.0 - 2020.1.19
 
 - feat(ts-lib-tools): `yarn build` 支持 `--skip-tsc` 选项
+- fix(ts-lib-tools): 修复 tsc 执行失败未结束编译的缺陷
 
 ## v0.8.7 - 2020.1.16
 
