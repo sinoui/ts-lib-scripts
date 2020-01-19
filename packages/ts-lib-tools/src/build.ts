@@ -219,6 +219,23 @@ async function mvDeclarationFiles() {
   }
 }
 
+async function isSkipTsc() {
+  const isIn = await isInMonorepo();
+  let configPath = resolveRoot('ts-lib.config.json');
+  if (isIn) {
+    const rootPath = await getMonoRootPath();
+    configPath = resolve(rootPath, 'ts-lib.config.json');
+  }
+  const isExists = await pathExists(configPath);
+  if (isExists) {
+    const content = await readJSON(configPath);
+
+    return !!content.skipTsc;
+  }
+
+  return false;
+}
+
 /**
  * 运行编译命令
  *
@@ -233,7 +250,8 @@ export async function runBuild(buildOptions: BuildOptions) {
     await upgradePakageModule();
     await logger(clean(), '清除dist');
 
-    if (!buildOptions.skipTsc) {
+    const skipTsc = await isSkipTsc();
+    if (!skipTsc && !buildOptions.skipTsc) {
       try {
         await logger(compileDeclarationFiles(), '编译生成.d.ts');
       } catch (e) {
