@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.9.0 - 2020.1.19
+
+- feat(ts-lib-tools): `yarn build` 支持 `--skip-tsc` 选项
+
 ## v0.8.7 - 2020.1.16
 
 - chore(ts-lib-scripts): .gitattributes 中添加 `\*.snap` 文件的换行符定义

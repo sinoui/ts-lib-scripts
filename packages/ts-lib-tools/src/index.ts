@@ -34,6 +34,7 @@ program
     commaSeparatedList,
     ['cjs', 'es'],
   )
+  .option('--skip-tsc', '跳过 tsc 编译生成 .d.ts 的步骤')
   .option(
     '--entry, -i <entry>',
     '指定入口文件，默认为src/index.ts或者src/index.tsx',
@@ -72,6 +73,7 @@ program
     commaSeparatedList,
     ['cjs', 'es'],
   )
+  .option('--skip-tsc', '跳过 tsc 编译生成 .d.ts 的步骤')
   .option(
     '--entry, -i <entry>',
     '指定入口文件，默认为src/index.ts或者src/index.tsx',

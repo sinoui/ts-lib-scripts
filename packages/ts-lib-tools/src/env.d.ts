@@ -32,6 +32,11 @@ interface BuildOptions {
    * 输出目录
    */
   outDir: string;
+
+  /**
+   * 跳过 tsc 编译 .d.ts 步骤
+   */
+  skipTsc: boolean;
 }
 
 type Env = 'production' | 'development';

@@ -17,5 +17,6 @@ export function getBuildOptions(buildOptions: BuildOptions) {
     target: buildOptions.target,
     format: buildOptions.format,
     outDir: paths.resolveRoot(buildOptions.outDir),
+    skipTsc: buildOptions.skipTsc,
   };
 }
