@@ -28,6 +28,7 @@ import {
   resolveRoot,
   ASSETS_PATH,
   getMonoRootPath,
+  rootPath,
 } from './config/paths';
 import { flatMap } from './utils';
 import upgradePakageModule from './upgradePackageModule';
@@ -129,10 +130,8 @@ async function ensureModuleReleaseTsConfig() {
  */
 async function ensureGitignoreForTsBuildInfoAndTypes() {
   const isIn = await isInMonorepo();
-  const monoPath = await getMonoRootPath();
-  const gitignorePath = isIn
-    ? resolve(monoPath, '.gitignore')
-    : resolveRoot('.gitignore');
+  const pkgPath = isIn ? await getMonoRootPath() : rootPath;
+  const gitignorePath = resolve(pkgPath, '.gitignore');
   if (pathExistsSync(gitignorePath)) {
     let content = await readFile(gitignorePath, 'utf-8');
     let isNeedUpdate = false;
@@ -223,8 +222,7 @@ async function isSkipTsc() {
   const isIn = await isInMonorepo();
   let configPath = resolveRoot('ts-lib.config.json');
   if (isIn) {
-    const rootPath = await getMonoRootPath();
-    configPath = resolve(rootPath, 'ts-lib.config.json');
+    configPath = resolve(await getMonoRootPath(), 'ts-lib.config.json');
   }
   const isExists = await pathExists(configPath);
   if (isExists) {
