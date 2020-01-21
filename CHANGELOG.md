@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.9.4 - 2020.1.21
+
+- fix(ts-lib-tools): 修复在非 monorepo 模式下打包失败的缺陷
+
 ## v0.9.3 - 2020.1.19
 
 - feat(ts-lib-tools): 从 ts-lib.config.json 中读取 `skipTsc` 参数
