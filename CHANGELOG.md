@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.9.5 - 2020.2.4
+
+- fix(ts-lib-tools): docs、stories 变化不应执行单元测试
+
 ## v0.9.4 - 2020.1.21
 
 - fix(ts-lib-tools): 修复在非 monorepo 模式下打包失败的缺陷

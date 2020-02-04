@@ -46,6 +46,7 @@ export async function createJestConfig() {
       '!**/node_modules/**',
       '!**/vendor/**',
       '!**/*.d.ts',
+      '!docs/**',
     ],
     watchPathIgnorePatterns: [
       'node_modules',
@@ -54,6 +55,8 @@ export async function createJestConfig() {
       'examples',
       '.cache',
       'dist',
+      'stories',
+      'docs',
       '.*/node_modules/.*',
       '.*/dist/.*',
       '.*/\\.cache/.*',
