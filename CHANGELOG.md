@@ -1,5 +1,30 @@
 # 变更说明
 
+## v0.10.0 - 2020.2.9
+
+- feat(ts-lib-tools): 支持 simple 模式打包
+
+  ```shell
+  yarn build --simple
+  ```
+
+  生成的打包文件：
+
+  ```
+  dist
+  |__ index.js
+  |__ index.d.ts
+  |__ sub-pkg
+    |__ index.js
+    |__ index.d.ts
+    |__ package.json
+  |__ esm
+    |__ index.js
+    |__ sub-pkg
+      |__ index.js
+  |__ package.json
+  ```
+
 ## v0.9.5 - 2020.2.4
 
 - fix(ts-lib-tools): docs、stories 变化不应执行单元测试

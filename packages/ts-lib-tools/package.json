@@ -27,6 +27,7 @@
     "lib/**/*"
   ],
   "dependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.8.3",
     "@rollup/plugin-image": "^2.0.1",
     "@rollup/plugin-json": "^4.0.1",
     "@rollup/plugin-node-resolve": "^7.0.0",
@@ -35,6 +36,7 @@
     "@types/jest": "^24.9.0",
     "@typescript-eslint/eslint-plugin": "^2.16.0",
     "@typescript-eslint/parser": "^2.16.0",
+    "async": "^3.1.1",
     "babel-jest": "^24.9.0",
     "babel-preset-ts-lib": "^0.9.0",
     "camelcase": "^5.3.1",
@@ -53,13 +55,14 @@
     "eslint-plugin-react": "7.18.0",
     "eslint-plugin-react-hooks": "2.3.0",
     "eslint-plugin-standard": "^4.0.1",
-    "execa": "^2.0.4",
+    "execa": "^4.0.0",
     "fs-extra": "^8.1.0",
     "globby": "^11.0.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.9.0",
     "jest-resolver-tsconfig-paths": "^0.9.0",
     "jest-watch-typeahead": "^0.4.2",
+    "md5": "^2.2.1",
     "ora": "^3.4.0",
     "prettier": "^1.19.1",
     "progress-estimator": "^0.2.2",
@@ -77,9 +80,11 @@
     "typescript-plugin-css-modules": "^2.1.2"
   },
   "devDependencies": {
+    "@types/async": "^3.0.7",
     "@types/chalk": "^2.2.0",
     "@types/execa": "^2.0.0",
     "@types/fs-extra": "^8.0.0",
+    "@types/md5": "^2.1.33",
     "@types/prettier": "^1.18.2",
     "@types/rollup-plugin-json": "^3.0.2",
     "@types/rollup-plugin-postcss": "^2.0.0",

@@ -18,5 +18,6 @@ export function getBuildOptions(buildOptions: BuildOptions) {
     format: buildOptions.format,
     outDir: paths.resolveRoot(buildOptions.outDir),
     skipTsc: buildOptions.skipTsc,
+    simple: buildOptions.simple,
   };
 }

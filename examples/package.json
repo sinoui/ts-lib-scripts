@@ -8,7 +8,6 @@
     "ts-lib-tools": "^0.9.5"
   },
   "scripts": {
-    "start": "ts-lib-tools watch",
     "test": "ts-lib-tools test",
     "build": "ts-lib-tools build",
     "format": "ts-lib-tools format",
