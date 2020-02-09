@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.10.1 - 2020.2.9
+
+- fix(ts-lib-scripts): 修复生成的模块没有 tsconfig.simple.release.json 文件的缺陷
+
 ## v0.10.0 - 2020.2.9
 
 - feat(ts-lib-tools): 支持 simple 模式打包
