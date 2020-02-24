@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.9.6 - 2020.2.24
+
+- chore(ts-lib-tools): 创建的项目默认采用 simple 打包和发布模式
+
 ## v0.9.5 - 2020.2.4
 
 - fix(ts-lib-tools): docs、stories 变化不应执行单元测试
