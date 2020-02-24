@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "plugins": [{ "name": "typescript-plugin-css-modules" }],
-    "target": "es5",
+    "target": "es2017",
     "module": "commonjs",
     "lib": ["dom", "esnext"],
     "importHelpers": true,

@@ -16,8 +16,8 @@
     "**/*.test.tsx",
     "**/*.spec.ts",
     "**/*.spect.tsx",
-    "src/**/___tests__/**/*.ts",
-    "src/**/___tests__/**/*.tsx"
+    "**/___tests__/**",
+    "**/___tests__/**"
   ],
   "references": []
 }

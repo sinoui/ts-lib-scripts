@@ -26,6 +26,10 @@
 
 开启 vscode 的 jest 插件，会在文件变化时自动运行单元测试。
 
+### `yarn release`
+
+发布 npm 包的命令。
+
 ### 添加模块
 
 ```shell

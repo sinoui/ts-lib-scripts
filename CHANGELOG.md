@@ -1,8 +1,37 @@
 # 变更说明
 
-## v0.9.6 - 2020.2.24
+## v0.10.2 - 2020.2.24
 
-- chore(ts-lib-tools): 创建的项目默认采用 simple 打包和发布模式
+- fix(ts-lib-tools): 修复 simple 发布失败的缺陷
+
+## v0.10.1 - 2020.2.9
+
+- fix(ts-lib-scripts): 修复生成的模块没有 tsconfig.simple.release.json 文件的缺陷
+
+## v0.10.0 - 2020.2.9
+
+- feat(ts-lib-tools): 支持 simple 模式打包
+
+  ```shell
+  yarn build --simple
+  ```
+
+  生成的打包文件：
+
+  ```
+  dist
+  |__ index.js
+  |__ index.d.ts
+  |__ sub-pkg
+    |__ index.js
+    |__ index.d.ts
+    |__ package.json
+  |__ esm
+    |__ index.js
+    |__ sub-pkg
+      |__ index.js
+  |__ package.json
+  ```
 
 ## v0.9.5 - 2020.2.4
 

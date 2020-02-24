@@ -37,6 +37,11 @@ interface BuildOptions {
    * 跳过 tsc 编译 .d.ts 步骤
    */
   skipTsc: boolean;
+
+  /**
+   * 简单模式
+   */
+  simple: boolean;
 }
 
 type Env = 'production' | 'development';

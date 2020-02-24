@@ -1,0 +1,21 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "node_modules",
+    "**/__tests__/**",
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "**/*.test.ts",
+    "**/*.test.tsx"
+  ],
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "esnext",
+    "declaration": true,
+    "sourceMap": false,
+    "skipLibCheck": true,
+    "outDir": "./build/es",
+    "declarationDir": "./build/types",
+    "tsBuildInfoFile": "./build/tsconfig.tsbuildinfo"
+  }
+}

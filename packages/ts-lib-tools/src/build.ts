@@ -21,7 +21,6 @@ import globby from 'globby';
 import execa from 'execa';
 import prettier from 'prettier';
 import { createRollupOptions } from './config/create-rollup-options';
-import logError from './logError';
 import {
   getAppPackageInfo,
   DIST_PATH,
@@ -32,6 +31,7 @@ import {
 } from './config/paths';
 import { flatMap } from './utils';
 import upgradePakageModule from './upgradePackageModule';
+import simpleBuild from './simple-build';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const createLogger = require('progress-estimator');
 
@@ -194,8 +194,9 @@ async function compileDeclarationFiles() {
   await ensurePackageTypesEntry();
   await ensureNpmIgnore();
 
-  const cmd = `${getInstallCmd()} tsc --build tsconfig.release.json`;
-  await execa(cmd);
+  await execa(getInstallCmd(), ['tsc', '--build', 'tsconfig.release.json'], {
+    stdio: 'inherit',
+  });
 }
 
 /**
@@ -244,50 +245,45 @@ export async function runBuild(buildOptions: BuildOptions) {
   const formats: FormatMode[] = buildOptions.format;
   const envs: Env[] = ['production', 'development'];
 
-  try {
-    await upgradePakageModule();
-    await logger(clean(), '清除dist');
-
-    const skipTsc = await isSkipTsc();
-    if (!skipTsc && !buildOptions.skipTsc) {
-      try {
-        await logger(compileDeclarationFiles(), '编译生成.d.ts');
-      } catch (e) {
-        console.error(e);
-        throw e;
-      }
-    }
-
-    await logger(copyDeclarationFiles(), '拷贝src中的ts声明文件');
-    await logger(
-      createCjsIndexFile(buildOptions.outDir),
-      '生成dist/index.js文件(cjs入口文件)',
-    );
-
-    const buildTargets = flatMap(formats, (formatMode) =>
-      envs.map((env) => [formatMode, env] as [FormatMode, Env]),
-    ).filter(
-      ([formatMode, env]) => !(formatMode === 'es' && env === 'production'),
-    );
-
-    const buildPromise = Promise.all(
-      buildTargets
-        .map(([formatMode, env]) =>
-          createRollupOptions(formatMode, env, buildOptions),
-        )
-        .map(async ([inputOptions, outputOptions]) => {
-          await nextTick(async () => {
-            const bundle = await rollup(inputOptions);
-            await bundle.write(outputOptions);
-          });
-        }),
-    );
-
-    await logger(buildPromise, '使用rollup编译js文件');
-
-    await mvDeclarationFiles();
-  } catch (error) {
-    logError(error);
-    process.exit(1);
+  if (buildOptions.simple) {
+    await simpleBuild();
+    return;
   }
+
+  await upgradePakageModule();
+  await logger(clean(), '清除dist');
+
+  const skipTsc = await isSkipTsc();
+  if (!skipTsc && !buildOptions.skipTsc) {
+    await logger(compileDeclarationFiles(), '编译生成.d.ts');
+  }
+
+  await logger(copyDeclarationFiles(), '拷贝src中的ts声明文件');
+  await logger(
+    createCjsIndexFile(buildOptions.outDir),
+    '生成dist/index.js文件(cjs入口文件)',
+  );
+
+  const buildTargets = flatMap(formats, (formatMode) =>
+    envs.map((env) => [formatMode, env] as [FormatMode, Env]),
+  ).filter(
+    ([formatMode, env]) => !(formatMode === 'es' && env === 'production'),
+  );
+
+  const buildPromise = Promise.all(
+    buildTargets
+      .map(([formatMode, env]) =>
+        createRollupOptions(formatMode, env, buildOptions),
+      )
+      .map(async ([inputOptions, outputOptions]) => {
+        await nextTick(async () => {
+          const bundle = await rollup(inputOptions);
+          await bundle.write(outputOptions);
+        });
+      }),
+  );
+
+  await logger(buildPromise, '使用rollup编译js文件');
+
+  await mvDeclarationFiles();
 }

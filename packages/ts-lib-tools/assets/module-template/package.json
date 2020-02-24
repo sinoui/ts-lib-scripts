@@ -7,9 +7,10 @@
     "ts-lib-tools": "^0.7.2"
   },
   "scripts": {
-    "build": "ts-lib-tools build",
+    "build": "ts-lib-tools build --simple",
     "test": "ts-lib-tools test",
-    "lint": "ts-lib-tools lint"
+    "lint": "ts-lib-tools lint",
+    "release": "yarn publish dist --tag latest"
   },
   "browserslist": {
     "production": [

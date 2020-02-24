@@ -1,14 +1,13 @@
 {
   "name": "ts-lib-scripts-example",
-  "version": "0.9.5",
+  "version": "0.10.1",
   "private": true,
   "dependencies": {
     "@babel/cli": "^7.7.7",
     "rc-pagination": "^1.20.11",
-    "ts-lib-tools": "^0.9.5"
+    "ts-lib-tools": "^0.10.1"
   },
   "scripts": {
-    "start": "ts-lib-tools watch",
     "test": "ts-lib-tools test",
     "build": "ts-lib-tools build",
     "format": "ts-lib-tools format",

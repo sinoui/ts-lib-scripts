@@ -50,6 +50,7 @@ program
     `指定输出目录，默认为${DIST_PATH_NAME}`,
     DIST_PATH_NAME,
   )
+  .option('--simple', '以简单模式打包')
   .action(async (options: BuildOptions) => {
     await runBuild(getBuildOptions(options));
   });
