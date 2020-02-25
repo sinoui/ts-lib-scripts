@@ -14,7 +14,7 @@
     "declaration": true,
     "sourceMap": false,
     "skipLibCheck": true,
-    "outDir": "./build/es",
+    "outDir": "./build/es6",
     "declarationDir": "./build/types",
     "tsBuildInfoFile": "./build/tsconfig.tsbuildinfo"
   }

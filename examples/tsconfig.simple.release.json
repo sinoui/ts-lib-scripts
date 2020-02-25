@@ -13,7 +13,7 @@
     "module": "esnext",
     "declaration": true,
     "sourceMap": false,
-    "outDir": "./build/es",
+    "outDir": "./build/es6",
     "declarationDir": "./build/types",
     "tsBuildInfoFile": "./build/tsconfig.tsbuildinfo"
   }

@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.10.3 - 2020.2.25
+
+- fix(ts-lib-scripts): 修复打包时找不到 build/es6 目录的缺陷
+
 ## v0.10.2 - 2020.2.24
 
 - fix(ts-lib-tools): 修复 simple 发布失败的缺陷
