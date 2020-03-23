@@ -1,0 +1,30 @@
+# node.js
+node_modules
+
+# testing
+coverage
+
+# source code
+src
+
+# cache
+.cache
+.docz
+
+# typescript
+*.tsbuildinfo
+
+# misc
+.DS_Store
+__MACOSX
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.progress-estimator

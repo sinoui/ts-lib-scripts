@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.11.0 - 2020.3.23
+
+- feat: 支持 typescript3.8 版本
+
 ## v0.10.3 - 2020.2.25
 
 - fix(ts-lib-scripts): 修复打包时找不到 build/es6 目录的缺陷

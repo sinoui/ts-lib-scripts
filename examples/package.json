@@ -19,7 +19,7 @@
     "lint-staged": "^8.1.7",
     "react": "^16.8.6",
     "rimraf": "^2.6.3",
-    "typescript": "^3.7.3"
+    "typescript": "^3.8.3"
   },
   "prettier": {
     "printWidth": 80,
@@ -32,20 +32,9 @@
     "jsxBracketSameLine": false,
     "arrowParens": "always"
   },
-  "eslintConfig": {
-    "extends": "ts-lib"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "git add"
-    ]
-  },
+  "eslintConfig": { "extends": "ts-lib" },
+  "husky": { "hooks": { "pre-commit": "lint-staged" } },
+  "lint-staged": { "src/**/*.{js,jsx,ts,tsx}": ["eslint --fix", "git add"] },
   "module": "dist/ts-lib-scripts-example.esm.js",
   "types": "types/index.d.ts"
 }

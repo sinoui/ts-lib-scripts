@@ -27,8 +27,8 @@
     "lib/**/*"
   ],
   "dependencies": {
-    "@babel/core": "^7.8.4",
-    "@babel/plugin-transform-modules-commonjs": "^7.8.3",
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.9.0",
     "@rollup/plugin-image": "^2.0.1",
     "@rollup/plugin-json": "^4.0.1",
     "@rollup/plugin-node-resolve": "^7.0.0",
@@ -65,7 +65,7 @@
     "jest-watch-typeahead": "^0.4.2",
     "md5": "^2.2.1",
     "ora": "^3.4.0",
-    "prettier": "^1.19.1",
+    "prettier": "^2.0.1",
     "progress-estimator": "^0.2.2",
     "rollup": "^1.27.13",
     "rollup-plugin-babel": "^4.3.3",
@@ -86,7 +86,7 @@
     "@types/execa": "^2.0.0",
     "@types/fs-extra": "^8.0.0",
     "@types/md5": "^2.1.33",
-    "@types/prettier": "^1.18.2",
+    "@types/prettier": "^1.19.1",
     "@types/rollup-plugin-json": "^3.0.2",
     "@types/rollup-plugin-postcss": "^2.0.0",
     "@types/rollup-plugin-sourcemaps": "^0.4.2",
