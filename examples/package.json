@@ -1,11 +1,11 @@
 {
   "name": "ts-lib-scripts-example",
-  "version": "0.11.0",
+  "version": "0.11.1",
   "private": true,
   "dependencies": {
     "@babel/cli": "^7.7.7",
     "rc-pagination": "^1.20.11",
-    "ts-lib-tools": "^0.11.0"
+    "ts-lib-tools": "^0.11.1"
   },
   "scripts": {
     "test": "ts-lib-tools test",
@@ -32,9 +32,20 @@
     "jsxBracketSameLine": false,
     "arrowParens": "always"
   },
-  "eslintConfig": { "extends": "ts-lib" },
-  "husky": { "hooks": { "pre-commit": "lint-staged" } },
-  "lint-staged": { "src/**/*.{js,jsx,ts,tsx}": ["eslint --fix", "git add"] },
+  "eslintConfig": {
+    "extends": "ts-lib"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
   "module": "dist/ts-lib-scripts-example.esm.js",
   "types": "types/index.d.ts"
 }
