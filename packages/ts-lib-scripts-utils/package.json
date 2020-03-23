@@ -1,6 +1,6 @@
 {
   "name": "ts-lib-scripts-utils",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "description": "ts-lib-scripts公用方法",
   "license": "MIT",
   "main": "dist/index.js",

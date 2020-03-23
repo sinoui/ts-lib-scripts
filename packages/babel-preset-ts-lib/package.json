@@ -1,6 +1,6 @@
 {
   "name": "babel-preset-ts-lib",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "description": "ts-lib-scripts创建的ts库项目使用的Babel配置",
   "license": "MIT",
   "main": "index.js",
@@ -28,7 +28,7 @@
     "@babel/runtime": "^7.9.2",
     "@types/babel__core": "^7.1.4",
     "babel-plugin-annotate-pure-calls": "^0.4.0",
-    "babel-plugin-clean-type-import-export": "^0.10.0",
+    "babel-plugin-clean-type-import-export": "^0.11.0",
     "babel-plugin-dev-expression": "^0.2.2",
     "babel-plugin-dynamic-import-node": "^2.3.0",
     "babel-plugin-macros": "^2.6.1",
