@@ -3,3 +3,5 @@ interface Pointer {
   x: number;
   y: number;
 }
+
+declare module '*.json';

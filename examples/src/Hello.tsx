@@ -4,7 +4,7 @@ import { Pointer } from './types';
 import styles from './styles.module.css';
 import x from './x.json';
 import type { Props } from './Button';
-import Button from './Button/Button';
+import Button from './Button';
 
 export interface HelloProps extends Props {
   className?: string;
