@@ -181,7 +181,6 @@ async function copyFiles() {
 export default async function build() {
   const begin = Date.now();
   const spinner = ora().start();
-
   async function log<T>(promise: Promise<T>, message: string) {
     spinner.text = `${message}\t`;
     try {
@@ -191,13 +190,17 @@ export default async function build() {
       throw e;
     }
   }
-
-  await log(cleanDist(), '清空 dist 目录');
-  await log(buildEs6AndTypes(), '打包步骤1：ts -> es, types');
-  await log(buildEsm(), '打包步骤2：es -> esm');
-  await log(buildCommonjs(), '打包步骤3：esm -> commonjs');
-  await log(copyFiles(), '打包步骤4：拷贝其他文件');
-  spinner.succeed(`打包完成，用时 ${chalk.green(`${Date.now() - begin}ms`)}`);
-  console.log('');
-  console.log(`打包文件放在${chalk.green('dist')}目录中。`);
+  try {
+    await log(cleanDist(), '清空 dist 目录');
+    await log(buildEs6AndTypes(), '打包步骤1：ts -> es, types');
+    await log(buildEsm(), '打包步骤2：es -> esm');
+    await log(buildCommonjs(), '打包步骤3：esm -> commonjs');
+    await log(copyFiles(), '打包步骤4：拷贝其他文件');
+    spinner.succeed(`打包完成，用时 ${chalk.green(`${Date.now() - begin}ms`)}`);
+    console.log('');
+    console.log(`打包文件放在${chalk.green('dist')}目录中。`);
+  } catch {
+    console.error('打包失败');
+    process.exit(1);
+  }
 }

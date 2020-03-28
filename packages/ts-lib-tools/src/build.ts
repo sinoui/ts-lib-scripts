@@ -250,40 +250,45 @@ export async function runBuild(buildOptions: BuildOptions) {
     return;
   }
 
-  await upgradePakageModule();
-  await logger(clean(), '清除dist');
+  try {
+    await upgradePakageModule();
+    await logger(clean(), '清除dist');
 
-  const skipTsc = await isSkipTsc();
-  if (!skipTsc && !buildOptions.skipTsc) {
-    await logger(compileDeclarationFiles(), '编译生成.d.ts');
+    const skipTsc = await isSkipTsc();
+    if (!skipTsc && !buildOptions.skipTsc) {
+      await logger(compileDeclarationFiles(), '编译生成.d.ts');
+    }
+
+    await logger(copyDeclarationFiles(), '拷贝src中的ts声明文件');
+    await logger(
+      createCjsIndexFile(buildOptions.outDir),
+      '生成dist/index.js文件(cjs入口文件)',
+    );
+
+    const buildTargets = flatMap(formats, (formatMode) =>
+      envs.map((env) => [formatMode, env] as [FormatMode, Env]),
+    ).filter(
+      ([formatMode, env]) => !(formatMode === 'es' && env === 'production'),
+    );
+
+    const buildPromise = Promise.all(
+      buildTargets
+        .map(([formatMode, env]) =>
+          createRollupOptions(formatMode, env, buildOptions),
+        )
+        .map(async ([inputOptions, outputOptions]) => {
+          await nextTick(async () => {
+            const bundle = await rollup(inputOptions);
+            await bundle.write(outputOptions);
+          });
+        }),
+    );
+
+    await logger(buildPromise, '使用rollup编译js文件');
+
+    await mvDeclarationFiles();
+  } catch {
+    console.log('打包失败');
+    process.exit(1);
   }
-
-  await logger(copyDeclarationFiles(), '拷贝src中的ts声明文件');
-  await logger(
-    createCjsIndexFile(buildOptions.outDir),
-    '生成dist/index.js文件(cjs入口文件)',
-  );
-
-  const buildTargets = flatMap(formats, (formatMode) =>
-    envs.map((env) => [formatMode, env] as [FormatMode, Env]),
-  ).filter(
-    ([formatMode, env]) => !(formatMode === 'es' && env === 'production'),
-  );
-
-  const buildPromise = Promise.all(
-    buildTargets
-      .map(([formatMode, env]) =>
-        createRollupOptions(formatMode, env, buildOptions),
-      )
-      .map(async ([inputOptions, outputOptions]) => {
-        await nextTick(async () => {
-          const bundle = await rollup(inputOptions);
-          await bundle.write(outputOptions);
-        });
-      }),
-  );
-
-  await logger(buildPromise, '使用rollup编译js文件');
-
-  await mvDeclarationFiles();
 }

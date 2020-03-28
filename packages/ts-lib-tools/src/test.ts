@@ -42,7 +42,8 @@ export async function test() {
   if (
     isInCI &&
     argv.indexOf('--findRelatedTests') === -1 &&
-    (argv.indexOf('--watch') === -1 && argv.indexOf('--watchAll') === -1)
+    argv.indexOf('--watch') === -1 &&
+    argv.indexOf('--watchAll') === -1
   ) {
     argv.push('--findRelatedTests', '--bail');
   }
