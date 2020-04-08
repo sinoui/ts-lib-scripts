@@ -63,7 +63,7 @@ module.exports = function create(_api, _opts, env) {
     plugins: [
       require('@babel/plugin-proposal-optional-chaining'),
       require('@babel/plugin-proposal-nullish-coalescing-operator'),
-      require('babel-plugin-styled-components'),
+      !isEnvTest && require('babel-plugin-styled-components'),
       require('babel-plugin-module-resolver'),
       require('babel-plugin-macros'),
       require('babel-plugin-annotate-pure-calls'),

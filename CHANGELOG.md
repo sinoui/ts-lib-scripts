@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.11.3 - 2020.4.8
+
+- fix(babel-preset-ts-lib): 修复在 Jest 测试时无法使用 `jest-styled-components` 提供的 `toHaveStyleRule` 方法
+
 ## v0.11.2 - 2020.3.28
 
 - fix(ts-lib-tools): 修复 tsc 执行失败控制台提示信息不友好的缺陷
