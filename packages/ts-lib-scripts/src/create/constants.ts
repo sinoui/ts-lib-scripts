@@ -33,14 +33,8 @@ export const devDependenciesForReact = [
  */
 export const devDependenciesForDocz = [
   'docz',
-  'docz-theme-default',
-  'style-loader',
-  'css-loader',
-  'postcss-loader',
-  'postcss-import',
-  'postcss-preset-env',
-  'webpack-docz-ghpages-plugin',
   'tsconfig-paths-webpack-plugin',
+  '@types/theme-ui',
 ];
 
 /**

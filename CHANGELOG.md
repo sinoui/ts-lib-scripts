@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.11.4 - 2020.4.26
+
+- fix(ts-lib-scripts): 修复 docz 配置错误
+
 ## v0.11.3 - 2020.4.8
 
 - fix(babel-preset-ts-lib): 修复在 Jest 测试时无法使用 `jest-styled-components` 提供的 `toHaveStyleRule` 方法
