@@ -49,7 +49,7 @@ export const resolveModule = (
   testExists = false,
 ) => {
   const extension = moduleFileExtensions.find((_) =>
-    existsSync(resolveFn(`${filePath}.${_}`)),
+    existsSync(resolveFn(`${filePath}${_}`)),
   );
 
   if (extension) {
