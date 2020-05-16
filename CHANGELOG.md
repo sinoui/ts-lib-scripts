@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.11.6 - 2020.5.17
+
+- fix(ts-lib-tools): 修复单元测试不识别 setupTests.ts 配置文件的错误
+
 ## v0.11.5 - 2020.5.17
 
 - fix(ts-lib-tools): 修复单元测试不识别 setupTests.ts 配置文件的错误

@@ -53,7 +53,7 @@ export const resolveModule = (
   );
 
   if (extension) {
-    return resolveFn(`${filePath}.${extension}`);
+    return resolveFn(`${filePath}${extension}`);
   }
 
   return testExists ? '' : resolveFn(`${filePath}.ts`);
