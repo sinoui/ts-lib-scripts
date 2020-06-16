@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.12.0 - 2020.6.16
+
+- feat(eslint-config-ts-lib): eslint 支持 cypress
+
 ## v0.11.6 - 2020.5.17
 
 - fix(ts-lib-tools): 修复单元测试不识别 setupTests.ts 配置文件的错误

@@ -5,6 +5,7 @@ const eslintConfig = {
     es6: true,
     node: true,
     jest: true,
+    'cypress/globals': true,
   },
   extends: [
     'airbnb',
@@ -14,6 +15,7 @@ const eslintConfig = {
     'prettier/@typescript-eslint',
     'prettier/standard',
     'prettier/react',
+    'plugin:cypress/recommended',
   ],
   globals: {
     Atomics: 'readonly',
@@ -33,6 +35,7 @@ const eslintConfig = {
     'react-hooks',
     'prettier',
     'standard',
+    'plugin:cypress/recommended',
   ],
   settings: {
     'import/extensions': ['.js', '.jsx', '.ts', '.tsx', '.json'],
