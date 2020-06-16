@@ -1,7 +1,7 @@
 {
   "name": "eslint-config-ts-lib",
   "description": "ts-lib-scripts创建的ts库项目使用的ESLint配置",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "main": "index.js",
   "license": "MIT",
   "homepage": "https://github.com/sinoui/ts-lib-scripts",
@@ -22,13 +22,13 @@
     "eslint-config-airbnb": "18.x",
     "eslint-config-prettier": "6.x",
     "eslint-import-resolver-typescript": "1.x",
+    "eslint-plugin-cypress": "2.x",
     "eslint-plugin-import": "2.x",
     "eslint-plugin-jsx-a11y": "6.x",
     "eslint-plugin-prettier": "3.x",
     "eslint-plugin-react": "7.x",
     "eslint-plugin-react-hooks": "1.x",
-    "eslint-plugin-standard": "4.x",
-    "eslint-plugin-cypress": "2.x"
+    "eslint-plugin-standard": "4.x"
   },
   "gitHead": "a0ec9d27b2f24cb228993286530f89957d055b9b"
 }
