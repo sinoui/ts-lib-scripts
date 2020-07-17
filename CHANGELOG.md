@@ -1,5 +1,27 @@
 # 变更说明
 
+## v0.12.1 - 2020.7.17
+
+- fix(ts-lib-scripts): 修复 eslint 关于 vscode 的配置警告
+
+  ```json
+  "eslint.autoFixOnSave": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    { "language": "typescript", "autoFix": true },
+    { "language": "typescriptreact", "autoFix": true }
+  ],
+  ```
+
+  -->
+
+  ```json
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  ```
+
 ## v0.12.0 - 2020.6.16
 
 - feat(eslint-config-ts-lib): eslint 支持 cypress
