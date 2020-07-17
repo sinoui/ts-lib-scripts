@@ -22,6 +22,8 @@
   },
   ```
 
+- chore(ts-lib-scripts): 去掉无用的 src/tsconfig.json
+
 ## v0.12.0 - 2020.6.16
 
 - feat(eslint-config-ts-lib): eslint 支持 cypress
