@@ -15,9 +15,6 @@
     },
     {
       "path": "./jest-resolver-tsconfig-paths"
-    },
-    {
-      "path": "./babel-plugin-clean-type-import-export"
     }
   ]
 }

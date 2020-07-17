@@ -1,5 +1,30 @@
 # 变更说明
 
+## v0.13.0 - next
+
+- BREAKCHANGE: 去掉 babel-plugin-clean-type-import-export 模块，推荐采用 ts 3.8 语法代替此模块的作用
+
+  ```ts
+  import A, { B, C, D, E } from './C';
+
+  export {
+    A,
+    /* type */
+    B,
+    // type
+    C,
+  };
+  ```
+
+  -->
+
+  ```ts
+  import A, { D, E } from './C';
+  export { A };
+
+  export type { B, C } from './C';
+  ```
+
 ## v0.12.1 - 2020.7.17
 
 - fix(ts-lib-scripts): 修复 eslint 关于 vscode 的配置警告
