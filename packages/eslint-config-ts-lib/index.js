@@ -35,7 +35,7 @@ const eslintConfig = {
     'react-hooks',
     'prettier',
     'standard',
-    'plugin:cypress/recommended',
+    'cypress',
   ],
   settings: {
     'import/extensions': ['.js', '.jsx', '.ts', '.tsx', '.json'],

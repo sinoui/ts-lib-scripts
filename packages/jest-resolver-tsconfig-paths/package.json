@@ -17,9 +17,9 @@
     "dist/**/*"
   ],
   "dependencies": {
-    "tsconfig-paths": "^3.8.0"
+    "tsconfig-paths": "^3.9.0"
   },
   "devDependencies": {
-    "@types/jest": "^24.9.0"
+    "@types/jest": "^26.0.4"
   }
 }

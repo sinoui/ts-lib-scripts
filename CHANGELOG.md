@@ -23,6 +23,7 @@
   ```
 
 - chore(ts-lib-scripts): 去掉无用的 src/tsconfig.json
+- chore(ts-lib-tools): 升级 jest 24 -> 26
 
 ## v0.12.0 - 2020.6.16
 

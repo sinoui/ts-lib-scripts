@@ -37,7 +37,6 @@ export async function runWatch(buildOptions: BuildOptions) {
         spinner.start(chalk.bold.cyan('开始编译模块...'));
         break;
       case 'ERROR':
-      case 'FATAL':
         spinner.fail(chalk.bold.red('编译失败'));
         logError(event.error);
         break;

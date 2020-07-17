@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import jest from 'jest';
+import { run } from 'jest';
 import { execSync } from 'child_process';
 import { resolve, isAbsolute, relative } from 'path';
 import { createJestConfig } from './config/create-jest-config';
@@ -59,8 +59,9 @@ export async function test() {
   }
 
   try {
-    await jest.run(argv);
+    await run(argv);
   } catch (e) {
+    console.log(e);
     process.exit(1);
   }
 }
