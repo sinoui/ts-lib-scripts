@@ -79,7 +79,7 @@
     "tsconfig-paths": "^3.9.0",
     "tslib": "^1.10.0",
     "typescript": "^4.0.0-dev.20200715",
-    "typescript-plugin-css-modules": "^2.1.2"
+    "typescript-plugin-css-modules": "^2.4.0"
   },
   "devDependencies": {
     "@types/async": "^3.0.7",
@@ -94,7 +94,7 @@
     "typescript": "^4.0.0-dev.20200715"
   },
   "peerDependencies": {
-    "typescript": ">=3.4.0"
+    "typescript": ">=3.8.0"
   },
   "gitHead": "a0ec9d27b2f24cb228993286530f89957d055b9b"
 }
