@@ -49,7 +49,7 @@ export async function getOptionsWithConfirm(
 export async function getReactOptionsWithConfirm(
   options: CreateOptions,
 ): Promise<CreateOptions> {
-  const { react } = await prompt({
+  const { react } = await prompt<CreateOptions>({
     type: 'confirm',
     name: 'react',
     skip: options.react,
@@ -57,7 +57,7 @@ export async function getReactOptionsWithConfirm(
     initial: options.react,
   });
 
-  const { docz } = await prompt({
+  const { docz } = await prompt<CreateOptions>({
     type: 'confirm',
     name: 'docz',
     skip: !react || !!options.docz,
@@ -65,7 +65,7 @@ export async function getReactOptionsWithConfirm(
     initial: react,
   });
 
-  const { doczGithubPages } = await prompt({
+  const { doczGithubPages } = await prompt<CreateOptions>({
     type: 'confirm',
     name: 'doczGithubPages',
     skip: () => !docz || !!options.doczGithubPages,

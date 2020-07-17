@@ -75,7 +75,7 @@ export default async function create(
 
   if (isCmdInstalled('code')) {
     console.log();
-    const { openWithCode } = await prompt({
+    const { openWithCode } = await prompt<any>({
       type: 'confirm',
       name: 'openWithCode',
       message: '使用vscode打开项目？',

@@ -25,6 +25,8 @@
   export type { B, C } from './C';
   ```
 
+- chore: 升级 typescript 3.9 -> 4.0.0
+
 ## v0.12.1 - 2020.7.17
 
 - fix(ts-lib-scripts): 修复 eslint 关于 vscode 的配置警告
