@@ -1,6 +1,6 @@
 # 变更说明
 
-## v0.13.0 - next
+## v0.13.0 - 2020.8.22
 
 - BREAKCHANGE: 去掉 babel-plugin-clean-type-import-export 模块，推荐采用 ts 3.8 语法代替此模块的作用
 
@@ -25,7 +25,7 @@
   export type { B, C } from './C';
   ```
 
-- chore: 升级 typescript 3.9 -> 4.0.0
+- feat: 升级 typescript 3.9 -> 4.0.2
 
 ## v0.12.1 - 2020.7.17
 

@@ -5,7 +5,6 @@ export const devDependencies = [
   'husky',
   'prettier',
   'ts-lib-tools',
-  'typescript',
   'lint-staged',
 ];
 
