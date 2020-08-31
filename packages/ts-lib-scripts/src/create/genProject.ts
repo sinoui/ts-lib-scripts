@@ -31,7 +31,6 @@ export async function genPackageFile(
   packageInfo.version = options.packageVersion;
   packageInfo.name = options.packageName;
   packageInfo.description = options.packageDescription;
-  packageInfo.files = ['dist', 'assets'];
   packageInfo['umd:main'] = `dist/${safePackageName(
     options.packageName,
   )}.umd.production.js`;

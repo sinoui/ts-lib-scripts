@@ -16,6 +16,7 @@ async function cpMainPackageFile() {
   pkgInfo.main = 'index.js';
   pkgInfo.module = 'esm/index.js';
   pkgInfo.types = 'index.d.ts';
+  delete pkgInfo.files;
 
   await writeJSON(distPath, pkgInfo, {
     spaces: 2,
