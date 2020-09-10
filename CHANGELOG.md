@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.13.2 - 2020.9.10
+
+- feat: 支持 webworker 场景
+
 ## v0.13.1 - 2020.8.31
 
 - fix(ts-lib-scripts): 修复`-simple`打包模式下发布的 npm 包没有`types`和`dist`的缺陷

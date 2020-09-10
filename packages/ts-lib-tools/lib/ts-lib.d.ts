@@ -96,3 +96,22 @@ declare module '*.svg' {
   const src: string;
   export default src;
 }
+
+interface WorkerLoader {
+  new (): Worker;
+}
+
+/**
+ * webworker模块
+ */
+declare module '*.worker.ts' {
+  const workerLoader: WorkerLoader;
+
+  export default workerLoader;
+}
+
+declare module '*.worker.js' {
+  const workerLoader: WorkerLoader;
+
+  export default workerLoader;
+}

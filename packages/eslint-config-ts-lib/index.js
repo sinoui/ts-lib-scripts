@@ -5,6 +5,7 @@ const eslintConfig = {
     es6: true,
     node: true,
     jest: true,
+    worker: true,
     'cypress/globals': true,
   },
   extends: [
@@ -74,15 +75,7 @@ const eslintConfig = {
     'import/no-named-as-default-member': 0,
     'import/no-named-as-default': 0,
     'import/prefer-default-export': 0,
-    'import/extensions': [
-      'error',
-      {
-        js: 'never',
-        ts: 'never',
-        tsx: 'never',
-        jsx: 'never',
-      },
-    ],
+    'import/extensions': 0,
     'react/jsx-filename-extension': [
       'error',
       { extensions: ['.js', '.jsx', '.tsx'] },
