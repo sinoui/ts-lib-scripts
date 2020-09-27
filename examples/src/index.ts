@@ -2,6 +2,15 @@ import 'rc-pagination/assets/index.css';
 import { useMemo as x } from 'react';
 import Hello from './Hello';
 import { Pointer } from './types';
+import XWorker from './x.worker.ts';
+
+const xWorker = new XWorker();
+
+xWorker.addEventListener('message', (event) => {
+  console.log(event.data);
+});
+
+xWorker.postMessage('Hello, World!');
 
 console.log(x);
 

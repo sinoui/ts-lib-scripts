@@ -1,5 +1,13 @@
 # 变更说明
 
+## v0.13.2 - 2020.9.10
+
+- feat: 支持 webworker 场景
+
+## v0.13.1 - 2020.8.31
+
+- fix(ts-lib-scripts): 修复`-simple`打包模式下发布的 npm 包没有`types`和`dist`的缺陷
+
 ## v0.13.0 - 2020.8.22
 
 - BREAKCHANGE: 去掉 babel-plugin-clean-type-import-export 模块，推荐采用 ts 3.8 语法代替此模块的作用
