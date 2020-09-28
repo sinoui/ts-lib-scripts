@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.13.4 - 2020.9.28
+
+- fix(eslint-config-ts-lib): 修复 eslint 错误提示
+
 ## v0.13.3 - 2020.9.27
 
 - fix(eslint): 修复 eslint 不支持 ts 4.0 的缺陷
