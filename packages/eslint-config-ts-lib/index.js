@@ -53,6 +53,8 @@ const eslintConfig = {
   },
 
   rules: {
+    'no-use-before-define': 'off',
+    '@typescript-eslint/no-use-before-define': 'error',
     'prettier/prettier': 'error',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
