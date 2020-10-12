@@ -5,6 +5,7 @@ const ignoredImportRules = require('./rules/import-rules');
 const prettierRules = require('./rules/prettier-rules');
 const reactRules = require('./rules/react-rules');
 const tsRules = require('./rules/ts-rules');
+const varRules = require('./rules/var-rules');
 
 const eslintConfig = {
   parser: '@typescript-eslint/parser',
@@ -58,6 +59,7 @@ const eslintConfig = {
     ...functionRules,
     ...tsRules,
     ...classRules,
+    ...varRules,
     'no-console': ['warn', { allow: ['warn', 'error'] }],
     'no-underscore-dangle': [
       'error',

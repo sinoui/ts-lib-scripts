@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.13.7 - 2020.10.14
+
+- fix(eslint-config-ts-lib): 禁用 no-undef，并重新定义 @typescript-eslint/no-unused-vars
+
 ## v0.13.6 - 2020.10.13
 
 - fix(eslint-config-ts-lib): 修复发布 npm 模块时缺少 js 文件的缺陷
