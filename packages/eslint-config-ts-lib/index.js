@@ -1,3 +1,11 @@
+const classRules = require('./rules/class-rules');
+const functionRules = require('./rules/function-rules');
+const ignoredRequireTsServerRules = require('./rules/ignored-require-ts-server-rules');
+const ignoredImportRules = require('./rules/import-rules');
+const prettierRules = require('./rules/prettier-rules');
+const reactRules = require('./rules/react-rules');
+const tsRules = require('./rules/ts-rules');
+
 const eslintConfig = {
   parser: '@typescript-eslint/parser',
   env: {
@@ -9,9 +17,7 @@ const eslintConfig = {
     'cypress/globals': true,
   },
   extends: [
-    'airbnb',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:import/typescript',
+    'airbnb-typescript',
     'prettier',
     'prettier/@typescript-eslint',
     'prettier/standard',
@@ -29,105 +35,30 @@ const eslintConfig = {
     ecmaVersion: 2019,
     sourceType: 'module',
   },
-  plugins: [
-    'react',
-    'import',
-    '@typescript-eslint',
-    'react-hooks',
-    'prettier',
-    'standard',
-    'cypress',
-  ],
+  plugins: ['@typescript-eslint', 'prettier', 'cypress'],
   settings: {
-    'import/extensions': ['.js', '.jsx', '.ts', '.tsx', '.json'],
+    'import/extensions': ['.js', '.jsx', '.ts', '.tsx', '.json', '.mjs'],
     'import/ignore': ['.css$', '.png$', '.jpg$', '.svg'],
     'import/parsers': {
-      '@typescript-eslint/parser': ['.js', '.jsx', '.ts', '.tsx'],
+      '@typescript-eslint/parser': ['.js', '.jsx', '.ts', '.tsx', '.d.ts'],
     },
     'import/resolver': {
       typescript: {},
       node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
       },
     },
   },
 
   rules: {
-    'no-use-before-define': 'off',
-    '@typescript-eslint/no-use-before-define': 'error',
-    'prettier/prettier': 'error',
-    'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'warn',
-    'import/no-extraneous-dependencies': [
-      'error',
-      {
-        devDependencies: [
-          '**/*.test.ts',
-          '**/*.test.tsx',
-          '**/*.spec.ts',
-          '**/*.spec.tsx',
-          '**/*.test.js',
-          '**/*.test.jsx',
-          '**/*.spec.js',
-          '**/*.spec.jsx',
-        ],
-      },
-    ],
-    'import/named': 0,
-    'import/no-named-as-default-member': 0,
-    'import/no-named-as-default': 0,
-    'import/prefer-default-export': 0,
-    'import/extensions': 0,
-    'react/jsx-filename-extension': [
-      'error',
-      { extensions: ['.js', '.jsx', '.tsx'] },
-    ],
-    'react/prop-types': 0,
-    // disallow reassignment of function parameters
-    // disallow parameter object manipulation except for specific exclusions
-    // rule: https://eslint.org/docs/rules/no-param-reassign.html
-    'no-param-reassign': [
-      'error',
-      {
-        props: true,
-        ignorePropertyModificationsFor: [
-          'acc', // for reduce accumulators
-          'accumulator', // for reduce accumulators
-          'e', // for e.returnvalue
-          'ctx', // for Koa routing
-          'req', // for Express requests
-          'request', // for Express requests
-          'res', // for Express responses
-          'response', // for Express responses
-          '$scope', // for Angular 1 scopes
-          'staticContext', // for ReactRouter context
-          'draft', // for immer
-          'draftState', // for immer
-          'ref', // for React ref.current
-        ],
-      },
-    ],
-    'react/jsx-props-no-spreading': 'off',
-    'no-unused-vars': 'off',
-    '@typescript-eslint/no-unused-vars': [
-      'error',
-      {
-        vars: 'all',
-        args: 'all',
-        ignoreRestSiblings: true,
-        argsIgnorePattern: '^_',
-        caughtErrors: 'none',
-      },
-    ],
-    '@typescript-eslint/explicit-function-return-type': 0,
-    '@typescript-eslint/no-explicit-any': 'off',
+    ...ignoredRequireTsServerRules,
+    ...ignoredImportRules,
+    ...reactRules,
+    ...prettierRules,
+    ...functionRules,
+    ...tsRules,
+    ...classRules,
     'no-console': ['warn', { allow: ['warn', 'error'] }],
-    // 关闭标准的缩进和typescript缩进规则，启用prettier的缩进规则
-    indent: 'off',
-    '@typescript-eslint/indent': 'off',
-    'no-useless-constructor': 'off',
-    'class-methods-use-this': 'off',
-    'no-empty-function': 'off',
     'no-underscore-dangle': [
       'error',
       { allow: ['__REDUX_DEVTOOLS_EXTENSION__'] },

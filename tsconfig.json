@@ -23,6 +23,7 @@
     "esModuleInterop": true,
     "allowJs": false,
     "incremental": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "resolveJsonModule": true
   }
 }

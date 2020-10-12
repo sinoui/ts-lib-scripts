@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.13.5 - 2020.10.13
+
+- fix(eslint-config-ts-lib): 修复 eslint 错误提示
+
 ## v0.13.4 - 2020.9.28
 
 - fix(eslint-config-ts-lib): 修复 eslint 错误提示
