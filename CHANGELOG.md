@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.13.6 - 2020.10.13
+
+- fix(eslint-config-ts-lib): 修复发布 npm 模块时缺少 js 文件的缺陷
+
 ## v0.13.5 - 2020.10.13
 
 - fix(eslint-config-ts-lib): 修复 eslint 错误提示
