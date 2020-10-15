@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.13.8 - 2020.10.15
+
+- fix(eslint-config-ts-lib): 禁用 react/require-default-props，不推荐使用
+
 ## v0.13.7 - 2020.10.14
 
 - fix(eslint-config-ts-lib): 禁用 no-undef，并重新定义 @typescript-eslint/no-unused-vars
