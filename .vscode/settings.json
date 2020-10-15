@@ -2,7 +2,6 @@
   "editor.formatOnSave": true,
   "javascript.format.enable": false,
   "typescript.format.enable": false,
-  "eslint.enable": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },

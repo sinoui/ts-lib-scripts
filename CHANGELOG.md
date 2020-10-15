@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.13.9 - 2020.10.15
+
+- fix(eslint-config-ts-lib): 修复 eslint 不检测 react hooks 的依赖的缺陷
+
 ## v0.13.8 - 2020.10.15
 
 - fix(eslint-config-ts-lib): 禁用 react/require-default-props，不推荐使用
