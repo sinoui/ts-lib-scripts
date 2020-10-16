@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.13.10 - 2020.10.16
+
+- fix(eslint-config-ts-lib): 禁用 react/no-unused-prop-types 规则
+
 ## v0.13.9 - 2020.10.15
 
 - fix(eslint-config-ts-lib): 修复 eslint 不检测 react hooks 的依赖的缺陷

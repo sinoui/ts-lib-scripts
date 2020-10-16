@@ -9,6 +9,8 @@ const reactRules = {
   'react/jsx-props-no-spreading': 'off',
   // 此规则不符合 ts 模式下编写 React 组件，不需要通过 .defaultProps 属性指定默认属性，通过 es6 的函数默认参数指定默认属性值
   'react/require-default-props': 'off',
+  // 此规则不满足 React.createElement('div', props) 场景，故禁用此规则
+  'react/no-unused-prop-types': 0,
 };
 
 module.exports = reactRules;
