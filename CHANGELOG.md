@@ -3,6 +3,7 @@
 ## v0.13.10 - 2020.10.16
 
 - fix(eslint-config-ts-lib): 禁用 react/no-unused-prop-types 规则
+- fix(eslint-config-ts-lib): 去掉不存在的 @typescript-eslint/camelcase
 
 ## v0.13.9 - 2020.10.15
 

@@ -55,12 +55,12 @@ const eslintConfig = {
   rules: {
     ...ignoredRequireTsServerRules,
     ...ignoredImportRules,
-    ...reactRules,
     ...prettierRules,
     ...functionRules,
     ...tsRules,
     ...classRules,
     ...varRules,
+    ...reactRules,
     'no-console': ['warn', { allow: ['warn', 'error'] }],
     'no-underscore-dangle': [
       'error',
@@ -73,7 +73,6 @@ const eslintConfig = {
       files: ['*.test.ts', '*.spec.ts', '*.test.tsx', '*.spec.tsx'],
       rules: {
         'no-console': 'off',
-        '@typescript-eslint/camelcase': 'off',
       },
     },
     {
@@ -81,7 +80,6 @@ const eslintConfig = {
       rules: {
         'no-console': 'off',
         'import/no-webpack-loader-syntax': 'off',
-        '@typescript-eslint/camelcase': 'off',
         'import/no-extraneous-dependencies': 'off',
       },
     },
