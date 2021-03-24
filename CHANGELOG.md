@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.13.11 - 2021.3.24
+
+- fix(ts-lib-tools): 修复代码中引入 node_modules 中的 css 文件，导致 jest 单元测试执行失败的缺陷
+
 ## v0.13.10 - 2020.10.16
 
 - fix(eslint-config-ts-lib): 禁用 react/no-unused-prop-types 规则

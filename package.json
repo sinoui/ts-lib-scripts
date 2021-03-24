@@ -4,7 +4,8 @@
   "private": true,
   "workspaces": [
     "packages/*",
-    "examples"
+    "examples",
+    "e2e/jest-css-transform-demo"
   ],
   "homepage": "https://github.com/sinoui/ts-lib-scripts",
   "bugs": {
