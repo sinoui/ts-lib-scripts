@@ -1,6 +1,6 @@
 {
   "name": "ts-lib-scripts",
-  "version": "0.13.11",
+  "version": "0.14.0",
   "description": "一个以 🚀 速度创建零配置 TypeScript 库项目的命令行工具",
   "license": "MIT",
   "homepage": "https://github.com/sinoui/ts-lib-scripts",
@@ -30,7 +30,7 @@
     "execa": "^2.0.4",
     "fs-extra": "^8.0.1",
     "ora": "^3.4.0",
-    "ts-lib-scripts-utils": "^0.13.11",
+    "ts-lib-scripts-utils": "^0.14.0",
     "tslib": "^2.0.1",
     "validate-npm-package-name": "^3.0.0"
   },
