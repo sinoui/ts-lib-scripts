@@ -5,7 +5,8 @@
   "workspaces": [
     "packages/*",
     "examples",
-    "e2e/jest-css-transform-demo"
+    "e2e/jest-css-transform-demo",
+    "e2e/new-jsx-transform-demo"
   ],
   "homepage": "https://github.com/sinoui/ts-lib-scripts",
   "bugs": {
@@ -20,8 +21,8 @@
     "husky": "^4.2.5",
     "lerna": "^3.16.4",
     "lint-staged": "^8.1.7",
-    "typescript": "^4.0.2",
-    "typescript-plugin-css-modules": "^2.4.0"
+    "typescript": "^4.2.3",
+    "typescript-plugin-css-modules": "^3.2.0"
   },
   "eslintConfig": {
     "extends": "ts-lib",

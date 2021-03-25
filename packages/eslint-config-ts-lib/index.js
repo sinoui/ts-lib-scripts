@@ -21,9 +21,6 @@ const eslintConfig = {
     'airbnb-typescript',
     'plugin:react-hooks/recommended',
     'prettier',
-    'prettier/@typescript-eslint',
-    'prettier/react',
-    'prettier/standard',
     'plugin:cypress/recommended',
   ],
   globals: {
@@ -36,6 +33,7 @@ const eslintConfig = {
     },
     ecmaVersion: 2019,
     sourceType: 'module',
+    project: './tsconfig.json',
   },
   plugins: ['@typescript-eslint', 'prettier', 'cypress', 'react-hooks'],
   settings: {

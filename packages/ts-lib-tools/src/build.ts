@@ -278,8 +278,13 @@ export async function runBuild(buildOptions: BuildOptions) {
         )
         .map(async ([inputOptions, outputOptions]) => {
           await nextTick(async () => {
-            const bundle = await rollup(inputOptions);
-            await bundle.write(outputOptions);
+            try {
+              const bundle = await rollup(inputOptions);
+              await bundle.write(outputOptions);
+            } catch (e) {
+              console.error(e);
+              throw e;
+            }
           });
         }),
     );
@@ -287,8 +292,9 @@ export async function runBuild(buildOptions: BuildOptions) {
     await logger(buildPromise, '使用rollup编译js文件');
 
     await mvDeclarationFiles();
-  } catch {
+  } catch (e) {
     console.log('打包失败');
+    console.error(e);
     process.exit(1);
   }
 }

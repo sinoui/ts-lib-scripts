@@ -11,6 +11,8 @@ const reactRules = {
   'react/require-default-props': 'off',
   // 此规则不满足 React.createElement('div', props) 场景，故禁用此规则
   'react/no-unused-prop-types': 0,
+  // 采用新的 jsx 转换后，不再需要此规则
+  'react/react-in-jsx-scope': 'off',
 };
 
 module.exports = reactRules;

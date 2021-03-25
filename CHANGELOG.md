@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.14.0 - 2021.3.25
+
+- feat: 支持新的 JSX 转换 ([#38](https://github.com/sinoui/ts-lib-scripts/issues/38))
+
 ## v0.13.11 - 2021.3.24
 
 - fix(ts-lib-tools): 修复代码中引入 node_modules 中的 css 文件，导致 jest 单元测试执行失败的缺陷

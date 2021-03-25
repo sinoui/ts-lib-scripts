@@ -1,7 +1,5 @@
 import React from 'react';
 
-const Demo: React.FunctionComponent = ({ children }) => {
-  return <div>{children}</div>;
-};
+const Demo: React.FunctionComponent = ({ children }) => <div>{children}</div>;
 
 export default Demo;

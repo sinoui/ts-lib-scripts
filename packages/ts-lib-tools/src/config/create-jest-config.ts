@@ -37,9 +37,9 @@ export async function createJestConfig() {
       ),
     },
     transformIgnorePatterns: [
-      'node_modules/(?!(@sinoui|sinoui-components|lodash-es)/.*\\.js)',
+      'node_modules/(?!(@sinoui|sinoui-components|lodash-es)/).*\\.js$',
       '^.+\\.module\\.(css|sass|scss)$',
-      '^.+[/\\\\]dist[/\\\\].*\\.js',
+      '^.+[/\\\\]dist[/\\\\].*\\.js$',
     ],
     collectCoverageFrom: [
       'src/**/*.{ts,tsx}',

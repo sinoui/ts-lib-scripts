@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
 /* eslint-disable global-require */
 import { InputOptions, OutputOptions } from 'rollup';
 import nodeResolve from '@rollup/plugin-node-resolve';
@@ -83,6 +82,7 @@ export function createRollupInputOptions(
         ...createBabelConfig(format, format === 'es' ? 'production' : env),
       }),
       replace({
+        preventAssignment: true,
         'process.env.NODE_ENV': JSON.stringify(
           format === 'es' ? 'produciton' : env,
         ),
@@ -90,7 +90,6 @@ export function createRollupInputOptions(
       sourceMaps(),
       env === 'production' &&
         terser({
-          sourcemap: true,
           output: { comments: false },
           compress: {
             keep_infinity: true,

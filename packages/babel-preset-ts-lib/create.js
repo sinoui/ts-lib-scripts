@@ -56,6 +56,8 @@ module.exports = function create(_api, _opts, env) {
           // Will use the native built-in instead of trying to polyfill
           // behavior for any plugins that require one.
           useBuiltIns: true,
+          // 启用新的 JSX 转换
+          runtime: 'automatic',
         },
       ],
       require('@babel/preset-typescript'),

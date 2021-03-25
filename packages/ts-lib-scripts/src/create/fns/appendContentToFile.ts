@@ -15,14 +15,14 @@ async function appendContentToFile(
     flags: 'a',
   });
 
-  const append = (content: string | ReadStream, end = false) => {
-    return new Promise((resolve, reject) => {
+  const append = (content: string | ReadStream, end = false) =>
+    new Promise<boolean>((resolve, reject) => {
       if (typeof content === 'string') {
         const cb = (error?: Error | null) => {
           if (error) {
             reject(error);
           } else {
-            resolve();
+            resolve(true);
           }
         };
         if (end) {
@@ -30,21 +30,17 @@ async function appendContentToFile(
         }
         writer.write(content, cb);
       } else {
-        const stream = content.pipe(
-          writer,
-          {
-            end,
-          },
-        );
+        const stream = content.pipe(writer, {
+          end,
+        });
         content.on('end', () => {
-          resolve();
+          resolve(true);
         });
         stream.on('error', (error) => {
           reject(error);
         });
       }
     });
-  };
 
   for (let i = 0; i < contents.length; i++) {
     // eslint-disable-next-line no-await-in-loop
