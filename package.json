@@ -21,8 +21,8 @@
     "husky": "^4.2.5",
     "lerna": "^3.16.4",
     "lint-staged": "^8.1.7",
-    "typescript": "^4.2.3",
-    "typescript-plugin-css-modules": "^3.2.0"
+    "typescript": "^4.3.5",
+    "typescript-plugin-css-modules": "^3.4.0"
   },
   "eslintConfig": {
     "extends": "ts-lib",
@@ -49,7 +49,7 @@
     "test:coverage": "ts-lib-tools test --coverage",
     "build": "tsc --build packages/tsconfig.json",
     "clean": "yarn build --clean",
-    "postinstall": "yarn build",
+    "postinstall": "yarn-deduplicate yarn.lock && yarn build",
     "prepublishOnly": "yarn clean && yarn build"
   },
   "husky": {
@@ -71,5 +71,8 @@
   },
   "resolutions": {
     "serialize-javascript": "^2.1.1"
+  },
+  "dependencies": {
+    "yarn-deduplicate": "^3.1.0"
   }
 }

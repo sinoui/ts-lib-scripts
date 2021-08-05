@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.14.1 - 2021.8.5
+
+- fix(babel-preset-ts-lib): 修复总是出现 @babel/plugin-proposal-private-methods loose 警告的缺陷
+
 ## v0.14.0 - 2021.3.25
 
 - feat: 支持新的 JSX 转换 ([#38](https://github.com/sinoui/ts-lib-scripts/issues/38))

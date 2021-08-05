@@ -24,6 +24,7 @@ const importRules = {
         'stories/**/*',
         'docs/**/*',
         'scripts/**/*',
+        'docusaurus/**/*',
       ],
     },
   ],
