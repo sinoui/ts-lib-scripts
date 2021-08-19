@@ -145,7 +145,13 @@ async function buildCommonjs() {
  */
 async function copyFiles() {
   const files = await globby(
-    ['**/*', '!**/*.ts', '!**/*.tsx', '!**/__tests__/**'],
+    [
+      '**/*',
+      '!**/*.ts',
+      '!**/*.tsx',
+      '!**/__tests__/**',
+      '!**/__snapshots__/**',
+    ],
     {
       cwd: SRC_ROOT,
     },
