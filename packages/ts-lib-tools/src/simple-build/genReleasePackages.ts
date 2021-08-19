@@ -61,10 +61,13 @@ async function genSubPackageFile(name: string) {
 export default async function genReleasePackages() {
   await cpMainPackageFile();
 
-  const subPackages = await globby(['**', '!**/__tests__'], {
-    cwd: SRC_ROOT,
-    onlyDirectories: true,
-  });
+  const subPackages = await globby(
+    ['**', '!**/__tests__', '!**/__snapshots__'],
+    {
+      cwd: SRC_ROOT,
+      onlyDirectories: true,
+    },
+  );
 
   await Promise.all(subPackages.map(genSubPackageFile));
 }

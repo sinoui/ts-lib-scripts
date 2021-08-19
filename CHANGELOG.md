@@ -1,5 +1,9 @@
 # 变更说明
 
+## v0.14.2 - 2021.8.19
+
+- fix(ts-lib-tools): 修复打包时包含了 jest 的 `__snapshots__` 目录的缺陷
+
 ## v0.14.1 - 2021.8.5
 
 - fix(babel-preset-ts-lib): 修复总是出现 @babel/plugin-proposal-private-methods loose 警告的缺陷
