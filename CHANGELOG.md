@@ -4,6 +4,7 @@
 
 - fix(ts-lib-tools): 修复打包时包含了 jest 的 `__snapshots__` 目录的缺陷
 - fix(ts-lib-tools): 修复新建的 monorepo 子模块发布之前不编译和发布失败的缺陷
+- fix(ts-lib-tools): 修复执行 monorepo 子模块中的单元测试失败的缺陷（失败的原因：在部分情况下， jest 会解析到 `dist` 目录下的 `package.json` 文件）
 
 ## v0.14.1 - 2021.8.5
 

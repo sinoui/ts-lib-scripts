@@ -70,6 +70,12 @@ export async function createJestConfig() {
       '^react-native$': 'react-native-web',
       '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
     },
+    modulePathIgnorePatterns: [
+      '<rootDir>/dist/',
+      '<rootDir>/build/',
+      '<rootDir>/packages/dist/',
+      '<rootDir>/packages/build/',
+    ],
     resolver: 'jest-resolver-tsconfig-paths',
     testPathIgnorePatterns: [
       '.*/node_modules/.*',
@@ -101,6 +107,7 @@ export async function createJestConfig() {
     'watchPathIgnorePatterns',
     'testRegex',
     'testPathIgnorePatterns',
+    'modulePathIgnorePatterns',
   ];
 
   if (overrides) {
