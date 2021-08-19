@@ -10,7 +10,7 @@
     "build": "ts-lib-tools build --simple",
     "test": "ts-lib-tools test",
     "lint": "ts-lib-tools lint",
-    "release": "yarn publish dist --tag latest"
+    "release": "yarn build && yarn publish dist --tag latest"
   },
   "browserslist": {
     "production": [
@@ -23,5 +23,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
