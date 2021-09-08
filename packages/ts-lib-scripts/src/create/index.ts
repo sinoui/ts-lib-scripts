@@ -73,7 +73,7 @@ export default async function create(
     }
   }
 
-  if (isCmdInstalled('code')) {
+  if (await isCmdInstalled('code')) {
     console.log();
     const { openWithCode } = await prompt<any>({
       type: 'confirm',
