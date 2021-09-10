@@ -1,5 +1,6 @@
-import { resolve } from 'path';
 import { readFile, writeFile } from 'fs-extra';
+import { resolve } from 'path';
+
 import parseTemplateStr from '../parseTemplateStr';
 
 /**
@@ -11,7 +12,7 @@ import parseTemplateStr from '../parseTemplateStr';
 export default async function genLicenseFile(
   projectPath: string,
   options: CreateOptions,
-) {
+): Promise<void> {
   const licensePath = resolve(projectPath, 'LICENSE');
   const content = await readFile(licensePath, 'utf-8');
 

@@ -8,6 +8,6 @@ export default function parseTemplateStr(
   template: string,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   value: { [x: string]: any },
-) {
+): string {
   return template.replace(/<%= *(.+?) *%>/g, (_exp, keyName) => value[keyName]);
 }

@@ -1,20 +1,21 @@
 /* eslint-disable no-console */
 /* eslint-disable import/prefer-default-export */
-import { pathExists, copy, readJSON, outputJSON } from 'fs-extra';
 import chalk from 'chalk';
+import { copy, outputJSON, pathExists, readJSON } from 'fs-extra';
 import { resolve } from 'path';
 import { safePackageName } from 'ts-lib-scripts-utils';
+
 import {
-  resolveRoot,
-  TEMPLATE_PATH,
-  REACT_TEMPLATE_PATH,
   COMMON_TEMPLATE_PATH,
   GIT_IGNORE_FILE_PATH,
   NPM_IGNORE_FILE_PATH,
+  REACT_TEMPLATE_PATH,
+  resolveRoot,
+  TEMPLATE_PATH,
 } from '../config/paths';
-import genDoczFiles from './genDoczFiles';
-import updateREADMEFile from './fns/updateREADMEFile';
 import genLicenseFile from './fns/updateLicense';
+import updateREADMEFile from './fns/updateREADMEFile';
+import genDoczFiles from './genDoczFiles';
 
 /**
  * 生成package.json文件
@@ -25,7 +26,7 @@ import genLicenseFile from './fns/updateLicense';
 export async function genPackageFile(
   projectPath: string,
   options: CreateOptions,
-) {
+): Promise<void> {
   const packagePath = resolve(projectPath, 'package.json');
   const packageInfo = await readJSON(packagePath);
   packageInfo.version = options.packageVersion;
@@ -46,7 +47,7 @@ export async function genPackageFile(
  *
  * @param options 配置
  */
-export async function genProject(options: CreateOptions) {
+export async function genProject(options: CreateOptions): Promise<void> {
   const projectPath = resolveRoot(options.projectName);
   const exists = await pathExists(projectPath);
 

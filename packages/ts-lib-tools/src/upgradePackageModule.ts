@@ -1,9 +1,15 @@
-import { isMonorepo, safePackageName } from 'ts-lib-scripts-utils';
+import { outputJSON, readJSON } from 'fs-extra';
 import globby from 'globby';
-import { readJSON, outputJSON } from 'fs-extra';
+import { isMonorepo, safePackageName } from 'ts-lib-scripts-utils';
+
 import { resolveRoot } from './config/paths';
 
-async function updatePackage(packageFilePath: string) {
+/**
+ * 更新包
+ *
+ * @param packageFilePath 包描述文件路径
+ */
+async function updatePackage(packageFilePath: string): Promise<void> {
   const absolutePackageFileInfo = resolveRoot(packageFilePath);
   const packageInfo = await readJSON(absolutePackageFileInfo);
   if (!packageInfo.module || !packageInfo.module.endsWith('.esm.js')) {
@@ -14,7 +20,10 @@ async function updatePackage(packageFilePath: string) {
   }
 }
 
-export default async function upgradePakageModule() {
+/**
+ * 升级包模块
+ */
+export default async function upgradePakageModule(): Promise<void> {
   const isMono = await isMonorepo();
 
   if (!isMono) {

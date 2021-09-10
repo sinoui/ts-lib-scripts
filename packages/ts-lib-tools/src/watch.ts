@@ -1,19 +1,20 @@
 /* eslint-disable no-console */
 /* eslint-disable import/prefer-default-export */
-import { watch } from 'rollup';
-import ora from 'ora';
 import chalk from 'chalk';
+import ora from 'ora';
+import { watch } from 'rollup';
+
 import { createCjsIndexFile } from './build';
 import { createRollupOptions } from './config/create-rollup-options';
-import { clearConsole, flatMap } from './utils';
 import logError from './logError';
+import { clearConsole, flatMap } from './utils';
 
 /**
  * 运行监听命令
  *
  * @param buildOptions 构建参数
  */
-export async function runWatch(buildOptions: BuildOptions) {
+export async function runWatch(buildOptions: BuildOptions): Promise<void> {
   const formats: FormatMode[] = buildOptions.format;
   const envs: Env[] = ['production', 'development'];
 
@@ -30,7 +31,7 @@ export async function runWatch(buildOptions: BuildOptions) {
   }));
 
   const spinner = ora().start();
-  await watch(configs).on('event', async (event) => {
+  watch(configs).on('event', async (event) => {
     switch (event.code) {
       case 'START':
         clearConsole();

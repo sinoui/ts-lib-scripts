@@ -1,23 +1,30 @@
-import ora from 'ora';
-import { getInstallDepsCmd, getInstallCmd } from 'ts-lib-scripts-utils';
-import {
-  dependenciesMessage,
-  successMessage,
-  failureMessage,
-} from './messages';
+/* eslint-disable @typescript-eslint/no-require-imports */
+import type ora from 'ora';
+import { getInstallCmd, getInstallDepsCmd } from 'ts-lib-scripts-utils';
+
+import { resolveRoot } from '../config/paths';
 import {
   dependencies,
   devDependencies,
-  devDependenciesForReact,
   devDependenciesForDocz,
   devDependenciesForGhpages,
+  devDependenciesForReact,
   monorepoDevDependencies,
 } from './constants';
-import { resolveRoot } from '../config/paths';
+import {
+  dependenciesMessage,
+  failureMessage,
+  successMessage,
+} from './messages';
 
 import execa = require('execa');
 
-function getDevPendencies(options: CreateOptions) {
+/**
+ * 获取开发依赖
+ *
+ * @param options 配置项
+ */
+function getDevPendencies(options: CreateOptions): string[] {
   return [
     ...devDependencies,
     ...(options.react ? devDependenciesForReact : []),
@@ -33,13 +40,14 @@ function getDevPendencies(options: CreateOptions) {
  * @param projectName 项目名称
  * @param deps 依赖
  * @param isDev 是否是开发依赖
+ * @param monorepo 是否是 monorepo 模式
  */
 async function execInstallDeps(
   projectName: string,
   deps: string[],
   isDev = false,
   monorepo = false,
-) {
+): Promise<void> {
   const cmd = getInstallCmd();
   const args = [
     cmd === 'npm' ? 'i' : 'add',
@@ -56,9 +64,13 @@ async function execInstallDeps(
 /**
  * 安装依赖
  *
- * @param {CreateOptions} options
+ * @param spinner 进度条
+ * @param options 配置
  */
-async function installDeps(spinner: ora.Ora, options: CreateOptions) {
+async function installDeps(
+  spinner: ora.Ora,
+  options: CreateOptions,
+): Promise<void> {
   const { projectName } = options;
   const devDeps = getDevPendencies(options);
   spinner.start(dependenciesMessage(dependencies, devDeps));

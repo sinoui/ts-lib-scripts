@@ -1,5 +1,5 @@
-import k from '@test/module-a/k';
 import moduleA from '@test/module-a';
+import k from '@test/module-a/k';
 
 it('module-a', () => {
   expect(k).toBeDefined();

@@ -5,10 +5,11 @@
 import chalk from 'chalk';
 import { resolve } from 'path';
 import { isMonorepo } from 'ts-lib-scripts-utils';
+
 import {
   getAppPackageInfo,
-  getTestSetups,
   getJestDOMModulePath,
+  getTestSetups,
 } from './paths';
 
 const monorepoJestConfig = {
@@ -25,7 +26,7 @@ const monorepoJestConfig = {
 /**
  * 创建Jest配置
  */
-export async function createJestConfig() {
+export async function createJestConfig(): Promise<Record<string, any>> {
   const isMono = await isMonorepo();
   const jestConfig: { [x: string]: any } = {
     transform: {

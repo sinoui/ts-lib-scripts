@@ -1,6 +1,7 @@
-import { realpathSync, readJsonSync, existsSync } from 'fs-extra';
-import { resolve, dirname } from 'path';
+import { existsSync, readJsonSync, realpathSync } from 'fs-extra';
+import { dirname, resolve } from 'path';
 import { isMonorepo } from 'ts-lib-scripts-utils';
+
 import { moduleFileExtensions } from './constants';
 
 /**
@@ -13,7 +14,7 @@ export const rootPath = realpathSync(process.cwd());
  *
  * @param relativePath 相对路径
  */
-export const resolveRoot = (relativePath: string) =>
+export const resolveRoot = (relativePath: string): string =>
   resolve(rootPath, relativePath);
 
 /**
@@ -26,14 +27,14 @@ export const cliPackageInfo = readJsonSync(
 /**
  * 获取项目配置
  */
-export function getAppPackageInfo() {
+export function getAppPackageInfo(): Record<string, any> {
   return readJsonSync(resolveRoot('package.json'));
 }
 
 /**
  * 项目版本号
  */
-export const getAppVersion = () => {
+export const getAppVersion = (): string => {
   return getAppPackageInfo().version;
 };
 
@@ -42,12 +43,13 @@ export const getAppVersion = () => {
  *
  * @param resolveFn 相对路径解析函数
  * @param filePath 模块相对路径
+ * @param testExists 是否存在测试
  */
 export const resolveModule = (
   resolveFn: (relativePath: string) => string,
   filePath: string,
   testExists = false,
-) => {
+): string => {
   const extension = moduleFileExtensions.find((_) =>
     existsSync(resolveFn(`${filePath}${_}`)),
   );
@@ -92,13 +94,13 @@ export const MODULE_TEMPLATE_PATH = resolve(ASSETS_PATH, './module-template');
 /**
  * 获取初始化测试文件
  */
-export const getTestSetups = () =>
+export const getTestSetups = (): string =>
   resolveModule(resolveRoot, 'src/setupTests', true);
 
 /**
  * 获取 @testing-library/jest-dom 模块的路径
  */
-export const getJestDOMModulePath = () => {
+export const getJestDOMModulePath = (): string | undefined => {
   try {
     return require.resolve('@testing-library/jest-dom/extend-expect');
   } catch {
@@ -109,7 +111,7 @@ export const getJestDOMModulePath = () => {
 /**
  * 库对应的全局名称
  */
-export const globals = () => {
+export const globals = (): string => {
   return {
     react: 'React',
     'react-native': 'ReactNative',
@@ -120,7 +122,7 @@ export const globals = () => {
 /**
  * 获取 mono 项目的根目录
  */
-export const getMonoRootPath = async () => {
+export const getMonoRootPath = async (): Promise<string> => {
   const findMonoPath = async (dirPath: string): Promise<string> => {
     const isResult = await isMonorepo(dirPath);
 

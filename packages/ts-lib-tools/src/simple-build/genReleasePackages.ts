@@ -1,13 +1,14 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { resolve } from 'path';
-import { writeFile, readJSON, writeJSON, pathExists } from 'fs-extra';
+import { pathExists, readJSON, writeFile, writeJSON } from 'fs-extra';
 import globby from 'globby';
-import { ROOT_DIR, DIST_ROOT, SRC_ROOT } from './constants';
+import { resolve } from 'path';
+
+import { DIST_ROOT, ROOT_DIR, SRC_ROOT } from './constants';
 
 /**
  * 拷贝主模块配置文件
  */
-async function cpMainPackageFile() {
+async function cpMainPackageFile(): Promise<void> {
   const sourcePath = resolve(ROOT_DIR, 'package.json');
   const distPath = resolve(DIST_ROOT, 'package.json');
 
@@ -36,7 +37,7 @@ const subPackageTemplate = `
  *
  * @param name 子包名称
  */
-async function genSubPackageFile(name: string) {
+async function genSubPackageFile(name: string): Promise<void> {
   const subPackageDir = resolve(DIST_ROOT, name);
   const mainFilePath = resolve(subPackageDir, 'index.js');
   const isMainFileExists = await pathExists(mainFilePath);
@@ -58,7 +59,7 @@ async function genSubPackageFile(name: string) {
 /**
  * 生成发布包的package.json文件
  */
-export default async function genReleasePackages() {
+export default async function genReleasePackages(): Promise<void> {
   await cpMainPackageFile();
 
   const subPackages = await globby(

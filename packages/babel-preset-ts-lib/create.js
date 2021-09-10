@@ -16,7 +16,6 @@ module.exports = function create(_api, _opts, env) {
           },
         },
       ],
-      // eslint-disable-next-line prettier/prettier
       isEnvProduction && [
         require('@babel/preset-env').default,
         {

@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
-import { Command } from 'commander';
 import chalk from 'chalk';
+import { Command } from 'commander';
+
 import { cliPackageInfo } from './config/paths';
 import create from './create';
 

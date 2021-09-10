@@ -5,10 +5,14 @@ import chalk from 'chalk';
 const stderr = console.error.bind(console);
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function logError(err: any) {
+/**
+ * @param err
+ */
+export default function logError(err: any): void {
   const error = err.error || err;
-  const description = `${error.name ? `${error.name}: ` : ''}${error.message ||
-    error}`;
+  const description = `${error.name ? `${error.name}: ` : ''}${
+    error.message || error
+  }`;
   const message = error.plugin
     ? `(${error.plugin} plugin) ${description}`
     : description;

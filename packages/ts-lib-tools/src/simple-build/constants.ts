@@ -1,7 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { resolve } from 'path';
 import { ensureDirSync } from 'fs-extra';
 import { cpus } from 'os';
+import { resolve } from 'path';
+
 import { ASSETS_PATH } from '../config/paths';
 
 export const ROOT_DIR = process.cwd();

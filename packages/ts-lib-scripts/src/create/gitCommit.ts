@@ -7,7 +7,7 @@ import { join } from 'path';
  *
  * @param appPath 项目目录
  */
-export default function gitCommit(appPath: string) {
+export default function gitCommit(appPath: string): void {
   try {
     execSync('git add -A', { stdio: 'ignore', cwd: appPath });
     execSync('git commit -m "Initial commit from ts-lib-scripts"', {

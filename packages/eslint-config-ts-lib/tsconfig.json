@@ -3,6 +3,8 @@
   "include": ["."],
   "compilerOptions": {
     "allowJs": true,
-    "noEmit": true
+    "noEmit": true,
+    "moduleResolution": "node",
+    "module": "commonjs"
   }
 }

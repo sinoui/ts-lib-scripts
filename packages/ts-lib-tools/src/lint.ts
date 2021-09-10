@@ -1,10 +1,24 @@
 import { exec } from 'child_process';
-import { isMonorepo, getInstallCmd } from 'ts-lib-scripts-utils';
+import execa from 'execa';
+import { getInstallCmd, isMonorepo } from 'ts-lib-scripts-utils';
+
 import { rootPath } from './config/paths';
 
-export async function lint() {
+/**
+ * 执行代码静态检查
+ */
+export async function lint(): Promise<void> {
   const otherArgv = process.argv.slice(3);
   const mono = await isMonorepo();
+
+  if (otherArgv.includes('--fix')) {
+    await execa(getInstallCmd(), [
+      'prettier',
+      '**/src/**/*.(tsx|ts|md|json)',
+      '**/package.json',
+      '--write',
+    ]);
+  }
 
   exec(
     [
@@ -19,8 +33,11 @@ export async function lint() {
       '.ts',
       '--ext',
       '.tsx',
-      mono ? 'packages/' : 'src/',
+      '--cache',
+      '--cache-location',
+      'node_modules',
       ...otherArgv,
+      mono ? 'packages/' : 'src/',
     ].join(' '),
     {
       cwd: rootPath,

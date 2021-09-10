@@ -1,16 +1,22 @@
 import {
   copy,
-  readFile,
-  writeFile,
-  readJSON,
-  outputJSON,
   createReadStream,
+  outputJSON,
+  readFile,
+  readJSON,
+  writeFile,
 } from 'fs-extra';
 import { resolve } from 'path';
-import { DOCZ_TEMPLATE_PATH, DOC_README_PATH } from '../config/paths';
+
+import { DOC_README_PATH, DOCZ_TEMPLATE_PATH } from '../config/paths';
 import appendContentToFile from './fns/appendContentToFile';
 
-function getHomepage(options: CreateOptions) {
+/**
+ * 获取首页
+ *
+ * @param options 配置项
+ */
+function getHomepage(options: CreateOptions): string | undefined {
   if (options.packageName.startsWith('@')) {
     const matches = options.packageName.match(/@([^/])\/(.+)/);
     if (matches) {
@@ -23,8 +29,14 @@ function getHomepage(options: CreateOptions) {
 
 /**
  * 生成docz文件
+ *
+ * @param projectPath 项目路径
+ * @param options 配置
  */
-async function genDoczFiles(projectPath: string, options: CreateOptions) {
+async function genDoczFiles(
+  projectPath: string,
+  options: CreateOptions,
+): Promise<void> {
   // 拷贝docz文件
   await copy(DOCZ_TEMPLATE_PATH, projectPath);
 

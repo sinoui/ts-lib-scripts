@@ -1,21 +1,46 @@
-import { loadConfig, createMatchPath, MatchPath } from 'tsconfig-paths';
+import type { MatchPath } from 'tsconfig-paths';
+import { createMatchPath, loadConfig } from 'tsconfig-paths';
 
+/**
+ * Jest 解析器配置
+ */
 interface JestResolverOptions {
   /**
    * 基本路径
    */
   basedir: string;
+  /**
+   * 是否是在浏览器中执行
+   */
   browser?: boolean;
+  /**
+   * 默认的解析器
+   */
   defaultResolver: (request: string, options: JestResolverOptions) => string;
+  /**
+   * 代码文件扩展
+   */
   extensions?: string[];
+  /**
+   * 模块目录
+   */
   moduleDirectory?: string[];
+  /**
+   * 路径
+   */
   paths?: string[];
+  /**
+   * 根目录
+   */
   rootDir?: string[];
 }
 
 let cachedMatchPath: MatchPath | undefined;
 
-function getOrCreateMatchPath() {
+/**
+ * 获取或者创建匹配路径
+ */
+function getOrCreateMatchPath(): MatchPath | undefined {
   if (!cachedMatchPath) {
     const tsconfig = loadConfig();
     if (tsconfig.resultType === 'success') {
@@ -31,7 +56,16 @@ function getOrCreateMatchPath() {
   return cachedMatchPath;
 }
 
-function tsConfigPathsResolver(request: string, options: JestResolverOptions) {
+/**
+ * 从 tsconfig.json 中解析出路径
+ *
+ * @param request 请求
+ * @param options 配置项
+ */
+function tsConfigPathsResolver(
+  request: string,
+  options: JestResolverOptions,
+): string {
   const matchPath = getOrCreateMatchPath();
 
   if (matchPath) {

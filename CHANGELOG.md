@@ -1,5 +1,12 @@
 # 变更说明
 
+## 0.14.4
+
+- improve(eslint-config-ts-lib): 改进执行 lint 的速度
+- fix(eslint-config-ts-lib): 修复 prettier 和 eslint 规则冲突的缺陷
+- breadchange(eslint-config-ts-lib): 增加 jsdoc 和 typescript 类型显式声明的规则
+- improve(ts-lib-scripts): 启用 eslint 的缓存
+
 ## v0.14.3 - 2021.8.19
 
 - fix(ts-lib-tools): 修复打包时包含了 jest 的 `__snapshots__` 目录的缺陷

@@ -1,24 +1,28 @@
 /* eslint-disable no-console */
-import { pathExists, copy, readJSON, outputJSON, remove } from 'fs-extra';
 import chalk from 'chalk';
+import { copy, outputJSON, pathExists, readJSON, remove } from 'fs-extra';
 import { resolve } from 'path';
+
 import {
-  resolveRoot,
-  MONOREPO_TEMPLATE_PATH,
-  GIT_IGNORE_FILE_PATH,
   COMMON_TEMPLATE_PATH,
+  GIT_IGNORE_FILE_PATH,
+  MONOREPO_TEMPLATE_PATH,
+  resolveRoot,
 } from '../config/paths';
-import updateREADMEFile from './fns/updateREADMEFile';
 import genLicenseFile from './fns/updateLicense';
+import updateREADMEFile from './fns/updateREADMEFile';
 import genDoczFiles from './genDoczFiles';
 
 /**
  * 更新模块配置信息
  *
- * @param {string} projectPath
- * @param {CreateOptions} options
+ * @param projectPath 项目路径
+ * @param options 配置
  */
-async function updatePackageInfo(projectPath: string, options: CreateOptions) {
+async function updatePackageInfo(
+  projectPath: string,
+  options: CreateOptions,
+): Promise<void> {
   const packagePath = resolve(projectPath, 'package.json');
   const packageInfo = await readJSON(packagePath);
   packageInfo.version = options.packageVersion;
@@ -33,13 +37,13 @@ async function updatePackageInfo(projectPath: string, options: CreateOptions) {
 /**
  * 更新项目配置
  *
- * @param {string} projectPath
- * @param {CreateOptions} options
+ * @param projectPath 项目路径
+ * @param options 配置
  */
 async function updateProjectConfig(
   projectPath: string,
   options: CreateOptions,
-) {
+): Promise<void> {
   const configPath = resolve(projectPath, 'ts-lib.config.json');
   const projectConfig = await readJSON(configPath);
   projectConfig.npmScope = options.npmScope || options.packageName;
@@ -52,10 +56,13 @@ async function updateProjectConfig(
 /**
  * 更新tsconfig配置
  *
- * @param {string} projectPath
- * @param {CreateOptions} options
+ * @param projectPath 项目路径
+ * @param options 配置
  */
-async function updateTsConfig(projectPath: string, options: CreateOptions) {
+async function updateTsConfig(
+  projectPath: string,
+  options: CreateOptions,
+): Promise<void> {
   const tsconfigPath = resolve(projectPath, 'tsconfig.json');
   const tsconfig = await readJSON(tsconfigPath);
 
@@ -71,9 +78,9 @@ async function updateTsConfig(projectPath: string, options: CreateOptions) {
 /**
  * 生成monorepo模式的项目
  *
- * @param {CreateOptions} options
+ * @param options 配置
  */
-async function genMonorepoProject(options: CreateOptions) {
+async function genMonorepoProject(options: CreateOptions): Promise<void> {
   const projectPath = resolveRoot(options.projectName);
   const exists = await pathExists(projectPath);
 

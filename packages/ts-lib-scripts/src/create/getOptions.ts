@@ -1,10 +1,10 @@
-import { prompt } from 'enquirer';
-import { Command } from 'commander';
+import type { Command } from 'commander';
+import { prompt as promptInConsole } from 'enquirer';
 
 /**
  * 以交互方式获取配置
  *
- * @param options
+ * @param options 配置项
  */
 export async function getOptionsWithConfirm(
   options: CreateOptions,
@@ -34,7 +34,7 @@ export async function getOptionsWithConfirm(
     },
   ];
 
-  const response = await prompt(confirms);
+  const response = await promptInConsole(confirms);
 
   return { ...options, ...response };
 }
@@ -42,14 +42,12 @@ export async function getOptionsWithConfirm(
 /**
  * 获取React组件开发相关的配置
  *
- * @export
- * @param {CreateOptions} options
- * @returns
+ * @param options 配置项
  */
 export async function getReactOptionsWithConfirm(
   options: CreateOptions,
 ): Promise<CreateOptions> {
-  const { react } = await prompt<CreateOptions>({
+  const { react } = await promptInConsole<CreateOptions>({
     type: 'confirm',
     name: 'react',
     skip: options.react,
@@ -57,7 +55,7 @@ export async function getReactOptionsWithConfirm(
     initial: options.react,
   });
 
-  const { docz } = await prompt<CreateOptions>({
+  const { docz } = await promptInConsole<CreateOptions>({
     type: 'confirm',
     name: 'docz',
     skip: !react || !!options.docz,
@@ -65,7 +63,7 @@ export async function getReactOptionsWithConfirm(
     initial: react,
   });
 
-  const { doczGithubPages } = await prompt<CreateOptions>({
+  const { doczGithubPages } = await promptInConsole<CreateOptions>({
     type: 'confirm',
     name: 'doczGithubPages',
     skip: () => !docz || !!options.doczGithubPages,
@@ -87,7 +85,7 @@ export async function getOptions(
   projectName: string,
   packageName: string,
   program: Command,
-) {
+): Promise<CreateOptions> {
   let options: CreateOptions = {
     version: program.v,
     projectName,

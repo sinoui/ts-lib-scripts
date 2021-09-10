@@ -1,5 +1,6 @@
-import { writeFile, readFile } from 'fs-extra';
+import { readFile, writeFile } from 'fs-extra';
 import { resolve } from 'path';
+
 import parseTemplateStr from '../parseTemplateStr';
 
 /**
@@ -11,7 +12,7 @@ import parseTemplateStr from '../parseTemplateStr';
 export default async function updateREADMEFile(
   projectPath: string,
   options: CreateOptions,
-) {
+): Promise<void> {
   const readmePath = resolve(projectPath, 'README.md');
   const content = await readFile(readmePath, 'utf-8');
 

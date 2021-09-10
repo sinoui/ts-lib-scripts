@@ -1,38 +1,41 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
+/* eslint-disable @typescript-eslint/no-var-requires */
+import execa from 'execa';
 import {
-  writeFile,
-  readFile,
-  mkdirp,
-  remove,
   copy,
-  readJSON,
+  mkdirp,
   move,
   pathExists,
-  readdir,
   pathExistsSync,
+  readdir,
+  readFile,
+  readJSON,
+  remove,
+  writeFile,
 } from 'fs-extra';
-import { resolve, join } from 'path';
+import globby from 'globby';
+import { join, resolve } from 'path';
+import prettier from 'prettier';
 import { rollup } from 'rollup';
 import {
-  safePackageName,
   getInstallCmd,
   isInMonorepo,
+  safePackageName,
 } from 'ts-lib-scripts-utils';
-import globby from 'globby';
-import execa from 'execa';
-import prettier from 'prettier';
+
 import { createRollupOptions } from './config/create-rollup-options';
 import {
-  getAppPackageInfo,
-  DIST_PATH,
-  resolveRoot,
   ASSETS_PATH,
+  DIST_PATH,
+  getAppPackageInfo,
   getMonoRootPath,
+  resolveRoot,
   rootPath,
 } from './config/paths';
-import { flatMap } from './utils';
-import upgradePakageModule from './upgradePackageModule';
 import simpleBuild from './simple-build';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+import upgradePakageModule from './upgradePackageModule';
+import { flatMap } from './utils';
+
 const createLogger = require('progress-estimator');
 
 const logger = createLogger({
@@ -43,10 +46,8 @@ const logger = createLogger({
  * 创建index.js文件
  *
  * @param {string} outDir 输出目录
- *
- * @export
  */
-export async function createCjsIndexFile(outDir: string) {
+export async function createCjsIndexFile(outDir: string): Promise<void> {
   const content = await readFile(
     resolve(__dirname, '../assets/index.js.tpl'),
     'utf-8',
@@ -66,10 +67,13 @@ export async function createCjsIndexFile(outDir: string) {
 /**
  *  清除打包文件存放目录dist
  */
-export async function clean() {
+export async function clean(): Promise<void> {
   await remove(DIST_PATH);
 }
 
+/**
+ * @param callback 回调函数
+ */
 function nextTick<T>(callback: () => Promise<T>): Promise<T> {
   return new Promise<T>((resolveFn, reject) => {
     setTimeout(async () => {
@@ -87,7 +91,7 @@ function nextTick<T>(callback: () => Promise<T>): Promise<T> {
  * 拷贝ts声明文件
  *
  */
-async function copyDeclarationFiles() {
+async function copyDeclarationFiles(): Promise<void> {
   const declarationFiles = await globby('src/**/*.d.ts');
   await Promise.all(
     declarationFiles.map(async (filePath) => {
@@ -101,8 +105,10 @@ async function copyDeclarationFiles() {
 
 /**
  * 确保有 tsconfig.release.json
+ *
+ * @param templateFilePath 模板文件路径
  */
-async function ensureReleaseTsConfig(templateFilePath: string) {
+async function ensureReleaseTsConfig(templateFilePath: string): Promise<void> {
   const releaseTsConfigPath = resolve(process.cwd(), 'tsconfig.release.json');
   const isFileExists = await pathExists(releaseTsConfigPath);
 
@@ -114,7 +120,7 @@ async function ensureReleaseTsConfig(templateFilePath: string) {
 /**
  * 确保有 tsconfig.release.json
  */
-async function ensureModuleReleaseTsConfig() {
+async function ensureModuleReleaseTsConfig(): Promise<void> {
   const isIn = await isInMonorepo();
   if (isIn) {
     ensureReleaseTsConfig(
@@ -128,7 +134,7 @@ async function ensureModuleReleaseTsConfig() {
 /**
  * 确保生成 ts 类型的临时文件在 gitignore 中
  */
-async function ensureGitignoreForTsBuildInfoAndTypes() {
+async function ensureGitignoreForTsBuildInfoAndTypes(): Promise<void> {
   const isIn = await isInMonorepo();
   const pkgPath = isIn ? await getMonoRootPath() : rootPath;
   const gitignorePath = resolve(pkgPath, '.gitignore');
@@ -152,7 +158,7 @@ async function ensureGitignoreForTsBuildInfoAndTypes() {
 /**
  * 确保包的类型入口文件正确性
  */
-async function ensurePackageTypesEntry() {
+async function ensurePackageTypesEntry(): Promise<void> {
   const pkg = await readJSON(resolveRoot('package.json'));
   const isNeedUpdate = pkg.types !== 'types/index.d.ts' || pkg.files;
 
@@ -173,7 +179,7 @@ async function ensurePackageTypesEntry() {
 /**
  * 确保 .npmignore 文件存在
  */
-async function ensureNpmIgnore() {
+async function ensureNpmIgnore(): Promise<void> {
   const npmIgnorePath = resolveRoot('.npmignore');
   const isExists = await pathExists(npmIgnorePath);
 
@@ -188,7 +194,7 @@ async function ensureNpmIgnore() {
 /**
  * 编译出.d.ts文件
  */
-async function compileDeclarationFiles() {
+async function compileDeclarationFiles(): Promise<void> {
   await ensureModuleReleaseTsConfig();
   await ensureGitignoreForTsBuildInfoAndTypes();
   await ensurePackageTypesEntry();
@@ -202,7 +208,7 @@ async function compileDeclarationFiles() {
 /**
  * 移动.d.ts到dist根目录下
  */
-async function mvDeclarationFiles() {
+async function mvDeclarationFiles(): Promise<void> {
   const pacakgeInfo = await readJSON(resolveRoot('package.json'));
   const moduleName = pacakgeInfo.name.replace(/^@.+?\//, '');
 
@@ -219,7 +225,10 @@ async function mvDeclarationFiles() {
   }
 }
 
-async function isSkipTsc() {
+/**
+ *
+ */
+async function isSkipTsc(): Promise<boolean> {
   const isIn = await isInMonorepo();
   let configPath = resolveRoot('ts-lib.config.json');
   if (isIn) {
@@ -238,10 +247,9 @@ async function isSkipTsc() {
 /**
  * 运行编译命令
  *
- * @export
- * @param {BuildOptions} buildOptions 构建命令参数
+ * @param buildOptions 构建命令参数
  */
-export async function runBuild(buildOptions: BuildOptions) {
+export async function runBuild(buildOptions: BuildOptions): Promise<void> {
   const formats: FormatMode[] = buildOptions.format;
   const envs: Env[] = ['production', 'development'];
 

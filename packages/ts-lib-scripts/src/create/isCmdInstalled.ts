@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 import execa = require('execa');
 
 /**
@@ -9,7 +10,7 @@ import execa = require('execa');
 export default async function isCmdInstalled(
   cmd: string,
   args: string[] = ['--version'],
-) {
+): Promise<boolean> {
   try {
     await execa(cmd, args);
     return true;

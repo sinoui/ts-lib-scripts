@@ -1,14 +1,14 @@
 /* eslint-disable no-console */
 /* eslint-disable import/prefer-default-export */
-import validate from 'validate-npm-package-name';
 import chalk from 'chalk';
+import validate from 'validate-npm-package-name';
 
 /**
  * 验证模块名
  *
  * @param packageName 模块名
  */
-export function validatePackageName(packageName: string) {
+export function validatePackageName(packageName: string): boolean {
   const result = validate(packageName);
   if (!result.validForNewPackages) {
     console.error(`${chalk.red(

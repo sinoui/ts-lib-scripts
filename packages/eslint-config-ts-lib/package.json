@@ -12,19 +12,27 @@
     "type": "git",
     "url": "git+https://github.com/sinoui/ts-lib-scripts.git"
   },
-  "peerDependencies": {
-    "@typescript-eslint/eslint-plugin": "4.x",
-    "@typescript-eslint/parser": "4.x",
-    "eslint": "7.x",
-    "eslint-config-airbnb-typescript": "12.x",
-    "eslint-config-prettier": "8.x",
-    "eslint-import-resolver-typescript": "2.x",
-    "eslint-plugin-cypress": "2.x",
-    "eslint-plugin-import": "2.x",
-    "eslint-plugin-jsx-a11y": "6.x",
-    "eslint-plugin-prettier": "3.x",
-    "eslint-plugin-react": "7.x",
-    "eslint-plugin-react-hooks": "4.x"
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.31.0",
+    "@typescript-eslint/parser": "^4.31.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-jsdoc": "^36.1.0",
+    "eslint-plugin-react": "^7.25.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0"
   },
-  "gitHead": "a0ec9d27b2f24cb228993286530f89957d055b9b"
+  "gitHead": "a0ec9d27b2f24cb228993286530f89957d055b9b",
+  "devDependencies": {
+    "@sinoui/http": "^1.0.1",
+    "@types/cheerio": "^0.22.30",
+    "@types/node": "^16.7.13",
+    "@types/parse5": "^6.0.1",
+    "cheerio": "^1.0.0-rc.10",
+    "fs-extra": "^10.0.0",
+    "prettier": "^2.3.2",
+    "rxjs": "^7.3.0",
+    "ts-node": "^10.2.1"
+  }
 }

@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 /* eslint-disable no-console */
-import { pathExists, readJSON, copy, outputJSON, move } from 'fs-extra';
+import chalk from 'chalk';
+import { copy, move, outputJSON, pathExists, readJSON } from 'fs-extra';
 import { resolve } from 'path';
 import { safePackageName } from 'ts-lib-scripts-utils';
-import chalk from 'chalk';
-import { resolveRoot, MODULE_TEMPLATE_PATH } from './config/paths';
+
+import { MODULE_TEMPLATE_PATH, resolveRoot } from './config/paths';
 
 import execa = require('execa');
 import ora = require('ora');
@@ -13,7 +15,7 @@ import ora = require('ora');
  *
  * @param modulePath 模块路径
  */
-async function genLicenseFile(modulePath: string) {
+async function genLicenseFile(modulePath: string): Promise<void> {
   const isExists = await pathExists(resolveRoot('LICENSE'));
   if (isExists) {
     await copy(resolveRoot('LICENSE'), resolve(modulePath, 'LICENSE'));
@@ -25,7 +27,7 @@ async function genLicenseFile(modulePath: string) {
  *
  * @param modulePath 模块路径
  */
-async function genNpmignoreFile(modulePath: string) {
+async function genNpmignoreFile(modulePath: string): Promise<void> {
   await move(
     resolve(modulePath, 'npmignore'),
     resolve(modulePath, '.npmignore'),
@@ -35,10 +37,9 @@ async function genNpmignoreFile(modulePath: string) {
 /**
  * 生成模块
  *
- * @param {string} moduleName
- * @returns
+ * @param moduleName 模块名称
  */
-async function genModule(moduleName: string) {
+async function genModule(moduleName: string): Promise<void> {
   const modulePath = resolveRoot(`./packages/${moduleName}`);
 
   const isExists = await pathExists(modulePath);

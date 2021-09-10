@@ -1,34 +1,37 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 /* eslint-disable global-require */
-import execa from 'execa';
-import { transformAsync, TransformOptions } from '@babel/core';
-import globby from 'globby';
-import {
-  readFile,
-  ensureDir,
-  writeFile,
-  copyFile,
-  pathExists,
-  copy,
-  remove,
-} from 'fs-extra';
-import { resolve, basename, dirname } from 'path';
-import { mapLimit, map } from 'async';
-import ora from 'ora';
+import type { TransformOptions } from '@babel/core';
+import { transformAsync } from '@babel/core';
+import { map, mapLimit } from 'async';
 import chalk from 'chalk';
+import execa from 'execa';
 import {
+  copy,
+  copyFile,
+  ensureDir,
+  pathExists,
+  readFile,
+  remove,
+  writeFile,
+} from 'fs-extra';
+import globby from 'globby';
+import ora from 'ora';
+import { basename, dirname, resolve } from 'path';
+
+import {
+  BUILD_COMMONJS_CACHE_PATH,
+  BUILD_ESM_CACHE_PATH,
+  CP_FILES,
+  cpuCount,
   DIST_PATH_ES,
   DIST_PATH_ESM,
   DIST_ROOT,
-  BUILD_ESM_CACHE_PATH,
-  BUILD_COMMONJS_CACHE_PATH,
-  cpuCount,
-  SRC_ROOT,
-  ROOT_DIR,
-  CP_FILES,
-  TYPES_CACHE_PATH,
   ES6_CACHE_PATH,
+  ROOT_DIR,
   SIMPLE_BUILD_TS_CONFIG_FILE,
   SIMPLE_BUILD_TS_CONFIG_TEMPLATE,
+  SRC_ROOT,
+  TYPES_CACHE_PATH,
 } from './constants';
 import FileCache from './file-cache';
 import genReleasePackages from './genReleasePackages';
@@ -42,11 +45,14 @@ const commonjsCache = new FileCache(BUILD_COMMONJS_CACHE_PATH);
 /**
  * 清空 dist 目录
  */
-async function cleanDist() {
+async function cleanDist(): Promise<void> {
   await remove(DIST_ROOT);
 }
 
-async function ensureTsconfig() {
+/**
+ * 确保 tsconfig.json 文件存在
+ */
+async function ensureTsconfig(): Promise<void> {
   const targetPath = resolve(ROOT_DIR, SIMPLE_BUILD_TS_CONFIG_FILE);
   const isExists = await pathExists(targetPath);
 
@@ -58,7 +64,7 @@ async function ensureTsconfig() {
 /**
  * ts -> es and types
  */
-async function buildEs6AndTypes() {
+async function buildEs6AndTypes(): Promise<void> {
   await ensureTsconfig();
   await execa('yarn', ['run', 'tsc', '--build', SIMPLE_BUILD_TS_CONFIG_FILE], {
     stdio: 'inherit',
@@ -74,13 +80,14 @@ async function buildEs6AndTypes() {
  * @param from 源码目录
  * @param to 生成代码放置目录
  * @param opts 选项
+ * @param cache 文件缓存
  */
 async function buildByBabel(
   from: string,
   to: string,
   opts: TransformOptions,
   cache: FileCache,
-) {
+): Promise<void> {
   const files = await globby(['**/*.js'], {
     cwd: from,
   });
@@ -115,7 +122,7 @@ async function buildByBabel(
 /**
  * es -> esm
  */
-async function buildEsm() {
+async function buildEsm(): Promise<void> {
   await buildByBabel(
     DIST_PATH_ES,
     DIST_PATH_ESM,
@@ -129,7 +136,7 @@ async function buildEsm() {
 /**
  * esm -> commonjs
  */
-async function buildCommonjs() {
+async function buildCommonjs(): Promise<void> {
   await buildByBabel(
     DIST_PATH_ESM,
     DIST_ROOT,
@@ -143,7 +150,7 @@ async function buildCommonjs() {
 /**
  * 拷贝文件
  */
-async function copyFiles() {
+async function copyFiles(): Promise<void> {
   const files = await globby(
     [
       '**/*',
@@ -157,7 +164,7 @@ async function copyFiles() {
     },
   );
 
-  const copyToDist = async (distPath: string) => {
+  const copyToDist = async (distPath: string): Promise<void> => {
     await mapLimit(files, 10, async (filePath) => {
       await ensureDir(dirname(resolve(distPath, filePath)));
       await copyFile(resolve(SRC_ROOT, filePath), resolve(distPath, filePath));
@@ -184,10 +191,14 @@ async function copyFiles() {
 /**
  * 打包
  */
-export default async function build() {
+export default async function build(): Promise<void> {
   const begin = Date.now();
   const spinner = ora().start();
-  async function log<T>(promise: Promise<T>, message: string) {
+  /**
+   * @param promise promise
+   * @param message 消息
+   */
+  async function log<T>(promise: Promise<T>, message: string): Promise<T> {
     spinner.text = `${message}\t`;
     try {
       return await promise;

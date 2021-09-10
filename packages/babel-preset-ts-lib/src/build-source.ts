@@ -1,4 +1,6 @@
-import { transform, TransformOptions } from '@babel/core';
+import type { TransformOptions } from '@babel/core';
+import { transform } from '@babel/core';
+
 import tsLibBabelPreset from '../index';
 
 const transformOptions: TransformOptions = {
@@ -8,9 +10,10 @@ const transformOptions: TransformOptions = {
 
 /**
  * 编译源码
+ *
  * @param source 源码
  */
-export default function buildSource(source: string) {
+export default function buildSource(source: string): string {
   const babelFileResult = transform(source, transformOptions);
   return babelFileResult.code;
 }

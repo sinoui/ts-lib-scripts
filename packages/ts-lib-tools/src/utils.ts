@@ -1,21 +1,21 @@
-import { resolve, isAbsolute } from 'path';
+import { isAbsolute, resolve } from 'path';
 import { safePackageName, safeVariableName } from 'ts-lib-scripts-utils';
+
 import { getAppPackageInfo } from './config/paths';
 
 /**
  * 获取打包js文件的路径
  *
- * @export
- * @param {string} outDir 输出目录
- * @param {('es' | 'cjs' | 'umd')} format 打包js的格式
- * @param {('development' | 'production')} env 运行环境
- * @returns
+ * @param outDir 输出目录
+ * @param format 打包js的格式
+ * @param env 运行环境
+ * @returns 打包 js 文件的路径
  */
 export function getOutputFilePath(
   outDir: string,
   format: 'es' | 'cjs' | 'umd',
   env: 'development' | 'production',
-) {
+): string {
   if (format === 'es') {
     return resolve(
       outDir,
@@ -31,10 +31,9 @@ export function getOutputFilePath(
 /**
  * 获取库名称
  *
- * @export
  * @returns 返回库名称
  */
-export function getLibraryName() {
+export function getLibraryName(): string {
   return safeVariableName(getAppPackageInfo().name);
 }
 
@@ -55,7 +54,7 @@ export function external(id: string): boolean {
  *
  * @param value 字符串值
  */
-export function commaSeparatedList(value: string) {
+export function commaSeparatedList(value: string): string[] {
   return value ? value.split(',') : [];
 }
 
@@ -64,7 +63,7 @@ export function commaSeparatedList(value: string) {
 /**
  * 清除控制台
  */
-export function clearConsole() {
+export function clearConsole(): void {
   process.stdout.write(
     process.platform === 'win32' ? '\x1B[2J\x1B[0f' : '\x1B[2J\x1B[3J\x1B[H',
   );

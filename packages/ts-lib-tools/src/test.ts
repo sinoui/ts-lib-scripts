@@ -1,13 +1,14 @@
 /* eslint-disable import/prefer-default-export */
-import { run } from 'jest';
 import { execSync } from 'child_process';
-import { resolve, isAbsolute, relative } from 'path';
+import { run } from 'jest';
+import { isAbsolute, relative, resolve } from 'path';
+
 import { createJestConfig } from './config/create-jest-config';
 
 /**
  * 判断项目是否由Git管理
  */
-function isInGitRepository() {
+function isInGitRepository(): boolean {
   try {
     execSync('git rev-parse --is-inside-work-tree', { stdio: 'ignore' });
     return true;
@@ -19,7 +20,7 @@ function isInGitRepository() {
 /**
  * 运行单元测试命令
  */
-export async function test() {
+export async function test(): Promise<void> {
   process.env.BABEL_ENV = 'test';
   process.env.NODE_ENV = 'test';
 

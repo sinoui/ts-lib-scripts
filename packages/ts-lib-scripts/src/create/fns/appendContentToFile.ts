@@ -1,24 +1,28 @@
 /* eslint-disable no-plusplus */
-import { createWriteStream, ReadStream } from 'fs';
+import type { ReadStream } from 'fs';
+import { createWriteStream } from 'fs';
 
 /**
  * 向指定文件添加内容
  *
- * @param {string} targetFilePath
- * @param {(...(string | ReadStream)[])} contents
+ * @param targetFilePath 目录文件路径
+ * @param contents 需要添加的内容
  */
 async function appendContentToFile(
   targetFilePath: string,
   ...contents: (string | ReadStream)[]
-) {
+): Promise<void> {
   const writer = createWriteStream(targetFilePath, {
     flags: 'a',
   });
 
-  const append = (content: string | ReadStream, end = false) =>
+  const append = (
+    content: string | ReadStream,
+    end = false,
+  ): Promise<boolean> =>
     new Promise<boolean>((resolve, reject) => {
       if (typeof content === 'string') {
-        const cb = (error?: Error | null) => {
+        const cb = (error?: Error | null): void => {
           if (error) {
             reject(error);
           } else {

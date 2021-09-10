@@ -1,4 +1,4 @@
-import { realpathSync, readJsonSync } from 'fs-extra';
+import { readJsonSync, realpathSync } from 'fs-extra';
 import { resolve } from 'path';
 
 /**
@@ -11,7 +11,7 @@ export const rootPath = realpathSync(process.cwd());
  *
  * @param relativePath 相对路径
  */
-export const resolveRoot = (relativePath: string) =>
+export const resolveRoot = (relativePath: string): string =>
   resolve(rootPath, relativePath);
 
 /**

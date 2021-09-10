@@ -1,50 +1,47 @@
 /* eslint-disable global-require */
-import { InputOptions, OutputOptions } from 'rollup';
-import nodeResolve from '@rollup/plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
+import image from '@rollup/plugin-image';
 import json from '@rollup/plugin-json';
+import nodeResolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
+import svgr from '@svgr/rollup';
+import type { InputOptions, OutputOptions } from 'rollup';
+import babel from 'rollup-plugin-babel';
+import commonjs from 'rollup-plugin-commonjs';
+import postcss from 'rollup-plugin-postcss';
 import sourceMaps from 'rollup-plugin-sourcemaps';
 import { terser } from 'rollup-plugin-terser';
-import babel from 'rollup-plugin-babel';
-import svgr from '@svgr/rollup';
-import image from '@rollup/plugin-image';
-import postcss from 'rollup-plugin-postcss';
+
 import { external, getOutputFilePath } from '../utils';
-import { createBabelConfig } from './create-babel-config';
 import {
-  MAIN_FIELDS_FOR_WEB,
   MAIN_FIELDS_FOR_NODE,
+  MAIN_FIELDS_FOR_WEB,
   moduleFileExtensions,
 } from './constants';
-import { globals, getAppPackageInfo } from './paths';
+import { createBabelConfig } from './create-babel-config';
+import { getAppPackageInfo, globals } from './paths';
 
 /**
  * 判断是否是React组件库
  */
-function isReactLib() {
+function isReactLib(): boolean {
   const pkgInfo = getAppPackageInfo();
 
-  return (
-    (pkgInfo.dependencies && pkgInfo.dependencies.react) ||
-    (pkgInfo.peerDependencies && pkgInfo.peerDependencies.react)
-  );
+  return !!pkgInfo.dependencies?.react || !!pkgInfo.peerDependencies?.react;
 }
 
 /**
  * 创建rollup输入配置选项
  *
- * @export
- * @param {('es' | 'cjs' | 'umd')} format 打包后js文件的格式
- * @param {('development' | 'production')} env 打包后js文件的运行环境
- * @param {BuildOptions} input 打包配置项
- * @returns
+ * @param format 打包后js文件的格式
+ * @param  env 打包后js文件的运行环境
+ * @param input 打包配置项
+ * @returns 返回输入配置选项
  */
 export function createRollupInputOptions(
   format: 'es' | 'cjs' | 'umd',
   env: 'development' | 'production',
   input: BuildOptions,
-) {
+): InputOptions {
   const inputOptions: InputOptions = {
     external,
     input: input.entry,
@@ -109,17 +106,16 @@ export function createRollupInputOptions(
 /**
  * 创建rollup输出配置选项
  *
- * @export
- * @param {('es' | 'cjs' | 'umd')} format 打包后js文件的格式
- * @param {('development' | 'production')} env 打包后js文件的运行环境
- *
- * @returns
+ * @param  format 打包后js文件的格式
+ * @param env 打包后js文件的运行环境
+ * @param input 打包配置
+ * @returns 返回输出配置选项
  */
 export function createRollupOutputOptions(
   format: 'es' | 'cjs' | 'umd',
   env: 'development' | 'production',
   input: BuildOptions,
-) {
+): OutputOptions {
   const outputOptions: OutputOptions = {
     file: getOutputFilePath(input.outDir, format, env),
     name: input.name,
@@ -137,11 +133,10 @@ export function createRollupOutputOptions(
 /**
  * 创建rollup配置项
  *
- * @export
- * @param {('es' | 'cjs' | 'umd')} format 格式化
- * @param {('development' | 'production')} env 运行环境
- * @param {BuildOptions} input 打包配置项
- * @returns {[InputOptions, OutputOptions]} 返回rollup输入和输出配置项数组，第一项为输入配置，第二项为输出配置。
+ * @param format 格式化
+ * @param env 运行环境
+ * @param input 打包配置项
+ * @returns 返回rollup输入和输出配置项数组，第一项为输入配置，第二项为输出配置。
  */
 export function createRollupOptions(
   format: 'es' | 'cjs' | 'umd',

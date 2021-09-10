@@ -1,16 +1,17 @@
 /* eslint-disable no-console */
-import { Command } from 'commander';
 import chalk from 'chalk';
+import { Command } from 'commander';
+
 import { runBuild } from './build';
-import { commaSeparatedList } from './utils';
+import { DIST_PATH_NAME } from './config/constants';
 import { getBuildOptions } from './config/getBuildOptions';
 import { cliPackageInfo } from './config/paths';
-import { test } from './test';
-import { lint } from './lint';
 import { format } from './format';
-import { runWatch } from './watch';
-import { DIST_PATH_NAME } from './config/constants';
 import genModule from './gen-module';
+import { lint } from './lint';
+import { test } from './test';
+import { commaSeparatedList } from './utils';
+import { runWatch } from './watch';
 
 const program = new Command('ts-lib-tools');
 program.version(cliPackageInfo.version);

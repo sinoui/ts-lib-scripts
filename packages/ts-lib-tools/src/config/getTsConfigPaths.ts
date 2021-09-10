@@ -1,7 +1,12 @@
-import { loadConfig } from 'tsconfig-paths';
 import { join } from 'path';
+import { loadConfig } from 'tsconfig-paths';
 
-export default function getTsConfigPaths() {
+/**
+ * 获取 tsconfig.json 中的 paths 配置
+ */
+export default function getTsConfigPaths():
+  | Record<string, string[]>
+  | undefined {
   const config = loadConfig();
 
   if (config.resultType === 'success') {

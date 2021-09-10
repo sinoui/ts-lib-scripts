@@ -1,32 +1,32 @@
-/* eslint-disable import/prefer-default-export */
-/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-require-imports */
 import chalk from 'chalk';
+import type { Command } from 'commander';
+import { prompt as promptInConsole } from 'enquirer';
 import ora from 'ora';
-import { Command } from 'commander';
-import { prompt } from 'enquirer';
 import { logError } from 'ts-lib-scripts-utils';
-import { validatePackageName } from './validatePackageName';
-import { getOptions } from './getOptions';
-import { genProject } from './genProject';
+
 import { resolveRoot } from '../config/paths';
-import isCmdInstalled from './isCmdInstalled';
 import createGitRepository from './createGitRepository';
+import genMonorepoProject from './genMonorepoProject';
+import { genProject } from './genProject';
+import { getOptions } from './getOptions';
 import gitCommit from './gitCommit';
 import installDeps from './installDeps';
-import genMonorepoProject from './genMonorepoProject';
+import isCmdInstalled from './isCmdInstalled';
+import { validatePackageName } from './validatePackageName';
 
 import execa = require('execa');
 
 /**
  * 创建项目
  *
- * @param projectName 项目名称
+ * @param projectNameConfig 配置名称配置
  * @param program 命令行对象
  */
 export default async function create(
   projectNameConfig: string,
   program: Command,
-) {
+): Promise<void> {
   const projectName = projectNameConfig.startsWith('@')
     ? projectNameConfig.substr(projectNameConfig.indexOf('/') + 1)
     : projectNameConfig;
@@ -75,7 +75,7 @@ export default async function create(
 
   if (await isCmdInstalled('code')) {
     console.log();
-    const { openWithCode } = await prompt<any>({
+    const { openWithCode } = await promptInConsole<any>({
       type: 'confirm',
       name: 'openWithCode',
       message: '使用vscode打开项目？',
