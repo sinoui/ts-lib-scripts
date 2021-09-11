@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-import execa = require('execa');
+import execa from 'execa';
 
 /**
  * 判断指定命令行是否安装

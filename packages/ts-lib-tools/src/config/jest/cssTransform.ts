@@ -1,8 +1,12 @@
+import { VERSION } from 'rollup';
+
+console.log('jest version', VERSION);
+
 const cssTranform = {
-  process() {
+  process(): string {
     return 'module.exports = {};';
   },
-  getCacheKey() {
+  getCacheKey(): string {
     return 'cssTransform';
   },
 };

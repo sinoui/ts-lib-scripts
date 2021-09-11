@@ -1,4 +1,3 @@
-import type { Command } from 'commander';
 import { prompt as promptInConsole } from 'enquirer';
 
 /**
@@ -84,10 +83,10 @@ export async function getReactOptionsWithConfirm(
 export async function getOptions(
   projectName: string,
   packageName: string,
-  program: Command,
+  program: Record<string, string | boolean>,
 ): Promise<CreateOptions> {
   let options: CreateOptions = {
-    version: program.v,
+    version: program.v as string,
     projectName,
     packageName,
     packageDescription: program.packageDescription as string,

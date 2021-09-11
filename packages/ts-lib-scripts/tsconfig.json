@@ -7,7 +7,7 @@
     "rootDir": "./src",
     "outDir": "./dist",
     "declarationDir": "./dist",
-    "module": "commonjs"
+    "module": "CommonJS"
   },
   "references": [
     {

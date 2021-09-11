@@ -5,9 +5,9 @@ import * as paths from './paths';
 /**
  * 获取完整的构建配置
  *
- * @param buildOptions
+ * @param buildOptions 构建配置
  */
-export function getBuildOptions(buildOptions: BuildOptions) {
+export function getBuildOptions(buildOptions: BuildOptions): BuildOptions {
   const entry = buildOptions.entry || paths.entry;
   const name = buildOptions.name || getLibraryName();
 

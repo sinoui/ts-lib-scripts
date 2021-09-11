@@ -15,8 +15,8 @@
   },
   "devDependencies": {
     "@types/react": "^16.8.19",
-    "husky": "^2.3.0",
-    "lint-staged": "^8.1.7",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
     "react": "^16.8.6",
     "rimraf": "^2.6.3",
     "typescript": "^4.4.2"
@@ -34,17 +34,6 @@
   },
   "eslintConfig": {
     "extends": "ts-lib"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "git add"
-    ]
   },
   "module": "dist/ts-lib-scripts-example.esm.js",
   "types": "types/index.d.ts"

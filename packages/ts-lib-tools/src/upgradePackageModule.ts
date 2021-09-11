@@ -1,5 +1,5 @@
 import { outputJSON, readJSON } from 'fs-extra';
-import globby from 'globby';
+import { globby } from 'globby';
 import { isMonorepo, safePackageName } from 'ts-lib-scripts-utils';
 
 import { resolveRoot } from './config/paths';

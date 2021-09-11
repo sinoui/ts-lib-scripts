@@ -1,14 +1,11 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
-/* eslint-disable no-console */
 import chalk from 'chalk';
+import execa from 'execa';
 import { copy, move, outputJSON, pathExists, readJSON } from 'fs-extra';
+import ora from 'ora';
 import { resolve } from 'path';
 import { safePackageName } from 'ts-lib-scripts-utils';
 
 import { MODULE_TEMPLATE_PATH, resolveRoot } from './config/paths';
-
-import execa = require('execa');
-import ora = require('ora');
 
 /**
  * 生成许可证文件

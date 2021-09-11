@@ -1,0 +1,10 @@
+{
+  "**/*.{md,mdx,js,json}": [
+    "prettier --write"
+  ],
+  "(packages|src)/**/*.{ts,tsx}": [
+    "prettier --write",
+    "eslint --fix --color",
+    "cross-env CI=true ts-lib-tools test"
+  ]
+}

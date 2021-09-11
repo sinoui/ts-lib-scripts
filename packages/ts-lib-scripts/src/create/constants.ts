@@ -1,17 +1,12 @@
 /**
  * 开发依赖
  */
-export const devDependencies = [
-  'husky',
-  'prettier',
-  'ts-lib-tools',
-  'lint-staged',
-];
+export const devDependencies = ['ts-lib-tools'];
 
 /**
  * 依赖
  */
-export const dependencies = ['@babel/runtime', '@babel/polyfill'];
+export const dependencies = ['@babel/runtime', '@babel/polyfill', 'tslib'];
 
 /**
  * react库开发依赖

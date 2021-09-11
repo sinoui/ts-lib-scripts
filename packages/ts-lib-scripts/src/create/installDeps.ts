@@ -1,6 +1,11 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-import type ora from 'ora';
-import { getInstallCmd, getInstallDepsCmd } from 'ts-lib-scripts-utils';
+import execa from 'execa';
+import type { Ora } from 'ora';
+import {
+  getInstallCmd,
+  getInstallDepsCmd,
+  logError,
+} from 'ts-lib-scripts-utils';
 
 import { resolveRoot } from '../config/paths';
 import {
@@ -16,8 +21,6 @@ import {
   failureMessage,
   successMessage,
 } from './messages';
-
-import execa = require('execa');
 
 /**
  * 获取开发依赖
@@ -54,7 +57,8 @@ async function execInstallDeps(
     ...deps,
     isDev ? '--dev' : '',
     cmd === 'npm' ? '--save' : '',
-    monorepo ? '-W' : '',
+    cmd === 'yarn' && monorepo ? '-W' : '',
+    '--ignore-scripts',
   ].filter(Boolean);
   await execa(cmd, args, {
     cwd: resolveRoot(projectName),
@@ -68,22 +72,23 @@ async function execInstallDeps(
  * @param options 配置
  */
 async function installDeps(
-  spinner: ora.Ora,
+  spinner: Ora,
   options: CreateOptions,
 ): Promise<void> {
-  const { projectName } = options;
+  const { projectName, monorepo } = options;
   const devDeps = getDevPendencies(options);
   spinner.start(dependenciesMessage(dependencies, devDeps));
   try {
-    await execInstallDeps(projectName, dependencies, false, true);
-    await execInstallDeps(projectName, devDeps, true, true);
+    await execInstallDeps(projectName, devDeps, true, !!monorepo);
+    await execInstallDeps(projectName, dependencies, false, !!monorepo);
     spinner.succeed('安装依赖包');
     successMessage(getInstallCmd(), projectName);
   } catch (error) {
+    logError(error);
     spinner.fail(`安装依赖失败`);
     failureMessage([
-      getInstallDepsCmd(dependencies),
-      getInstallDepsCmd(devDeps, true),
+      getInstallDepsCmd(dependencies, false, !!monorepo),
+      getInstallDepsCmd(devDeps, true, !!monorepo),
     ]);
     process.exit(1);
   }

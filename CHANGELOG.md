@@ -6,6 +6,7 @@
 - fix(eslint-config-ts-lib): 修复 prettier 和 eslint 规则冲突的缺陷
 - breadchange(eslint-config-ts-lib): 增加 jsdoc 和 typescript 类型显式声明的规则
 - improve(ts-lib-scripts): 启用 eslint 的缓存
+- improve(ts-lib-scripts): 升级 husky 和 lint-staged
 
 ## v0.14.3 - 2021.8.19
 

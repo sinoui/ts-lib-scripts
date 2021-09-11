@@ -13,7 +13,7 @@ import {
   remove,
   writeFile,
 } from 'fs-extra';
-import globby from 'globby';
+import { globby } from 'globby';
 import { join, resolve } from 'path';
 import prettier from 'prettier';
 import { rollup } from 'rollup';

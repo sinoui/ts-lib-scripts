@@ -18,9 +18,9 @@
   ],
   "gitHead": "a0ec9d27b2f24cb228993286530f89957d055b9b",
   "dependencies": {
-    "chalk": "^2.4.2",
-    "execa": "^3.4.0",
-    "fs-extra": "^8.1.0"
+    "chalk": "^4.1.2",
+    "execa": "^5.1.1",
+    "fs-extra": "^10.0.0"
   },
   "devDependencies": {
     "@types/execa": "^2.0.0"

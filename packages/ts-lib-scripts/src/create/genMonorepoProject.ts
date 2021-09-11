@@ -28,6 +28,16 @@ async function updatePackageInfo(
   packageInfo.version = options.packageVersion;
   packageInfo.name = options.packageName;
   packageInfo.description = options.packageDescription;
+  packageInfo.workspaces = ['packages/*'];
+  packageInfo.scripts.gen = 'ts-lib-tools gen-module';
+  packageInfo.scripts.release = 'lerna publish --contents dist';
+  packageInfo.private = true;
+  delete packageInfo.publishConfig;
+  delete packageInfo.sideEffects;
+  delete packageInfo.main;
+  delete packageInfo['umd:main'];
+  delete packageInfo['module'];
+  delete packageInfo.types;
 
   await outputJSON(packagePath, packageInfo, {
     spaces: 2,

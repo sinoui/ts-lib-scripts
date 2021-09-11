@@ -17,10 +17,10 @@
     "url": "git+https://github.com/sinoui/ts-lib-scripts.git"
   },
   "devDependencies": {
-    "cross-env": "^5.2.0",
-    "husky": "^4.2.5",
+    "cross-env": "^7.0.3",
+    "husky": "^7.0.2",
     "lerna": "^3.16.4",
-    "lint-staged": "^8.1.7",
+    "lint-staged": "^11.1.2",
     "typescript": "^4.4.2",
     "typescript-plugin-css-modules": "^3.4.0"
   },
@@ -31,17 +31,6 @@
       "no-console": "off"
     }
   },
-  "prettier": {
-    "printWidth": 80,
-    "useTabs": false,
-    "tabWidth": 2,
-    "semi": true,
-    "singleQuote": true,
-    "trailingComma": "all",
-    "bracketSpacing": true,
-    "jsxBracketSameLine": false,
-    "arrowParens": "always"
-  },
   "scripts": {
     "lint": "ts-lib-tools lint",
     "format": "ts-lib-tools lint --fix",
@@ -50,24 +39,8 @@
     "build": "tsc --build packages/tsconfig.json",
     "clean": "yarn build --clean",
     "postinstall": "yarn-deduplicate yarn.lock && yarn build",
-    "prepublishOnly": "yarn clean && yarn build"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "linters": {
-      "packages/**/*.{ts,tsx}": [
-        "cross-env CI=true ts-lib-tools test",
-        "eslint --fix --color",
-        "git add"
-      ]
-    },
-    "ignore": [
-      "**/assets/**"
-    ]
+    "prepublishOnly": "yarn clean && yarn build",
+    "prepare": "husky install"
   },
   "resolutions": {
     "serialize-javascript": "^2.1.1"

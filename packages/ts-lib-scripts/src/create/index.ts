@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import chalk from 'chalk';
-import type { Command } from 'commander';
 import { prompt as promptInConsole } from 'enquirer';
+import execa from 'execa';
 import ora from 'ora';
 import { logError } from 'ts-lib-scripts-utils';
 
@@ -11,11 +11,10 @@ import genMonorepoProject from './genMonorepoProject';
 import { genProject } from './genProject';
 import { getOptions } from './getOptions';
 import gitCommit from './gitCommit';
+import initHusky from './init-husky';
 import installDeps from './installDeps';
 import isCmdInstalled from './isCmdInstalled';
 import { validatePackageName } from './validatePackageName';
-
-import execa = require('execa');
 
 /**
  * 创建项目
@@ -25,7 +24,7 @@ import execa = require('execa');
  */
 export default async function create(
   projectNameConfig: string,
-  program: Command,
+  program: Record<string, string | boolean>,
 ): Promise<void> {
   const projectName = projectNameConfig.startsWith('@')
     ? projectNameConfig.substr(projectNameConfig.indexOf('/') + 1)
@@ -67,6 +66,7 @@ export default async function create(
 
   if (gitCreated) {
     try {
+      await initHusky(spinner, options.projectName);
       gitCommit(projectPath);
     } catch (error) {
       // 忽略git提交失败

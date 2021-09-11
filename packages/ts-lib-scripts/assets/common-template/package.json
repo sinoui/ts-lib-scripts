@@ -1,0 +1,21 @@
+{
+  "name": "my-ts-lib",
+  "version": "0.1.0",
+  "license": "MIT",
+  "description": "描述库的用途",
+  "main": "dist/index.js",
+  "umd:main": "dist/sinoui-use-rest-api.umd.production.js",
+  "module": "dist/sinoui-use-rest-api.esm.js",
+  "types": "types/index.d.ts",
+  "scripts": {
+    "test": "ts-lib-tools test",
+    "build": "ts-lib-tools build --simple",
+    "format": "ts-lib-tools format",
+    "lint": "ts-lib-tools lint",
+    "release": "yarn build && yarn publish dist"
+  },
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  }
+}

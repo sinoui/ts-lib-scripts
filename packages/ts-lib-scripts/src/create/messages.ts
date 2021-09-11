@@ -30,9 +30,9 @@ export const dependenciesMessage = (
   dependencies: string[],
   devDependencies: string[],
 ): string => {
-  return `安装依赖：${'\n    '}${chalk.bold.cyan(
-    dependencies.join('\n    '),
+  return `安装依赖：\n{'    '}dependencies:\n    ${chalk.bold.cyan(
+    dependencies.join(' '),
   )}${'\n  devDependencies:\n    '}${chalk.bold.cyan(
-    devDependencies.join('    '),
+    devDependencies.join(' '),
   )}`;
 };
