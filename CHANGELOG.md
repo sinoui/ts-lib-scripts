@@ -7,6 +7,7 @@
 - breadchange(eslint-config-ts-lib): 增加 jsdoc 和 typescript 类型显式声明的规则
 - improve(ts-lib-scripts): 启用 eslint 的缓存
 - improve(ts-lib-scripts): 升级 husky 和 lint-staged
+- fix(ts-lib-tools): 修复在 monorepo 模式下打包之后再执行单元测试，有可能报 `package.json` 和 `dist/package.json` 名称相同的冲突
 
 ## v0.14.3 - 2021.8.19
 

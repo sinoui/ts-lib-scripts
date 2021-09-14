@@ -61,6 +61,7 @@ export async function createJestConfig(): Promise<Record<string, any>> {
       '.*/node_modules/.*',
       '.*/dist/.*',
       '.*/\\.cache/.*',
+      '.*/build/.*',
     ],
     testRegex: '.*\\.(spec|test)\\.tsx?$',
     watchPlugins: [
@@ -74,8 +75,8 @@ export async function createJestConfig(): Promise<Record<string, any>> {
     modulePathIgnorePatterns: [
       '<rootDir>/dist/',
       '<rootDir>/build/',
-      '<rootDir>/packages/dist/',
-      '<rootDir>/packages/build/',
+      '<rootDir>/packages/([^/]+)/dist/',
+      '<rootDir>/packages/([^/]+)/build/',
     ],
     resolver: 'jest-resolver-tsconfig-paths',
     testPathIgnorePatterns: [
