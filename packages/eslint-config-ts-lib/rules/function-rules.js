@@ -25,6 +25,7 @@ const functionRules = {
   ],
   '@typescript-eslint/explicit-function-return-type': 0,
   'no-empty-function': 'off',
+  'arrow-body-style': ['error', 'as-needed'],
 };
 
 module.exports = functionRules;
