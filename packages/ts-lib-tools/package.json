@@ -36,7 +36,7 @@
     "@svgr/rollup": "^5.5.0",
     "@types/jest": "^27.0.1",
     "async": "^3.2.1",
-    "babel-jest": "^27.1.1",
+    "babel-jest": "^27.2.0",
     "babel-preset-ts-lib": "^0.14.1",
     "camelcase": "^6.2.0",
     "chalk": "^4.1.2",
