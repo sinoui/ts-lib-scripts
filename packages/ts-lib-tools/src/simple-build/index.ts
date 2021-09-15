@@ -14,7 +14,7 @@ import {
   remove,
   writeFile,
 } from 'fs-extra';
-import { globby } from 'globby';
+import globby from 'globby';
 import ora from 'ora';
 import { basename, dirname, resolve } from 'path';
 

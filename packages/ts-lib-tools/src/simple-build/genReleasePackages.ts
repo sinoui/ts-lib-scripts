@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { pathExists, readJSON, writeFile, writeJSON } from 'fs-extra';
-import { globby } from 'globby';
+import globby from 'globby';
 import { resolve } from 'path';
 
 import { DIST_ROOT, ROOT_DIR, SRC_ROOT } from './constants';
