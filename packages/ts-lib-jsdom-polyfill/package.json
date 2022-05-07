@@ -1,7 +1,7 @@
 {
   "name": "ts-lib-jsdom-polyfill",
   "description": "ts库的 jsdom polyfill",
-  "version": "0.14.0",
+  "version": "0.14.4",
   "main": "index.js",
   "license": "MIT",
   "homepage": "https://github.com/sinoui/ts-lib-scripts",
