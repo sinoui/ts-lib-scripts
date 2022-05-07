@@ -1,6 +1,6 @@
 # 变更说明
 
-## 0.14.4
+## 0.14.4 - 2022.5.7
 
 - improve(eslint-config-ts-lib): 改进执行 lint 的速度
 - fix(eslint-config-ts-lib): 修复 prettier 和 eslint 规则冲突的缺陷
