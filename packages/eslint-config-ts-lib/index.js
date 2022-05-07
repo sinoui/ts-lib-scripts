@@ -89,6 +89,7 @@ module.exports = {
         'jsdoc/require-property-type': 'off',
         'jsdoc/require-returns': 'off',
         '@typescript-eslint/no-explicit-any': 'off',
+        'react/prop-types': 'off',
         'jsdoc/require-jsdoc': [
           'error',
           {
@@ -102,6 +103,12 @@ module.exports = {
               ClassExpression: true,
               MethodDefinition: true,
             },
+          },
+        ],
+        'jsdoc/check-tag-names': [
+          'warn',
+          {
+            definedTags: ['jest-environment'],
           },
         ],
         ...varRules,
@@ -131,6 +138,8 @@ module.exports = {
         '*/tests/*.js',
         '*/tests/*.ts',
         '*/tests/*.tsx',
+        '*.stories.tsx',
+        '*/stories/*',
       ],
       env: {
         jest: true,

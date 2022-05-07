@@ -6,7 +6,7 @@ export const devDependencies = ['ts-lib-tools'];
 /**
  * 依赖
  */
-export const dependencies = ['@babel/runtime', '@babel/polyfill', 'tslib'];
+export const dependencies = ['@babel/runtime', 'tslib'];
 
 /**
  * react库开发依赖

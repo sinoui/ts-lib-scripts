@@ -3,8 +3,8 @@ import { VERSION } from 'rollup';
 console.log('jest version', VERSION);
 
 const cssTranform = {
-  process(): string {
-    return 'module.exports = {};';
+  process(): any {
+    return { code: 'module.exports = {};' };
   },
   getCacheKey(): string {
     return 'cssTransform';

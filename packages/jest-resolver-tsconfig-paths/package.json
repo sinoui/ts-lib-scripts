@@ -20,6 +20,6 @@
     "tsconfig-paths": "^3.9.0"
   },
   "devDependencies": {
-    "@types/jest": "^27.0.1"
+    "@types/jest": "^27.5.0"
   }
 }

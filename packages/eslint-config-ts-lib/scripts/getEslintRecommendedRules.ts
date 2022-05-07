@@ -54,8 +54,8 @@ export default function getEslintRecommendedRules(): Observable<EsLintRule> {
 
   return enRules$.pipe(
     combineLatestWith(zhRules$),
-    mergeMap(([enRules, zhRules]) => {
-      return enRules.map((rule) => {
+    mergeMap(([enRules, zhRules]) =>
+      enRules.map((rule) => {
         const zhRule = zhRules.find((item) => item.name === rule.name);
         if (zhRule) {
           return {
@@ -67,7 +67,7 @@ export default function getEslintRecommendedRules(): Observable<EsLintRule> {
           };
         }
         return rule;
-      });
-    }),
+      }),
+    ),
   );
 }

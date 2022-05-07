@@ -97,7 +97,7 @@ export async function createJestConfig(): Promise<Record<string, any>> {
     'collectCoverageFrom',
     'coverageReporters',
     'coverageThreshold',
-    'extraGlobals',
+    'sandboxInjectedGlobals',
     'globalSetup',
     'globalTeardown',
     'moduleNameMapper',

@@ -46,7 +46,7 @@ export async function test(): Promise<void> {
     argv.indexOf('--watch') === -1 &&
     argv.indexOf('--watchAll') === -1
   ) {
-    argv.push('--findRelatedTests', '--bail');
+    argv.push('--findRelatedTests', '--bail', '--passWithNoTests');
   }
 
   if (
