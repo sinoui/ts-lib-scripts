@@ -1,5 +1,9 @@
 # 变更说明
 
+# 0.14.5 - 2022.5.19
+
+- improve(eslint-config-ts-lib): eslint 从 7.x 升级到 8.15.0
+
 ## 0.14.4 - 2022.5.7
 
 - improve(eslint-config-ts-lib): 改进执行 lint 的速度
