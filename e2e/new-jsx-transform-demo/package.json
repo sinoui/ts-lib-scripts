@@ -1,12 +1,12 @@
 {
   "name": "new-jsx-transform-demo",
-  "version": "0.14.5",
+  "version": "0.14.7",
   "private": true,
   "dependencies": {
     "rc-pagination": "^1.20.11",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "ts-lib-tools": "^0.14.5"
+    "ts-lib-tools": "^0.14.7"
   },
   "scripts": {
     "test": "ts-lib-tools test",
