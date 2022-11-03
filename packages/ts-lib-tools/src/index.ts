@@ -97,7 +97,7 @@ program
 
 program
   .command('gen-module <moduleName>')
-  .option('--packageName <packageName>', '指定模块所在文件名称')
+  .option('--packageName <packageName>', '指定新增模块所在的文件夹名称')
   .description('生成模块')
   .action(async (moduleName, { packageName }) => {
     await genModule(moduleName, packageName);
