@@ -35,9 +35,13 @@ async function genNpmignoreFile(modulePath: string): Promise<void> {
  * 生成模块
  *
  * @param moduleName 模块名称
+ * @param packageName 模块所在的文件名称，默认使用packages
  */
-async function genModule(moduleName: string): Promise<void> {
-  const modulePath = resolveRoot(`./packages/${moduleName}`);
+async function genModule(
+  moduleName: string,
+  packageName = 'packages',
+): Promise<void> {
+  const modulePath = resolveRoot(`./${packageName}/${moduleName}`);
 
   const isExists = await pathExists(modulePath);
 

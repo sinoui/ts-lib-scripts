@@ -1,5 +1,9 @@
 # 变更说明
 
+# 0.14.6 - 2022.11.3
+
+- chore(ts-lib-tools): gen-module 脚本支持指定新建模块所在的文件夹名称
+
 # 0.14.5 - 2022.5.19
 
 - improve(eslint-config-ts-lib): eslint 从 7.x 升级到 8.15.0

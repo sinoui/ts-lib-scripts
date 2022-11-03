@@ -97,9 +97,10 @@ program
 
 program
   .command('gen-module <moduleName>')
+  .option('--packageName <packageName>', '指定模块所在文件名称')
   .description('生成模块')
-  .action(async (moduleName) => {
-    await genModule(moduleName);
+  .action(async (moduleName, { packageName }) => {
+    await genModule(moduleName, packageName);
   });
 
 program.command('lint').description('代码检查');
