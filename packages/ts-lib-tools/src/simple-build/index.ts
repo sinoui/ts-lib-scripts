@@ -165,7 +165,7 @@ async function copyFiles(): Promise<void> {
   );
 
   const copyToDist = async (distPath: string): Promise<void> => {
-    await mapLimit(files, 10, async (filePath) => {
+    await mapLimit(files, 10, async (filePath: string) => {
       await ensureDir(dirname(resolve(distPath, filePath)));
       await copyFile(resolve(SRC_ROOT, filePath), resolve(distPath, filePath));
     });
@@ -175,7 +175,7 @@ async function copyFiles(): Promise<void> {
   await copyToDist(DIST_PATH_ESM);
   await copyToDist(DIST_ROOT);
 
-  await map(CP_FILES, async (filePath) => {
+  await map(CP_FILES, async (filePath: string) => {
     const sourcePath = resolve(ROOT_DIR, filePath);
     const distPath = resolve(DIST_ROOT, filePath);
     const isExists = await pathExists(sourcePath);
