@@ -1,6 +1,6 @@
 {
   "name": "ts-lib-tools",
-  "version": "0.14.7",
+  "version": "0.14.8",
   "description": "ts-lib-scripts创建的ts项目使用的开箱即用命令和配置。",
   "license": "MIT",
   "homepage": "https://github.com/sinoui/ts-lib-scripts",
